@@ -55,23 +55,37 @@
                     <tr>
                         <td class="TailLabel">性别：</td>
                         <td>
-                            <input type="radio" name="employeeGender" checked/><span>男</span>
-                            <input type="radio" name="employeeGender" /><span>女</span>
+                            <input type="radio" name="employeeGender" value="1" checked /><span>男</span>
+                            <input type="radio" name="employeeGender" value="0"/><span>女</span>
                             <span class="formSpan">*</span>
                         </td>
                     </tr>
                     <tr>
                         <td class="TailLabel">部门：</td>
                         <td>
-                            <input type="text"  id="departmentName" class="TailInput"/>
-                            <span class="formSpan">*</span>
+<!--                            <input type="text"  id="departmentName" class="TailInput"/>-->
+<!--                            <span class="formSpan">*</span>-->
+                            <select name="departmentID" class="easyui-combobox"style="width:160px;height:30px;">
+                                <option value="">请选择</option>
+                                <option value="1">财务部</option>
+                                <option value="2">人事部</option>
+                                <option value="3">花钱不</option>
+                                <option value="4">吃饭不</option>
+                            </select>
                         </td>
                     </tr>
                     <tr>
                         <td class="TailLabel">职务：</td>
                         <td>
-                            <input type="text"  id="positionName" class="TailSelect"/>
-                            <span class="formSpan">*</span>
+                            <select name="positionID" class="easyui-combobox"style="width:160px;height:30px;">
+                                <option value="">请选择</option>
+                                <option value="1">财务部</option>
+                                <option value="2">人事部</option>
+                                <option value="3">花钱不</option>
+                                <option value="4">吃饭不</option>
+                            </select>
+<!--                            <input type="text"  id="positionName" class="TailSelect"/>-->
+<!--                            <span class="formSpan">*</span>-->
                         </td>
                     </tr>
                     <tr>
@@ -84,8 +98,8 @@
                     <tr>
                         <td class="TailLabel">状态：</td>
                         <td>
-                            <input type="radio" name="employeeState" checked/><span>正常</span>
-                            <input type="radio" name="employeeState" /><span>停用</span>
+                            <input type="radio" name="employeeState" value="1" checked /><span>正常</span>
+                            <input type="radio" name="employeeState" value="0"/><span>停用</span>
                             <span class="formSpan">*</span>
                         </td>
                     </tr>
@@ -94,7 +108,10 @@
                         <td colspan="4"><textarea class="TailArea" name="employeeMemo"></textarea></td>
                     </tr>
                 </table>
-                <div class="forSubmint"> <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >保存</a><a href="#" class="easyui-linkbutton"  iconCls="icon-redo" >重置</a> </div>
+                <div class="forSubmint">
+                     <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >保存</a>
+                    <a href="#" class="easyui-linkbutton"  iconCls="icon-redo" >重置</a>
+                </div>
             </div>
         </div>
 
