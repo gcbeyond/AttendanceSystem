@@ -15,8 +15,8 @@
         <!--表格查询-->
         <div class="tableFind">
             <p>
-                <label>姓名：</label><input type="text" id="empNameS"/>
-                <label>部门：</label><input type="text" id="deptNameS" />
+                <label>姓名：</label><input type="text" id="empSearch"/>
+                <label>部门：</label><input type="text" id="deptSearch" />
                 <a id="btn" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="obj.find()">查询</a>
             </p>
         </div>
@@ -25,7 +25,7 @@
             <table id="table" class="tableStyle"></table>
             <div id="tabelBut">
                 <div>
-                    <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add" onclick="obj.addBox()">新增</a>
+                    <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add" onclick="addOne()">新增</a>
                 </div>
             </div>
         </div>
@@ -39,31 +39,38 @@
             <div title="基本信息">
                 <table class="TailTable">
                     <tr>
+                        <td class="TailLabel">编号：</td>
+                        <td>
+                            <input type="text" class="easyui-validatebox TailInput" name="employeeID">
+                            <span class="formSpan">*</span>
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="TailLabel">姓名：</td>
                         <td>
-                            <input type="text" class="easyui-validatebox TailInput" name="empName">
+                            <input type="text" class="easyui-validatebox TailInput" name="employeeName">
                             <span class="formSpan">*</span>
                         </td>
                     </tr>
                     <tr>
                         <td class="TailLabel">性别：</td>
                         <td>
-                            <input type="radio" name="empGender" checked/><span>男</span>
-                            <input type="radio" name="empGender" /><span>女</span>
+                            <input type="radio" name="employeeGender" checked/><span>男</span>
+                            <input type="radio" name="employeeGender" /><span>女</span>
                             <span class="formSpan">*</span>
                         </td>
                     </tr>
                     <tr>
                         <td class="TailLabel">部门：</td>
                         <td>
-                            <input type="text"  id="deptName" class="TailInput"/>
+                            <input type="text"  id="departmentName" class="TailInput"/>
                             <span class="formSpan">*</span>
                         </td>
                     </tr>
                     <tr>
                         <td class="TailLabel">职务：</td>
                         <td>
-                            <input type="text"  id="posiName" class="TailSelect"/>
+                            <input type="text"  id="positionName" class="TailSelect"/>
                             <span class="formSpan">*</span>
                         </td>
                     </tr>
@@ -77,14 +84,14 @@
                     <tr>
                         <td class="TailLabel">状态：</td>
                         <td>
-                            <input type="radio" name="empState" checked/><span>正常</span>
-                            <input type="radio" name="empState" /><span>停用</span>
+                            <input type="radio" name="employeeState" checked/><span>正常</span>
+                            <input type="radio" name="employeeState" /><span>停用</span>
                             <span class="formSpan">*</span>
                         </td>
                     </tr>
                     <tr>
                         <td class="TailLabel">备注：</td>
-                        <td colspan="4"><textarea class="TailArea" name="empMemo"></textarea></td>
+                        <td colspan="4"><textarea class="TailArea" name="employeeMemo"></textarea></td>
                     </tr>
                 </table>
                 <div class="forSubmint"> <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >保存</a><a href="#" class="easyui-linkbutton"  iconCls="icon-redo" >重置</a> </div>
@@ -97,8 +104,7 @@
 <script src="js/jquery-easyui/jquery.min.js"></script>
 <script src="js/jquery-easyui/jquery.easyui.min.js"></script>
 <script src="js/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
-<script src="js/info_employee.js"></script>
-
+<script src="js/employeeList.js"></script>
 
 </body>
 </html>

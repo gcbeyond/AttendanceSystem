@@ -53,11 +53,6 @@
         <!--表格列表-->
         <div class="tableCon">
             <table id="table" class="tableStyle"></table>
-            <div id="tabelBut">
-                <div>
-                    <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add" onclick="obj.addBox()">新增</a>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -69,9 +64,13 @@
         <form id="addTowForm" method="post">
             <div class="tableFind" style="text-align: center;width: 100%">
                 <p>
-                    <label style="width: 100px">一级部门名称：</label>
-                    <input type="text" class="easyui-validatebox TailInput" name="departmentNameOne" style="width: 160px" readonly>
-                    <span class="formSpan">&nbsp;</span>
+                    <label style="width:100px;">一级部门：</label>
+                    <select class="easyui-combobox"style="width:160px;height:30px;">
+                        <option value="">请选择</option>
+                        <option value="1">财务部</option>
+                        <option value="2">人事部</option>
+                    </select>
+                    <span class="formSpan">*</span>
                 </p>
                 <p>
                     <label style="width: 100px">二级部门名称：</label>
@@ -109,11 +108,6 @@
         <!--表格列表-->
         <div class="tableCon">
             <table id="tableTow" class="tableStyle"></table>
-<!--            <div id="tabelBut">-->
-<!--                <div>-->
-<!--                    <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add" onclick="obj.addBox()">新增</a>-->
-<!--                </div>-->
-<!--            </div>-->
         </div>
     </div>
 </div>
@@ -217,7 +211,7 @@
 <script src="js/jquery-easyui/jquery.min.js"></script>
 <script src="js/jquery-easyui/jquery.easyui.min.js"></script>
 <script src="js/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
-<script src="js/info_department.js"></script>
+<script src="js/departmentList.js"></script>
 
 </body>
 </html>

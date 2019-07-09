@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 $(
     //自动一级部门
     function () {
@@ -14,7 +10,7 @@ function initOneDepartmentList() {
         $("#table").datagrid({
                 title: "一级部门列表",
                 iconCls: "icon-left02",
-                url: 'json/info_department.json',
+                url: 'json/departmentList.json',
                 fitColumns: true,
                 striped: true,
                 pagination: true,
@@ -95,7 +91,7 @@ function initTowDepartmentList() {
         $("#tableTow").datagrid({
                 title:"二级部门列表",
                 iconCls:"icon-left02",
-                url:'json/info_department.json',
+                url:'json/departmentList.json',
                 fitColumns:true,
                 striped:true,
                 pagination:true,
@@ -173,7 +169,7 @@ function manageChild(row) {
         $("#manageChild").dialog({
                 title:"二级部门维护",
                 width: 800,
-                height: 400,
+                height: 600,
                 closed: false,
                 modal:true,
                 shadow:true
@@ -204,7 +200,4 @@ function editOne(rowEdit) {
                 startTimePM: rows[4],
                 endTimePM: rows[5]
         });
-
-
-
 }
