@@ -1,0 +1,28 @@
+[
+	{
+	  "id":1,
+	  "text":"内江市环卫局",
+	  "iconCls":"icon-left05",
+	  "children":[{
+	    "text":"市中区环卫的",
+	    "iconCls":"icon-reload",
+	    "checked":true
+	  },{
+	    "text":"历下区环卫的",
+	    "iconCls":"icon-reload",
+	    "checked":true
+	  }]
+	},
+	{
+	  "text":"绵阳市环卫局",
+	  "iconCls":"icon-left05",
+	  "state":"closed",
+	  "children":[{
+	    "text":"高新区环卫所",
+	    "iconCls":"icon-reload"
+	  	},{
+	    "text":"市中区环卫所",
+	    "iconCls":"icon-reload"
+	  	}]
+	}
+]

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格列表</title>
+
+    <link type="text/css" rel="stylesheet" href="js/jquery-easyui/themes/default/easyui.css"/>
+    <link type="text/css" rel="stylesheet" href="js/jquery-easyui/themes/icon.css"/>
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+<div class="easyui-layout" data-options="fit:true" id="useBox">
+    <div data-options="region:'center',split:true">
+        <!--表格查询-->
+        <div class="tableFind">
+            <p>
+                <label>姓名：</label><input type="text" id="empNameS"/>
+                <label>部门：</label><input type="text" id="deptNameS" />
+                <a id="btn" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="obj.find()">查询</a>
+            </p>
+        </div>
+        <!--表格列表-->
+        <div class="tableCon">
+            <table id="table" class="tableStyle"></table>
+            <div id="tabelBut">
+                <div>
+                    <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add" onclick="obj.addBox()">新增</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--//新增弹出框-->
+<div id="addBox" >
+    <form id="addForm" method="post">
+        <div id="tabs" class="easyui-tabs">
+            <div title="基本信息">
+                <table class="TailTable">
+                    <tr>
+                        <td class="TailLabel">姓名：</td>
+                        <td>
+                            <input type="text" class="easyui-validatebox TailInput" name="empName">
+                            <span class="formSpan">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">性别：</td>
+                        <td>
+                            <input type="radio" name="empGender" checked/><span>男</span>
+                            <input type="radio" name="empGender" /><span>女</span>
+                            <span class="formSpan">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">部门：</td>
+                        <td>
+                            <input type="text"  id="deptName" class="TailInput"/>
+                            <span class="formSpan">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">职务：</td>
+                        <td>
+                            <input type="text"  id="posiName" class="TailSelect"/>
+                            <span class="formSpan">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">卡号：</td>
+                        <td>
+                            <input type="text" class="easyui-validatebox TailInput" name="cardNumber">
+                            <span class="formSpan">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">状态：</td>
+                        <td>
+                            <input type="radio" name="empState" checked/><span>正常</span>
+                            <input type="radio" name="empState" /><span>停用</span>
+                            <span class="formSpan">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">备注：</td>
+                        <td colspan="4"><textarea class="TailArea" name="empMemo"></textarea></td>
+                    </tr>
+                </table>
+                <div class="forSubmint"> <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >保存</a><a href="#" class="easyui-linkbutton"  iconCls="icon-redo" >重置</a> </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script src="js/jquery-easyui/jquery.min.js"></script>
+<script src="js/jquery-easyui/jquery.easyui.min.js"></script>
+<script src="js/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
+<script src="js/info_employee.js"></script>
+
+
+</body>
+</html>
