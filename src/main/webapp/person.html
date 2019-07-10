@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格列表</title>
+
+    <link type="text/css" rel="stylesheet" href="js/jquery-easyui/themes/default/easyui.css"/>
+    <link type="text/css" rel="stylesheet" href="js/jquery-easyui/themes/icon.css"/>
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+<div class="easyui-layout" data-options="fit:true" id="useBox">
+    <!--左侧树-->
+
+    <div data-options="region:'center',split:true">
+        <!--表格查询-->
+        <div class="tableFind">
+            <p><label>姓名;</label><input type="text" id="user"/><label>出生年月;</label><input type="text" id="dd" class="easyui-datebox"style="width: 16%;height:26px;"/><label>职务;</label><input type="text" id="part" />
+                <a id="btn" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="obj.find()">查询</a></p>
+
+    </div>
+
+        <!--表格列表-->
+        <div class="tableCon">
+            <table id="table01" class="tableStyle"></table>
+            <div id="tabelBut">
+                <div>
+                    <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add" onclick="obj.addBox()">新增</a>
+                    <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-edit">修改</a>
+                    <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-remove" onclick="obj.del()">删除</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--//新增弹出框-->
+<div id="addBox" >
+    <form id="addForm" method="post">
+        <div id="tabs" class="easyui-tabs">
+            <div title="基本信息">
+                <table class="TailTable">
+                    <tr>
+                        <td class="TailLabel">姓名：</td>
+                        <td><input type="text" class="easyui-validatebox TailInput" name="name" data-options="required:true"><span class="formSpan">*</span></td>
+                        <td class="TailLabel">身份证号：</td>
+                        <td><input type="text" class="easyui-validatebox TailInput" name="name" data-options="required:true"><span class="formSpan">*</span></td>
+                        <td rowspan="6"  class="tableImg"><img src="img/imgbox4.jpg" /> </td>
+
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">性别：</td>
+                        <td><input type="radio" name="sex" checked/><span>男</span><input type="radio" name="sex" /><span>女</span></td>
+                        <td class="TailLabel">出生年月日：</td>
+                        <td><input type="text" class="easyui-datebox TailInput"id="dateBox" /><span class="formSpan">*</span></td>
+
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">身高：</td>
+                        <td><input type="text" class="easyui-numberbox TailInput "  data-options="min:0,precision:2"></td>
+                        <td class="TailLabel">体重：</td>
+                        <td><input type="text" class="easyui-numberbox TailInput "  data-options="min:0,precision:2"></td>
+
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">健康状态：</td>
+                        <td><input type="radio" name="sex" checked/><span>好</span><input type="radio" name="sex" /><span>良</span>
+                            <input type="radio" name="sex" checked/><span>一般</span><input type="radio" name="sex" /><span>不好</span>
+                        </td>
+                        <td class="TailLabel">民族：</td>
+                        <td><input type="text" id="nation" class="TailInput"></td>
+
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">入学时间：</td>
+                        <td><input type="text" class="easyui-datebox TailInput" /></td>
+                        <td class="TailLabel">毕业时间：</td>
+                        <td><input type="text" class="easyui-datebox TailInput" /></td>
+
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">毕业学校：</td>
+                        <td><input type="text" class="TailInput" /></td>
+                        <td class="TailLabel">长住地址：</td>
+                        <td><input type="text" class="TailInput" /></td>
+
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">籍贯：</td>
+                        <td><input type="text" class="TailInput" /></td>
+                        <td class="TailLabel">户籍地址：</td>
+                        <td colspan="2"><input type="text" id="nation01" class="TailInput"></td>
+
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">所属部门：</td>
+                        <td><input type="text"  id="part" class="TailInput"/></td>
+                        <td class="TailLabel">职务：</td>
+                        <td colspan="2"><select class="TailSelect"><option>经理</option></select></td>
+
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">学习简介：</td>
+                        <td colspan="4"><textarea class="TailArea"></textarea></td>
+
+
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">工作简介：</td>
+                        <td colspan="4"><textarea class="TailArea"></textarea></td>
+
+
+                    </tr>
+                </table>
+                <div class="forSubmint"> <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >保存</a><a href="#" class="easyui-linkbutton"  iconCls="icon-redo" >重置</a> </div>
+            </div>
+            <div title="行业信息">
+                <table id="table" class="tableStyle"></table>
+            </div>
+        </div>
+
+    </form>
+</div>
+<script src="js/jquery-easyui/jquery.min.js"></script>
+<script src="js/jquery-easyui/jquery.easyui.min.js"></script>
+<script src="js/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
+<script src="js/person.js"></script>
+
+
+</body>
+</html>

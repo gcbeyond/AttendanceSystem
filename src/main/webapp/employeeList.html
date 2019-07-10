@@ -10,13 +10,21 @@
 
 </head>
 <body>
+
+<!--页面：加载表格-->
 <div class="easyui-layout" data-options="fit:true" id="useBox">
     <div data-options="region:'center',split:true">
         <!--表格查询-->
         <div class="tableFind">
             <p>
                 <label>姓名：</label><input type="text" id="empSearch"/>
-                <label>部门：</label><input type="text" id="deptSearch" />
+                <label>部门：</label>
+                <select id="deptSearch">
+                    <option value="">请选择</option>
+                    <option value="1">技术部</option>
+                    <option value="2">吃饭不</option>
+                    <option value="3">花钱不</option>
+                </select>
                 <a id="btn" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="obj.find()">查询</a>
             </p>
         </div>
@@ -32,7 +40,7 @@
     </div>
 </div>
 
-<!--//新增弹出框-->
+<!--弹出：新增修改弹出框-->
 <div id="addBox" >
     <form id="addForm" method="post">
         <div id="tabs" class="easyui-tabs">

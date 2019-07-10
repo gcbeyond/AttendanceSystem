@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格列表</title>
+
+    <link type="text/css" rel="stylesheet" href="js/jquery-easyui/themes/default/easyui.css"/>
+    <link type="text/css" rel="stylesheet" href="js/jquery-easyui/themes/icon.css"/>
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+
+<!--页面：加载表格-->
+<div class="easyui-layout" data-options="fit:true" id="useBox">
+    <div data-options="region:'center',split:true">
+        <!--表格查询-->
+        <div class="tableFind">
+            <p>
+                <label>用户名：</label><input type="text" id="empSearch"/>
+                <a id="btn" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="obj.find()">查询</a>
+            </p>
+        </div>
+        <!--表格列表-->
+        <div class="tableCon">
+            <table id="table" class="tableStyle"></table>
+            <div id="tabelBut">
+                <div>
+                    <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-edit" onclick="editOne()">分配权限</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--弹出：新增修改弹出框-->
+<div id="addBox" >
+    <form id="addForm" method="post">
+        <div id="tabs" class="easyui-tabs">
+            <div title="权限分配" >
+                <div class="tableFind" style="text-align: center;width: 100%">
+                    <p>
+                        <label style="width: 100px">用户编号：</label>
+                        <input type="text" class="easyui-validatebox TailInput" name="adminAccount" readonly>
+                    </p>
+                    <p>
+                        <label style="width: 100px">用户名&nbsp;：</label>
+                        <input type="text" class="easyui-validatebox TailInput" name="adminName" readonly>
+                    </p>
+                    <p>
+                        <label style="width: 100px">一级部门：</label>
+                        <select name="departmentID" class="easyui-combobox"style="width:160px;height:30px;">
+                            <option value="">请选择</option>
+                            <option value="1">财务部</option>
+                            <option value="2">人事部</option>
+                            <option value="3">花钱不</option>
+                            <option value="4">吃饭不</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label style="width: 100px">二级部门：</label>
+                        <select name="departmentID" class="easyui-combobox"style="width:160px;height:30px;">
+                            <option value="">请选择</option>
+                            <option value="1">财务部</option>
+                            <option value="2">人事部</option>
+                            <option value="3">花钱不</option>
+                            <option value="4">吃饭不</option>
+                        </select>
+                    </p>
+                    <div class="forSubmint">
+                        <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >分配</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--表格列表-->
+    <div class="tableCon">
+        <table id="tableTow" class="tableStyle"></table>
+    </div>
+</div>
+
+<script src="js/jquery-easyui/jquery.min.js"></script>
+<script src="js/jquery-easyui/jquery.easyui.min.js"></script>
+<script src="js/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
+<script src="js/adminPopedomList.js"></script>
+
+</body>
+</html>

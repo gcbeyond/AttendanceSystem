@@ -1,0 +1,17 @@
+{"total":20,"rows":[
+  {"check":"no","popedomID":"1","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部","departmentTow":"吃部","adminRight":"1","opr":""},
+  {"check":"no","popedomID":"2","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部","departmentTow":"吃部","adminRight":"1","opr":"1"},
+  {"check":"no","popedomID":"3","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部","departmentTow":"吃部","adminRight":"2","opr":"1"},
+  {"check":"no","popedomID":"4","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部","departmentTow":"吃部","adminRight":"1","opr":"1"},
+  {"check":"no","popedomID":"5","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部","departmentTow":"吃部","adminRight":"1","opr":"1"},
+  {"check":"no","popedomID":"6","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部","departmentTow":"吃部","adminRight":"2","opr":"1"},
+  {"check":"no","popedomID":"7","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部","departmentTow":"吃部","adminRight":"2","opr":"1"},
+  {"check":"no","popedomID":"8","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"花钱部","departmentTow":"吃部","adminRight":"1","opr":"1"},
+  {"check":"no","popedomID":"9","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"花钱部","departmentTow":"吃部","adminRight":"1","opr":"1"},
+  {"check":"no","popedomID":"10","adminAccount":"admin01","adminName":"大红","adminPwd":"4321","departmentOne":"花钱部","departmentTow":"吃部","adminRight":"1","opr":"1"},
+  {"check":"no","popedomID":"11","adminAccount":"admin01","adminName":"大红","adminPwd":"4321","departmentOne":"花钱部","departmentTow":"吃部","adminRight":"1","opr":"1"},
+  {"check":"no","popedomID":"12","adminAccount":"admin01","adminName":"大红","adminPwd":"4321","departmentOne":"花钱部","departmentTow":"吃部","adminRight":"2","opr":"1"},
+  {"check":"no","popedomID":"13","adminAccount":"admin01","adminName":"大红","adminPwd":"4321","departmentOne":"花钱部","departmentTow":"吃部","adminRight":"2","opr":"1"},
+  {"check":"no","popedomID":"14","adminAccount":"admin01","adminName":"大红","adminPwd":"4321","departmentOne":"花钱部","departmentTow":"吃部","adminRight":"2","opr":"1"}
+
+]}

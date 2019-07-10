@@ -1,0 +1,17 @@
+{"total":20,"rows":[
+  {"check":"no","employeeID":"1","employeeName":"admin01","employeeGender":"1","positionName":"工程师","departmentName":"吃饭部","cardNumber":"123456","employeeState":"0","employeeMemo":"好多鱼","opr":""},
+  {"check":"no","employeeID":"2","employeeName":"admin01","employeeGender":"1","positionName":"工程师","departmentName":"吃饭部","cardNumber":"123456","employeeState":"1","employeeMemo":"好多鱼","opr":"1"},
+  {"check":"no","employeeID":"3","employeeName":"admin01","employeeGender":"0","positionName":"工程师","departmentName":"吃饭部","cardNumber":"123456","employeeState":"1","employeeMemo":"好多鱼","opr":"1"},
+  {"check":"no","employeeID":"4","employeeName":"admin01","employeeGender":"0","positionName":"工程师","departmentName":"吃饭部","cardNumber":"123456","employeeState":"0","employeeMemo":"好多鱼","opr":"1"},
+  {"check":"no","employeeID":"5","employeeName":"admin01","employeeGender":"1","positionName":"工程师","departmentName":"吃饭部","cardNumber":"123456","employeeState":"1","employeeMemo":"好多鱼","opr":"1"},
+  {"check":"no","employeeID":"6","employeeName":"admin01","employeeGender":"1","positionName":"工程师","departmentName":"吃饭部","cardNumber":"123456","employeeState":"1","employeeMemo":"好多鱼","opr":"1"},
+  {"check":"no","employeeID":"7","employeeName":"admin01","employeeGender":"1","positionName":"工程师","departmentName":"吃饭部","cardNumber":"123456","employeeState":"0","employeeMemo":"好多鱼","opr":"1"},
+  {"check":"no","employeeID":"87","employeeName":"admin01","employeeGender":"0","positionName":"销售","departmentName":"花钱部","cardNumber":"123456","employeeState":"1","employeeMemo":"好多鱼","opr":"1"},
+  {"check":"no","employeeID":"9","employeeName":"admin01","employeeGender":"0","positionName":"实施","departmentName":"花钱部","cardNumber":"123456","employeeState":"0","employeeMemo":"好多鱼","opr":"1"},
+  {"check":"no","employeeID":"10","employeeName":"admin01","employeeGender":"1","positionName":"架构师","departmentName":"花钱部","cardNumber":"123456","employeeState":"1","employeeMemo":"好多鱼","opr":"1"},
+  {"check":"no","employeeID":"11","employeeName":"admin01","employeeGender":"1","positionName":"架构师","departmentName":"花钱部","cardNumber":"123456","employeeState":"0","employeeMemo":"好多鱼","opr":"1"},
+  {"check":"no","employeeID":"12","employeeName":"admin01","employeeGender":"0","positionName":"架构师","departmentName":"花钱部","cardNumber":"123456","employeeState":"1","employeeMemo":"好多鱼","opr":"1"},
+  {"check":"no","employeeID":"13","employeeName":"admin01","employeeGender":"1","positionName":"架构师","departmentName":"花钱部","cardNumber":"123456","employeeState":"1","employeeMemo":"好多鱼","opr":"1"},
+  {"check":"no","employeeID":"14","employeeName":"admin01","employeeGender":"1","positionName":"架构师","departmentName":"花钱部","cardNumber":"123456","employeeState":"1","employeeMemo":"好多鱼","opr":"1"}
+
+]}

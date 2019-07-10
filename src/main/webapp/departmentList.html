@@ -10,7 +10,8 @@
 
 </head>
 <body>
-<!--管理一级部门界面-->
+
+<!--页面：管理一级部门界面-->
 <div class="easyui-layout" data-options="fit:true" id="useBox">
     <div data-options="region:'center',split:true">
         <!--一级部门添加-->
@@ -57,7 +58,7 @@
     </div>
 </div>
 
-<!--管理弹出二级子部门界面-->
+<!--弹出：管理二级子部门界面-->
 <div id="manageChild">
     <div data-options="region:'center',split:true">
         <!--二级部门添加-->
@@ -112,7 +113,7 @@
     </div>
 </div>
 
-<!--编辑一级部门-->
+<!--弹出：编辑一级部门-->
 <div id="editOneBox">
     <form id="editOneForm" method="post">
         <div class="tableFind" style="text-align: center;width: 100%">
@@ -156,54 +157,46 @@
     </form>
 </div>
 
-<!--//新增弹出框-->
-<div id="addBox" >
-    <form id="addForm" method="post">
-        <div id="tabs" class="easyui-tabs">
-            <div title="基本信息">
-                <table class="TailTable">
-                    <tr>
-                        <td class="TailLabel">
-                            <span class="formSpan">*</span>部门名称：
-                        </td>
-                        <td>
-                            <input type="text" class="easyui-validatebox TailInput" name="departmentName" style="width: 160px">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="TailLabel">上午上班时间：</td>
-                        <td>
-                            <input type="text" class="easyui-validatebox TailInput" name="cardNumber" style="width: 50px">
-                            (时间格式为"12:00")
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="TailLabel">上午下班时间：</td>
-                        <td>
-                            <input type="text" class="easyui-validatebox TailInput" name="cardNumber" style="width: 50px">
-                            (时间格式为"12:00")
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="TailLabel">下午上班时间：</td>
-                        <td>
-                            <input type="text" class="easyui-validatebox TailInput" name="cardNumber" style="width: 50px">
-                            (时间格式为"12:00")
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="TailLabel">下午下班时间：</td>
-                        <td>
-                            <input type="text" class="easyui-validatebox TailInput" name="cardNumber" style="width: 50px">
-                            (时间格式为"12:00")
-                        </td>
-                    </tr>
-                </table>
-                <div class="forSubmint">
-                    <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >保存</a>
-                    <a href="#" class="easyui-linkbutton"  iconCls="icon-redo" >重置</a>
-                </div>
-            </div>
+<!--弹出：编辑二级部门-->
+<div id="editTowBox">
+    <form id="editTowForm" method="post">
+        <div class="tableFind" style="text-align: center;width: 100%">
+            <p>
+                <label style="width: 100px">二级部门编号：</label>
+                <input type="text" class="easyui-validatebox TailInput" name="departmentID" style="width: 160px" data-options="required:true">
+                <span class="formSpan">*</span>
+            </p>
+            <p>
+                <label style="width: 100px">二级部门名称：</label>
+                <input type="text" class="easyui-validatebox TailInput" name="departmentName" style="width: 160px" data-options="required:true">
+                <span class="formSpan">*</span>
+            </p>
+            <p>
+                <label style="width: 100px">上午上班时间：</label>
+                <input type="text" class="easyui-validatebox TailInput" name="startTimeAM" style="width: 50px" data-options="required:true">
+                (时间格式为"12:00")
+                <span class="formSpan">*</span>
+            </p>
+            <p>
+                <label style="width: 100px">上午下班时间：</label>
+                <input type="text" class="easyui-validatebox TailInput" name="endTimeAM" style="width: 50px" data-options="required:true">
+                (时间格式为"12:00")
+                <span class="formSpan">*</span>
+            </p>
+            <p>
+                <label style="width: 100px">下午上班时间：</label>
+                <input type="text" class="easyui-validatebox TailInput" name="startTimePM" style="width: 50px" data-options="required:true">
+                (时间格式为"12:00")
+                <span class="formSpan">*</span>
+            </p>
+            <p>
+                <label style="width: 100px">下午下班时间：</label>
+                <input type="text" class="easyui-validatebox TailInput" name="endTimePM" style="width: 50px" data-options="required:true">
+                (时间格式为"12:00")
+                <span class="formSpan">*</span>
+            </p>
+            </table>
+            <div class="forSubmint"> <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >添加部门</a></div>
         </div>
     </form>
 </div>

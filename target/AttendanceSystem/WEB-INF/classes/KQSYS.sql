@@ -7,7 +7,7 @@ CREATE TABLE Att_Admin(
     AdminAccount NVARCHAR(50) NOT NULL COMMENT '用户帐号',
     AdminPwd NVARCHAR(50) NOT NULL COMMENT '密码',
     AdminState CHAR(1) NOT NULL COMMENT '是否启用此帐号：0禁用，1启用',
-    AdminRight CHAR(1) NOT NULL COMMENT '是否管理员：1管理用，2考勤员',
+    AdminRight CHAR(1) NOT NULL COMMENT '是否管理员：1管理员，2考勤员',
     AdminName NVARCHAR(50) NOT NULL COMMENT '用户名称'
 );
 
@@ -66,7 +66,7 @@ CREATE TABLE Att_AttendanceRecord(
 CREATE TABLE Att_AttendanceType(
     TypeId INT AUTO_INCREMENT PRIMARY KEY COMMENT 'ID',
     TypeName NVARCHAR(20) NOT NULL COMMENT '状态名称',
-        TypeCategory CHAR(1) NOT NULL COMMENT '是否为请假 类型（1 代 表是，0 代 表不是）'
+    TypeCategory CHAR(1) NOT NULL COMMENT '是否为请假 类型（1 代 表是，0 代 表不是）'
     -- 固定
     -- 1 出勤 0
     -- 2 公休 0
