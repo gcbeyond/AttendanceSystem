@@ -22,7 +22,7 @@ function initAdminPopedomList() {
         pageNumber: 1,
         nowrap: true,
         height: 'auto',
-        sortName: 'employeeID',
+        sortName: 'popedomID',
         checkOnSelect: false,
         sortOrder: 'asc',
         toolbar: '#tabelBut',

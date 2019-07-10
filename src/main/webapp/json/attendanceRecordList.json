@@ -1,0 +1,17 @@
+{"total":20,"rows":[
+  {"check":"no","attendanceID":"1","employeeID":"12","employeeName":"小还","departmentId":"22","departmentName":"技术部","attendanceDate":"09-11","attendanceType":"0","opr":"1"},
+  {"check":"no","attendanceID":"2","employeeID":"12","employeeName":"小还","departmentId":"22","departmentName":"技术部","attendanceDate":"09-11","attendanceType":"0","opr":"2"},
+  {"check":"no","attendanceID":"3","employeeID":"12","employeeName":"小还","departmentId":"22","departmentName":"技术部","attendanceDate":"09-11","attendanceType":"0","opr":"2"},
+  {"check":"no","attendanceID":"4","employeeID":"12","employeeName":"小还","departmentId":"22","departmentName":"花钱部","attendanceDate":"09-11","attendanceType":"0","opr":"1"},
+  {"check":"no","attendanceID":"5","employeeID":"12","employeeName":"小还","departmentId":"22","departmentName":"花钱部","attendanceDate":"09-11","attendanceType":"0","opr":"1"},
+  {"check":"no","attendanceID":"6","employeeID":"12","employeeName":"小海","departmentId":"22","departmentName":"花钱部","attendanceDate":"09-11","attendanceType":"0","opr":"3"},
+  {"check":"no","attendanceID":"7","employeeID":"12","employeeName":"小海","departmentId":"22","departmentName":"花钱部","attendanceDate":"09-11","attendanceType":"0","opr":"1"},
+  {"check":"no","attendanceID":"8","employeeID":"12","employeeName":"小海","departmentId":"22","departmentName":"花钱部","attendanceDate":"09-11","attendanceType":"0","opr":"3"},
+  {"check":"no","attendanceID":"9","employeeID":"12","employeeName":"小海","departmentId":"22","departmentName":"花钱部","attendanceDate":"09-11","attendanceType":"0","opr":"1"},
+  {"check":"no","attendanceID":"10","employeeID":"12","employeeName":"小海","departmentId":"22","departmentName":"技术部","attendanceDate":"09-11","attendanceType":"0","opr":"1"},
+  {"check":"no","attendanceID":"11","employeeID":"12","employeeName":"小明","departmentId":"22","departmentName":"技术部","attendanceDate":"09-11","attendanceType":"0","opr":"3"},
+  {"check":"no","attendanceID":"12","employeeID":"12","employeeName":"小明","departmentId":"22","departmentName":"技术部","attendanceDate":"09-11","attendanceType":"0","opr":"1"},
+  {"check":"no","attendanceID":"13","employeeID":"12","employeeName":"小明","departmentId":"22","departmentName":"技术部","attendanceDate":"09-11","attendanceType":"0","opr":"1"},
+  {"check":"no","attendanceID":"14","employeeID":"12","employeeName":"小明","departmentId":"22","departmentName":"技术部","attendanceDate":"09-11","attendanceType":"0","opr":"1"},
+  {"check":"no","attendanceID":"15","employeeID":"12","employeeName":"小明","departmentId":"22","departmentName":"技术部","attendanceDate":"09-11","attendanceType":"0","opr":"1"}
+]}

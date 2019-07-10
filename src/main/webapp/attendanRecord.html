@@ -10,6 +10,16 @@
 
 </head>
 <body>
+<!--出勤状态下拉列表-->
+<div id="div1" style="display: none;">
+    <select id="sel">
+        <option value="">请选择</option>
+        <option value="1">出勤</option>
+        <option value="2">婚假</option>
+        <option value="3">产假</option>
+    </select>
+</div>
+
 <!--页面：加载表格-->
 <div class="easyui-layout" data-options="fit:true" id="useBox">‘
     <div data-options="region:'center',split:true">
@@ -33,7 +43,7 @@
             <table id="table" class="tableStyle"></table>
             <div id="tabelBut">
                 <div>
-                    <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add" onclick="obj.addBox()">新增</a>
+                    <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add" onclick="obj.addBox()">保存</a>
                 </div>
             </div>
         </div>

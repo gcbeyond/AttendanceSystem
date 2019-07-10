@@ -6,6 +6,9 @@ $(
 );
 //出勤列表加载
 function initEmployeeList() {
+
+    var div1 = $("#div1");
+
     // 加载表格
     $("#table").datagrid({
         title: "出勤列表",
@@ -21,7 +24,7 @@ function initEmployeeList() {
         pageNumber: 1,
         nowrap: true,
         height: 'auto',
-        sortName: 'employeeID',
+        sortName: 'attendanceID',
         checkOnSelect: false,
         sortOrder: 'asc',
         toolbar: '#tabelBut',
@@ -33,8 +36,8 @@ function initEmployeeList() {
                 align:'center'
             },
             {
-                field:'employeeID',
-                title:'员工编号',
+                field:'attendanceID',
+                title:'考勤编号',
                 width:100,
                 align:'center'
             },
@@ -45,38 +48,34 @@ function initEmployeeList() {
                 align:'center'
             },
             {
-                field:'employeeName',
+                field:'departmentName',
                 title:'员工部门',
                 width:100,
                 align:'center'
             },
             {
-                field:'employeeName',
+                field:'attendanceDate',
                 title:'出勤日期',
                 width:100,
                 align:'center'
             },
             {
-                field:'employeeName',
+                field:'attendanceType',
                 title:'出勤状态',
                 width:100,
                 align:'center',
-                formatter:function (val) {
-                    return
-                    '<select>' +
-                    '<option value="1"> '+ 出勤 + '</option>' +
-                    '<option value="2"> '+ 请假 + '</option>'
-                    +'</select>';
+                formatter:function()
+                {
+                    return div1.html();
                 }
             },
             {
                 field:"opr",
-                title:'关联表单',
-                width:100,
-                align:'center',
+                title:'&nbsp;&nbsp;关联表单',
+                width:250,
+                align:'left',
                 formatter:function (val,row) {
-                    // var rowEdit = [row.employeeID, row.employeeName, row.employeeGender, row.positionID, row.departmentID, row.cardNumber, row.employeeState, row.employeeMemo]
-                    e = '<a  id="add" data-id="98" class=" operA"  onclick="editOne(\'' + row.employeeID + '\')">查询</a> ';
+                    e = '<a  id="add" data-id="98" class=" operA"  onclick="searchOne(\'' + row.attendanceID + '\')">查询</a> ';
                     return e;
 
                 }
@@ -86,40 +85,8 @@ function initEmployeeList() {
     })
 }
 
-//添加出勤
-function addOne() {
-
-    $("#addBox").dialog({
-        title: "员工编辑",
-        width: 650,
-        height: 300,
-        closed: false,
-        modal: true,
-        shadow: true
-    })
-}
 
 //编辑出勤
-function editOne(rowEdit) {
-    $("#addBox").dialog({
-        title:"员工编辑",
-        width: 650,
-        height: 300,
-        closed: false,
-        modal:true,
-        shadow:true
-    })
-    var rows = rowEdit.split(",");
-    alert(rows[1]);
-    $('#addForm').form('load',{
-        employeeID: rows[0],
-        employeeName: rows[1],
-        employeeGender: rows[2],
-        positionID: rows[3],
-        departmentID: rows[4],
-        cardNumber: rows[5],
-        employeeState: rows[6],
-        employeeMemo: rows[7]
-    });
-    $("input[name='employeeID']").attr("readonly", "readonly");
+function searchOne(rowEdit) {
+
 }

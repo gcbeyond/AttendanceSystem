@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格列表</title>
+
+    <link type="text/css" rel="stylesheet" href="js/jquery-easyui/themes/default/easyui.css"/>
+    <link type="text/css" rel="stylesheet" href="js/jquery-easyui/themes/icon.css"/>
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+
+<!--页面：管理界面-->
+<div class="easyui-layout" data-options="fit:true" id="useBox">
+    <div data-options="region:'center',split:true">
+        <!--查询-->
+        <form id="addOneForm" method="post">
+                <div class="tableFind" style="text-align: center;width: 100%">
+
+                    <p>
+                        <input type="radio">汇总按年月天：
+                        <select class="easyui-combobox"style="width:160px;height:30px;"></select>年
+                        <select class="easyui-combobox"style="width:160px;height:30px;"></select>月
+                        <select class="easyui-combobox"style="width:160px;height:30px;"></select>天
+                    </p>
+                    <p>
+                        <input type="radio">汇总按时间段：
+                        <input type="text" id="d1" class="easyui-datebox"style="width: 16%;height:26px;"/>
+                        到
+                        <input type="text" id="d2" class="easyui-datebox"style="width: 16%;height:26px;"/>
+                    </p>
+                    <p>
+                        出勤状态：
+                        <input type="checkbox">出勤
+                    </p>
+                    <p>
+                        <input type="radio">部门：
+                        <select class="easyui-combobox"style="width:160px;height:30px;">
+                            <option value="">请选择</option>
+                            <option value="1">技术部</option>
+                            <option value="2">吃饭不</option>
+                            <option value="3">花钱不</option>
+                        </select>
+                        <label>用户名：</label><input type="text" id="empSearch"/>
+                        <div class="forSubmint">
+                            <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >查询</a>
+                            <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >导出Excel</a>
+                        </div>
+                    </p>
+                </div>
+            </form>
+        <!--表格列表-->
+        <div class="tableCon">
+            <table id="table" class="tableStyle"></table>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/jquery-easyui/jquery.min.js"></script>
+<script src="js/jquery-easyui/jquery.easyui.min.js"></script>
+<script src="js/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
+<script src="js/attendanceStatiDeptComp.js"></script>
+
+</body>
+</html>

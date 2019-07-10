@@ -31,8 +31,8 @@ CREATE TABLE Att_Department(
 
 -- 职务表
 create table Att_position(
-                             PositionID INT AUTO_INCREMENT PRIMARY KEY COMMENT 'ID',
-                             PositionName VARCHAR(50) NOT NULL COMMENT '职务名称'
+    PositionID INT AUTO_INCREMENT PRIMARY KEY COMMENT 'ID',
+    PositionName VARCHAR(50) NOT NULL COMMENT '职务名称'
 );
 
 -- 员工表
@@ -55,7 +55,7 @@ CREATE TABLE Att_AttendanceRecord(
     AttendanceDate DATETIME NOT NULL COMMENT '考勤日期',
     AttendanceTime CHAR(5) COMMENT '空 考勤时间',
     AttendanceFlag CHAR(1) NOT NULL COMMENT '考勤时段（1 代表上午，2 代表下午）',
-    AttendanceType INT NOT NULL COMMENT '外键（考勤类 型表） 考勤类型',
+    AttendanceType INT NOT NULL COMMENT '外键（考勤类型表） 考勤类型',
     AttendanceMemo NVARCHAR(200) COMMENT '空 备注',
     AdminID INT NOT NULL COMMENT '外键（用户） 考勤员编号',
     TempDepartmentId INT NOT NULL COMMENT '外键（部门） 部门编号',
