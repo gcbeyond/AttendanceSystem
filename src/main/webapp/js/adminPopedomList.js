@@ -33,17 +33,17 @@ function initAdminPopedomList() {
                 width:100,
                 align:'center'
             },
-            {
-                field:'popedomID',
-                title:'编号',
-                width:100,
-                align:'center'
-            },
+            // {
+            //     field:'popedomID',
+            //     title:'编号',
+            //     width:100,
+            //     align:'center'
+            // },
             {
                 field:'adminAccount',
                 title:'账号',
                 width:100,
-                align:'center',
+                align: 'center'
             },
             {
                 field:'adminName',
@@ -75,33 +75,21 @@ function initAdminPopedomList() {
                 width:100,
                 align:'center',
                 formatter:function (val) {
-                    if(val=='1'){
+                    if(val == '1'){
                         return '<div style="color: red">'+'管理员'+'</div>';
                     }
                     else{
                         return '<div style="color: green">'+'考勤员'+'</div>';
                     }
                 }
-            },
-            {
-                field:"opr",
-                title:'操作',
-                width:100,
-                align:'center',
-                formatter:function (val,row) {
-                    var rowEdit = [row.employeeID, row.employeeName, row.employeeGender, row.positionName, row.departmentName, row.cardNumber, row.employeeState, row.employeeMemo]
-                    e = '<a  id="add" data-id="98" class=" operA"  onclick="editOne(\'' + rowEdit + '\')">分配权限</a> ';
-                    return e;
-
-                }
-
             }
+
         ]]
     })
 }
 
-//员工列表加载
-function initOneAdminPopedomList() {
+//编辑权限列表加载
+function initEditAdminPopedomList() {
     // 加载表格
     $("#tableTow").datagrid({
         title: "权限列表",
@@ -174,24 +162,23 @@ function initOneAdminPopedomList() {
 }
 
 //编辑权限
-function editOne() {
+function editSelect() {
 
     $("#addBox").dialog({
-        title:"权限编辑",
+        title: "权限编辑",
         width: 650,
         height: 300,
         closed: false,
-        modal:true,
-        shadow:true
-    })
+        modal: true,
+        shadow: true
+    });
 
     var rows =$("#table").datagrid("getSelected");
-    alert(rows.popedomID);
     $('#addForm').form('load',{
         adminAccount: rows.adminAccount,
         adminName: rows.adminName
     });
-    initOneAdminPopedomList();
+    initEditAdminPopedomList();
 }
 
 //删除权限

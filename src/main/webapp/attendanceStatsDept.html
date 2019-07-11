@@ -19,7 +19,8 @@
                 <div class="tableFind" style="text-align: center;width: 100%">
 
                     <p>
-                        <input type="radio">汇总按年月：
+                        <input type="radio" name="searchStatsDept" checked/>
+                        汇总按年月：
                         <select class="easyui-combobox"style="width:160px;height:30px;" id="selectY">
                             <option value="">请选择</option>
                         </select>年
@@ -28,25 +29,28 @@
                         </select>月
                     </p>
                     <p>
-                        <input type="radio">汇总按时间段：
+                        <input type="radio" name="searchStatsDept" />
+                        汇总按时间段：
                         <input type="text" id="d1" class="easyui-datebox"style="width: 16%;height:26px;"/>
                         到
                         <input type="text" id="d2" class="easyui-datebox"style="width: 16%;height:26px;"/>
                     </p>
                     <p>
-                    <input type="radio">部门：
-                    <select class="easyui-combobox"style="width:160px;height:30px;">
-                        <option value="">请选择</option>
-                        <option value="1">技术部</option>
-                        <option value="2">吃饭不</option>
-                        <option value="3">花钱不</option>
-                    </select>-
-                    <select class="easyui-combobox"style="width:160px;height:30px;">
-                        <option value="">请选择</option>
-                        <option value="1">技术部</option>
-                        <option value="2">吃饭不</option>
-                        <option value="3">花钱不</option>
-                    </select>
+                        <input type="radio" name="searchStatsDept" />
+                        部门：
+                        <select class="easyui-combobox"style="width:160px;height:30px;">
+                            <option value="">请选择</option>
+                            <option value="1">技术部</option>
+                            <option value="2">吃饭不</option>
+                            <option value="3">花钱不</option>
+                        </select>
+                        -
+                        <select class="easyui-combobox"style="width:160px;height:30px;">
+                            <option value="">请选择</option>
+                            <option value="1">技术部</option>
+                            <option value="2">吃饭不</option>
+                            <option value="3">花钱不</option>
+                        </select>
                 </p>
                         <div class="forSubmint">
                             <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >检索</a>
@@ -65,7 +69,7 @@
 <script src="js/jquery-easyui/jquery.min.js"></script>
 <script src="js/jquery-easyui/jquery.easyui.min.js"></script>
 <script src="js/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
-<script src="js/attendanceStatiDeptComp.js"></script>
+<script src="js/attendanceStatsDept.js"></script>
 
 </body>
 </html>

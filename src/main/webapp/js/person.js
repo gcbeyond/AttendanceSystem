@@ -15,10 +15,7 @@ $("#part").combotree({
                 var text=n.text;
                 $("#part").combotree('setValue',text);
 
-
         }
-
-
 })
 // 加载详情页面部门下拉框
 $("#part01").combotree({

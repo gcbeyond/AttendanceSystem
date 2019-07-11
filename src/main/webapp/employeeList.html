@@ -18,14 +18,8 @@
         <div class="tableFind">
             <p>
                 <label>姓名：</label><input type="text" id="empSearch"/>
-                <label>部门：</label>
-                <select id="deptSearch">
-                    <option value="">请选择</option>
-                    <option value="1">技术部</option>
-                    <option value="2">吃饭不</option>
-                    <option value="3">花钱不</option>
-                </select>
-                <a id="btn" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="obj.find()">查询</a>
+                <label>部门：</label><input type="text" id="deptSelect" value="请选择"/>
+                <a id="btn" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="find()">查询</a>
             </p>
         </div>
         <!--表格列表-->
@@ -71,21 +65,21 @@
                     <tr>
                         <td class="TailLabel">部门：</td>
                         <td>
-<!--                            <input type="text"  id="departmentName" class="TailInput"/>-->
-<!--                            <span class="formSpan">*</span>-->
-                            <select name="departmentID" class="easyui-combobox"style="width:160px;height:30px;">
-                                <option value="">请选择</option>
-                                <option value="1">财务部</option>
-                                <option value="2">人事部</option>
-                                <option value="3">花钱不</option>
-                                <option value="4">吃饭不</option>
-                            </select>
+                            <input type="text"  id="deptSelect2" class="TailInput" value="请选择"/>
+<!--                            下面的暂存，不一定使用哪个-->
+<!--                            <select name="departmentID" class="easyui-combobox"style="width:160px;height:30px;">-->
+<!--                                <option value="">请选择</option>-->
+<!--                                <option value="1">财务部</option>-->
+<!--                                <option value="2">人事部</option>-->
+<!--                                <option value="3">花钱不</option>-->
+<!--                                <option value="4">吃饭不</option>-->
+<!--                            </select>-->
                         </td>
                     </tr>
                     <tr>
                         <td class="TailLabel">职务：</td>
                         <td>
-                            <select name="positionID" class="easyui-combobox"style="width:160px;height:30px;">
+                            <select name="positionID" class="easyui-combobox"style="width:197px;height:30px;">
                                 <option value="">请选择</option>
                                 <option value="1">财务部</option>
                                 <option value="2">人事部</option>

@@ -1,17 +1,15 @@
 {"total":20,"rows":[
   {"check":"no","positionID":"1","positionName": "技术员","opr":"1"},
-  {"check":"no","positionID":"2","positionName": "技术员","opr":"1"},
-  {"check":"no","positionID":"3","positionName": "技术员","opr":"1"},
-  {"check":"no","positionID":"4","positionName": "技术员","opr":"1"},
-  {"check":"no","positionID":"5","positionName": "技术员","opr":"1"},
-  {"check":"no","positionID":"6","positionName": "技术员","opr":"1"},
-  {"check":"no","positionID":"7","positionName": "技术员","opr":"1"},
-  {"check":"no","positionID":"8","positionName": "技术员","opr":"1"},
-  {"check":"no","positionID":"9","positionName": "技术员","opr":"1"},
-  {"check":"no","positionID":"10","positionName": "技术员","opr":"1"},
-  {"check":"no","positionID":"11","positionName": "技术员","opr":"1"},
-  {"check":"no","positionID":"12","positionName": "技术员","opr":"1"},
-  {"check":"no","positionID":"13","positionName": "技术员","opr":"1"},
-  {"check":"no","positionID":"14","positionName": "技术员","opr":"1"},
-  {"check":"no","positionID":"15","positionName": "技术员","opr":"1"}
+  {"check":"no","positionID":"2","positionName": "眼睛","opr":"1"},
+  {"check":"no","positionID":"3","positionName": "美工","opr":"1"},
+  {"check":"no","positionID":"4","positionName": "工程师","opr":"1"},
+  {"check":"no","positionID":"5","positionName": "服务员","opr":"1"},
+  {"check":"no","positionID":"6","positionName": "HR","opr":"1"},
+  {"check":"no","positionID":"7","positionName": "前端工程师","opr":"1"},
+  {"check":"no","positionID":"8","positionName": "后端工程师","opr":"1"},
+  {"check":"no","positionID":"9","positionName": "销售员","opr":"1"},
+  {"check":"no","positionID":"10","positionName": "实施","opr":"1"},
+  {"check":"no","positionID":"11","positionName": "测试","opr":"1"},
+  {"check":"no","positionID":"12","positionName": "巡查","opr":"1"}
+
 ]}

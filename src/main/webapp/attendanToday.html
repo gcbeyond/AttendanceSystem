@@ -13,7 +13,6 @@
 <!--出勤状态下拉列表-->
 <div id="div1" style="display: none;">
     <select id="sel">
-        <option value="">请选择</option>
         <option value="1">出勤</option>
         <option value="2">婚假</option>
         <option value="3">产假</option>
@@ -26,11 +25,10 @@
         <!--表格查询-->
         <div class="tableFind">
             <p>
-                <label>部门：</label><input type="text" id="part" />
+                <label>部门：</label><input type="text" id="deptSelect" value="请选择"/>
                 <label>出勤日期：</label><input type="text" id="dd" class="easyui-datebox"style="width: 16%;height:26px;"/>
                 <label>出勤时段：</label>
                 <select class="easyui-combobox"style="width:160px;height:30px;">
-                    <option value="">请选择</option>
                     <option value="1">上午</option>
                     <option value="2">下午</option>
                 </select>
@@ -68,7 +66,7 @@
 <script src="js/jquery-easyui/jquery.min.js"></script>
 <script src="js/jquery-easyui/jquery.easyui.min.js"></script>
 <script src="js/jquery-easyui/locale/easyui-lang-zh_CN.js"></script>
-<script src="js/attendanceRecordList.js"></script>
+<script src="js/attendanToday.js"></script>
 
 </body>
 </html>

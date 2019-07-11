@@ -4,6 +4,21 @@ $(
         initEmployeeList();
     }
 );
+
+// 加载部门下拉框
+$("#deptSelect").combotree({
+    url:'json/deptSelect.json',
+    height:26,
+    width:'16%',
+    onSelect:function () {
+        var t=$("#deptSelect").combotree('tree');
+        var n=t.tree('getSelected');
+        var text=n.text;
+        $("#deptSelect").combotree('setValue',text);
+
+    }
+})
+
 //出勤列表加载
 function initEmployeeList() {
 
@@ -13,7 +28,7 @@ function initEmployeeList() {
     $("#table").datagrid({
         title: "出勤列表",
         iconCls: "icon-left02",
-        url: 'json/attendanceRecordList.json',
+        url: 'json/attendanToday.json',
         fitColumns: true,
         striped: true,
         pagination: true,
@@ -84,7 +99,6 @@ function initEmployeeList() {
         ]]
     })
 }
-
 
 //编辑出勤
 function searchOne(rowEdit) {

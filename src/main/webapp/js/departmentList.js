@@ -24,7 +24,6 @@ function initOneDepartmentList() {
         sortName: 'departmentID',
         checkOnSelect: false,
         sortOrder: 'asc',
-        // toolbar: '#tabelBut',列表的加号
         columns: [[
             {
                 checkbox: true,
@@ -71,7 +70,7 @@ function initOneDepartmentList() {
             {
                 field: "opr",
                 title: '操作',
-                width: 100,
+                width: 120,
                 align: 'center',
                 formatter: function (val, row, index) {
                     var rowEdit = [row.departmentID, row.departmentName, row.startTimeAM, row.endTimeAM, row.startTimePM, row.endTimePM];
@@ -86,7 +85,7 @@ function initOneDepartmentList() {
     })
 }
 
-// 二级部门列表加载
+//二级部门列表加载
 function initTowDepartmentList() {
     $("#tableTow").datagrid({
         title:"二级部门列表",
@@ -190,7 +189,7 @@ function editOne(rowEdit) {
     $("#editOneBox").dialog({
         title:"一级部门编辑",
         width: 650,
-        height: 300,
+        height: 350,
         closed: false,
         modal:true,
         shadow:true
@@ -214,7 +213,7 @@ function editTow(rowEdit) {
     $("#editTowBox").dialog({
         title:"二级部门编辑",
         width: 650,
-        height: 300,
+        height: 350,
         closed: false,
         modal:true,
         shadow:true

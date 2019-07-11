@@ -233,8 +233,11 @@ float: left;
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
-.i_user{
+.i_dept{
     background-image: url("../img/people.png");
+}
+.i_user{
+    background-image: url("../img/man.png");
 }
 .i_rol{
     background-image: url("../img/lock.png");
@@ -244,6 +247,11 @@ float: left;
 }
 .i_ph{
     background-image: url("../img/ph.png");
+    margin-right: 3px;
+    top:3px;
+}
+.i_pass{
+    background-image: url("../img/pass.png");
     margin-right: 3px;
     top:3px;
 }
@@ -265,6 +273,16 @@ float: left;
     margin-right: 3px;
     top:3px;
  }
+.i_action{
+    background-image: url("../img/action.png");
+    margin-right: 3px;
+    top:3px;
+}
+.i_ogrn{
+    background-image: url("../img/ogrn.png");
+    margin-right: 3px;
+    top:3px;
+}
 .i_con{
     background-image: url("../img/reload.png");
     margin-right: 3px;
@@ -295,6 +313,16 @@ float: left;
 }
 .i_low{
     background-image: url("../img/piechart.png");
+    margin-right: 3px;
+    top:3px;
+}
+.i_low02{
+    background-image: url("../img/low02.png");
+    margin-right: 3px;
+    top:3px;
+}
+.i_find01{
+    background-image: url("../img/find01.png");
     margin-right: 3px;
     top:3px;
 }

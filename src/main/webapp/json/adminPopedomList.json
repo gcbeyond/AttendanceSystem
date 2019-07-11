@@ -1,17 +1,17 @@
 {"total":20,"rows":[
-  {"check":"no","popedomID":"1","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部","departmentTow":"吃部","adminRight":"1","opr":""},
-  {"check":"no","popedomID":"2","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部","departmentTow":"吃部","adminRight":"1","opr":"1"},
-  {"check":"no","popedomID":"3","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部","departmentTow":"吃部","adminRight":"2","opr":"1"},
-  {"check":"no","popedomID":"4","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部","departmentTow":"吃部","adminRight":"1","opr":"1"},
-  {"check":"no","popedomID":"5","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部","departmentTow":"吃部","adminRight":"1","opr":"1"},
-  {"check":"no","popedomID":"6","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部","departmentTow":"吃部","adminRight":"2","opr":"1"},
-  {"check":"no","popedomID":"7","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部","departmentTow":"吃部","adminRight":"2","opr":"1"},
-  {"check":"no","popedomID":"8","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"花钱部","departmentTow":"吃部","adminRight":"1","opr":"1"},
-  {"check":"no","popedomID":"9","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"花钱部","departmentTow":"吃部","adminRight":"1","opr":"1"},
-  {"check":"no","popedomID":"10","adminAccount":"admin01","adminName":"大红","adminPwd":"4321","departmentOne":"花钱部","departmentTow":"吃部","adminRight":"1","opr":"1"},
-  {"check":"no","popedomID":"11","adminAccount":"admin01","adminName":"大红","adminPwd":"4321","departmentOne":"花钱部","departmentTow":"吃部","adminRight":"1","opr":"1"},
-  {"check":"no","popedomID":"12","adminAccount":"admin01","adminName":"大红","adminPwd":"4321","departmentOne":"花钱部","departmentTow":"吃部","adminRight":"2","opr":"1"},
-  {"check":"no","popedomID":"13","adminAccount":"admin01","adminName":"大红","adminPwd":"4321","departmentOne":"花钱部","departmentTow":"吃部","adminRight":"2","opr":"1"},
-  {"check":"no","popedomID":"14","adminAccount":"admin01","adminName":"大红","adminPwd":"4321","departmentOne":"花钱部","departmentTow":"吃部","adminRight":"2","opr":"1"}
+  {"check":"no","popedomID":"1","adminAccount":"admin01","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部(1)","departmentTow":"吃部(12)","adminRight":"1","opr":"1"},
+  {"check":"no","popedomID":"2","adminAccount":"admin02","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部(2)","departmentTow":"吃部(2)","adminRight":"1","opr":"1"},
+  {"check":"no","popedomID":"3","adminAccount":"admin03","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部(3)","departmentTow":"吃部(112)","adminRight":"2","opr":"1"},
+  {"check":"no","popedomID":"4","adminAccount":"admin04","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部(5)","departmentTow":"吃部(123)","adminRight":"1","opr":"1"},
+  {"check":"no","popedomID":"5","adminAccount":"admin05","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部(6)","departmentTow":"吃部(132)","adminRight":"1","opr":"1"},
+  {"check":"no","popedomID":"6","adminAccount":"admin06","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部(2)","departmentTow":"吃部(112)","adminRight":"2","opr":"1"},
+  {"check":"no","popedomID":"7","adminAccount":"admin07","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部(4)","departmentTow":"吃部(152)","adminRight":"2","opr":"1"},
+  {"check":"no","popedomID":"8","adminAccount":"admin08","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部(5)","departmentTow":"吃部(172)","adminRight":"1","opr":"1"},
+  {"check":"no","popedomID":"9","adminAccount":"admin09","adminName":"小明","adminPwd":"1234","departmentOne":"吃饭部(6)","departmentTow":"吃部(182)","adminRight":"1","opr":"1"},
+  {"check":"no","popedomID":"10","adminAccount":"admin10","adminName":"大红","adminPwd":"4321","departmentOne":"吃饭部(76)","departmentTow":"吃部(1832)","adminRight":"1","opr":"1"},
+  {"check":"no","popedomID":"11","adminAccount":"admin11","adminName":"大红","adminPwd":"4321","departmentOne":"吃饭部(8)","departmentTow":"吃部(1812)","adminRight":"1","opr":"1"},
+  {"check":"no","popedomID":"12","adminAccount":"admin12","adminName":"大红","adminPwd":"4321","departmentOne":"吃饭部(6)","departmentTow":"吃部(2)","adminRight":"2","opr":"1"},
+  {"check":"no","popedomID":"13","adminAccount":"admin13","adminName":"大红","adminPwd":"4321","departmentOne":"吃饭部(7)","departmentTow":"吃部(782)","adminRight":"2","opr":"1"},
+  {"check":"no","popedomID":"14","adminAccount":"admin14","adminName":"大红","adminPwd":"4321","departmentOne":"吃饭部(8)","departmentTow":"吃部(992)","adminRight":"2","opr":"1"}
 
 ]}

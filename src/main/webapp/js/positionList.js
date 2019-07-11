@@ -40,7 +40,7 @@ function initPostionList() {
             },
             {
                 field:'positionName',
-                title:'职务名称',
+                title:'职位名称',
                 width:100,
                 align:'center'
             },

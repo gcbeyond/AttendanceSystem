@@ -4,6 +4,7 @@ $(
         initEmployeeList();
     }
 );
+
 //员工列表加载
 function initEmployeeList() {
     // 加载表格
@@ -107,6 +108,34 @@ function initEmployeeList() {
         ]]
     })
 }
+
+// 加载部门下拉框
+$("#deptSelect").combotree({
+    url:'json/deptSelect.json',
+    height:26,
+    width:'16%',
+    onSelect:function () {
+        var t=$("#deptSelect").combotree('tree');
+        var n=t.tree('getSelected');
+        var text=n.text;
+        $("#deptSelect").combotree('setValue',text);
+
+    }
+})
+
+// 加载编辑框部门下拉框
+$("#deptSelect2").combotree({
+    url:'json/deptSelect.json',
+    height:26,
+    width:197,
+    onSelect:function () {
+        var t=$("#deptSelect2").combotree('tree');
+        var n=t.tree('getSelected');
+        var text=n.text;
+        $("#deptSelect2").combotree('setValue',text);
+
+    }
+})
 
 //添加员工
 function addOne() {

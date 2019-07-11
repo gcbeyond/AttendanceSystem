@@ -1,0 +1,28 @@
+[
+	{
+	  "id":1,
+	  "text":"销售部",
+	  "iconCls":"icon-left05",
+	  "children":[{
+	    "text":"国内销售",
+	    "iconCls":"icon-reload",
+	    "checked":true
+	  },{
+	    "text":"国外销售",
+	    "iconCls":"icon-reload",
+	    "checked":true
+	  }]
+	},
+	{
+	  "text":"技术部",
+	  "iconCls":"icon-left05",
+	  "state":"closed",
+	  "children":[{
+	    "text":"前端工程",
+	    "iconCls":"icon-reload"
+	  	},{
+	    "text":"后端工程",
+	    "iconCls":"icon-reload"
+	  	}]
+	}
+]
