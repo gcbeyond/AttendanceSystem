@@ -22,8 +22,8 @@ function initSelect() {
     $("#selectY").combobox("loadData", year);
     $("#selectM").combobox("loadData", month);
 
-    $("#selectY").combobox('setValue', "请选择");
-    $("#selectM").combobox('setValue', "请选择");
+    $("#selectY").combobox('setValue', "全部");
+    $("#selectM").combobox('setValue', "全部");
 }
 
 //出勤列表加载

@@ -41,9 +41,9 @@ function initSelect() {
     $("#selectM").combobox("loadData", month);
     $("#selectD").combobox("loadData", day);
 
-    $("#selectY").combobox('setValue', "请选择");
-    $("#selectM").combobox('setValue', "请选择");
-    $("#selectD").combobox('setValue', "请选择");
+    $("#selectY").combobox('setValue', "全部");
+    $("#selectM").combobox('setValue', "全部");
+    $("#selectD").combobox('setValue', "全部");
 
 }
 
