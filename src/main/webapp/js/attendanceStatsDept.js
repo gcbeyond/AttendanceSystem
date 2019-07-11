@@ -1,12 +1,33 @@
 $(
     //自动获取列表
     function () {
-        initEmployeeList();
+        initAttendanceStatsDept();
         initSelect();
     }
 );
+
+//加载时间select
+function initSelect() {
+    var year, month;
+    year = [];
+    month = [];
+
+    for (var i = 2000; i <= 2030; i++) {
+        year.push({ "text": i, "id": i });
+    }
+    for (var j = 1; j <= 12; j++) {
+        month.push({ "text": j, "id": j });
+    }
+
+    $("#selectY").combobox("loadData", year);
+    $("#selectM").combobox("loadData", month);
+
+    $("#selectY").combobox('setValue', "请选择");
+    $("#selectM").combobox('setValue', "请选择");
+}
+
 //出勤列表加载
-function initEmployeeList() {
+function initAttendanceStatsDept() {
     // 加载表格
     $("#table").datagrid({
         title: "出勤列表",
@@ -113,20 +134,4 @@ function initEmployeeList() {
             }
         ]]
     })
-}
-
-//加载时间select
-function initSelect() {
-    var year, month;
-    year = [];
-    month = [];
-    for (var i = 2009; i < 2020; i++) {
-        year.push({ "text": i, "id": i });
-    }
-
-    for (var j = 0; j < 12; j++) {
-        month.push({ "text": j, "id": j });
-    }
-    $("#selectY").combobox("loadData", year);
-    $("#selectM").combobox("loadData", month);
 }

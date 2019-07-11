@@ -14,51 +14,52 @@
 <!--页面：管理界面-->
 <div class="easyui-layout" data-options="fit:true" id="useBox">
     <div data-options="region:'center',split:true">
-        <!--查询-->
-        <form id="addOneForm" method="post">
-                <div class="tableFind" style="text-align: center;width: 100%">
+        <!--表格查询-->
+        <div class="tableFind" style="text-align: left;width: 100%">
+            <p>
+                <input type="radio" name="searchStatsAll" checked/>
+                <label style="width: 100px"> 汇总按年月天：</label>
+                <select class="easyui-combobox" style="width:160px;height:30px;" id="selectY"></select>年
+                <select class="easyui-combobox" style="width:160px;height:30px;" id="selectM"></select>月
+                <select class="easyui-combobox" style="width:160px;height:30px;" id="selectD"></select>天
+            </p>
+            <p>
+                <input type="radio" name="searchStatsAll" />
+                <label style="width: 100px">汇总按时间段：</label>
+                <input type="text" id="d1" class="easyui-datebox"style="width: 16%;height:26px;"/>
+                到
+                <input type="text" id="d2" class="easyui-datebox"style="width: 16%;height:26px;"/>
+            </p>
+            <p>
+                <input type="radio" name="searchStatsAll" />
+                <label style="width: 100px">出勤状态：</label>
+                <input type="checkbox">出勤
+                <input type="checkbox">公休
+                <input type="checkbox">迟到
+                <input type="checkbox">旷工
+                <input type="checkbox">外出
+                <input type="checkbox">出差
+                <input type="checkbox">加班
+                <input type="checkbox">倒休
+                <input type="checkbox">事假
+                <input type="checkbox">病假
+                <input type="checkbox">婚假
+                <input type="checkbox">丧假
+                <input type="checkbox">产假
+            </p>
+            <p>
+                <input type="radio">
+                <label style="width: 100px">部门：</label>
+                <input type="text" id="deptSelect" value="请选择"/>
 
-                    <p>
-                        <input type="radio" name="searchStatsAll" checked/>
-                        汇总按年月天：
-                        <select class="easyui-combobox"style="width:160px;height:30px;" id="selectY"></select>年
-                        <select class="easyui-combobox"style="width:160px;height:30px;" id="selectM"></select>月
-                        <select class="easyui-combobox"style="width:160px;height:30px;" id="selectD"></select>天
-                    </p>
-                    <p>
-                        <input type="radio" name="searchStatsAll" />
-                        汇总按时间段：
-                        <input type="text" id="d1" class="easyui-datebox"style="width: 16%;height:26px;"/>
-                        到
-                        <input type="text" id="d2" class="easyui-datebox"style="width: 16%;height:26px;"/>
-                    </p>
-                    <p>
-                        <input type="radio" name="searchStatsAll" />
-                        出勤状态：
-                        <input type="checkbox">出勤
-                        <input type="checkbox">迟到
-                        <input type="checkbox">病假
-                        <input type="checkbox">事假
-                        <input type="checkbox">丧家
-                        <input type="checkbox">婚嫁
-                        <input type="checkbox">旷工
-                    </p>
-                    <p>
-                        <input type="radio">部门：
-                        <select class="easyui-combobox"style="width:160px;height:30px;">
-                            <option value="">请选择</option>
-                            <option value="1">技术部</option>
-                            <option value="2">吃饭不</option>
-                            <option value="3">花钱不</option>
-                        </select>
-                        <label>用户名：</label><input type="text" id="empSearch"/>
-                        <div class="forSubmint">
-                            <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >查询</a>
-                            <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >导出Excel</a>
-                        </div>
-                    </p>
-                </div>
-            </form>
+                <label style="width: 100px">用户名：</label>
+                <input type="text" id="empSearch"/>
+
+                <a id="btnFind" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="find()">查询</a>
+                <a id="btnExport" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-print'"  onclick="find()">导出Excel</a>
+            </p>
+        </div>
+
         <!--表格列表-->
         <div class="tableCon">
             <table id="table" class="tableStyle"></table>

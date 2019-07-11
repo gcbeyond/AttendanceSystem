@@ -106,8 +106,6 @@ CREATE TABLE Att_Notes(
     IsVerify CHAR(1) NOT NULL COMMENT '是否审核， 0：否； 1：是 默认 1，审批才可倒休'
 );
 
-
-
 INSERT INTO Att_AttendanceType VALUES (NULL, '出勤', 0);
 INSERT INTO Att_AttendanceType VALUES (NULL, '公休', 0);
 INSERT INTO Att_AttendanceType VALUES (NULL, '迟到', 0);

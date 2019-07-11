@@ -1,0 +1,11 @@
+{"total":20,"rows":[
+  {"check":"no","attendanceID":"1","departmentOne":"技术部","departmentTow":"前端工程师","cardNumber":"12262","employeeName":"小明","attendanceAM":"矿工","attendancePM":"矿工","opr":"1"},
+  {"check":"no","attendanceID":"2","departmentOne":"销售部","departmentTow":"海外销售","cardNumber":"22228","employeeName":"小黑","attendanceAM":"请假","attendancePM":"出勤","opr":"1"},
+  {"check":"no","attendanceID":"3","departmentOne":"技术部","departmentTow":"后端工程师","cardNumber":"21112","employeeName":"明","attendanceAM":"出勤","attendancePM":"出勤","opr":"1"},
+  {"check":"no","attendanceID":"4","departmentOne":"销售部","departmentTow":"海外销售","cardNumber":"77111","employeeName":"小兰明","attendanceAM":"出勤","attendancePM":"请假","opr":"1"},
+  {"check":"no","attendanceID":"5","departmentOne":"销售部","departmentTow":"国内销售","cardNumber":"22514","employeeName":"小红","attendanceAM":"出勤","attendancePM":"出勤","opr":"1"},
+  {"check":"no","attendanceID":"6","departmentOne":"技术部","departmentTow":"前端工程师","cardNumber":"24552","employeeName":"大红","attendanceAM":"出勤","attendancePM":"矿工","opr":"1"},
+  {"check":"no","attendanceID":"7","departmentOne":"销售部","departmentTow":"海外销售","cardNumber":"22344","employeeName":"啾啾","attendanceAM":"婚嫁","attendancePM":"婚嫁","opr":"1"},
+  {"check":"no","attendanceID":"8","departmentOne":"技术部","departmentTow":"后端工程师","cardNumber":"22422","employeeName":"乌鸡","attendanceAM":"出勤","attendancePM":"出勤","opr":"1"},
+  {"check":"no","attendanceID":"9","departmentOne":"销售部","departmentTow":"海外销售","cardNumber":"12322","employeeName":"布谷","attendanceAM":"出勤","attendancePM":"出勤","opr":"1"}
+]}
