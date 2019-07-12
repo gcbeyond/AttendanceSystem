@@ -1,11 +1,6 @@
 package com.ideashin.attendance.util;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
-import org.apache.commons.dbutils.DbUtils;
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanHandler;
-import org.apache.commons.dbutils.handlers.BeanListHandler;
-import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,18 +8,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class JDBCUtils {
+
 	/**通过数据源获得连接对象
 	 * 多用在WEB项目中
 	 */
-	//加载c3p0-config.xml配置文件，获得连接池
+	/** 加载c3p0-config.xml配置文件，获得连接池 */
 	private static ComboPooledDataSource dataSource = new ComboPooledDataSource();
-	//解决并发问题
+	/** 解决并发问题 */
 	private static ThreadLocal<Connection> tl = new ThreadLocal<Connection>();
 
 
 
 	public static Connection getConnection() throws SQLException{
-		Connection conn = tl.get();//首先从ThreadLocal中获得连接对象
+		/** 首先从ThreadLocal中获得连接对象 */
+		Connection conn = tl.get();
 		if(conn == null||conn.isClosed()){
 			conn = dataSource.getConnection();
 			tl.set(conn);

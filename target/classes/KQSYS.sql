@@ -96,7 +96,7 @@ CREATE TABLE Att_Note(
                          PresidentSign NVARCHAR(200) COMMENT '空  总裁签名意见',
                          StartDate DATETIME NOT NULL COMMENT '起始日期',
                          StartTime NVARCHAR(50) COMMENT '空  起始时间',
-                         EndDate DATETIME NOT NULL COMMENT '结束日期',
+                         EndDate DATETIME NOT NULL  COMMENT '结束日期',
                          EndTime NVARCHAR(50) COMMENT '空  结束时间',
                          AdminID INT NOT NULL COMMENT '外键（用户） 录入人',
                          NoteMemo NVARCHAR(500) COMMENT '空  备注',
@@ -155,6 +155,7 @@ INSERT INTO Att_Note VALUES (NULL,'7', '4', '11', '马上结婚了', '2019-01-09
 INSERT INTO Att_Note VALUES (NULL,'5', '5', '10', '生病了', '2019-01-01', '没意见', '同意', '可以', '2019-03-15', '2019-03-15 12:00:12', '2019-12-19', '2019-12-19 12:33;22', '3', '无', '1', '1');
 
 
+
 SELECT
     Att_Note.NoteID,
     Att_Note.FillInTime,
@@ -182,6 +183,6 @@ FROM Att_Note inner join Att_Employee
 WHERE
         Att_Note.AdminID = 2
   AND Att_Note.NoteTypeID = 13
-  AND Att_Employee.EmployeeName like '%%'
+  AND Att_Employee.EmployeeName like '%明%'
   AND (Att_Note.EndDate > SYSDATE()
     AND Att_Note.StartDate < SYSDATE())

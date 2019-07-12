@@ -1,10 +1,37 @@
 package com.ideashin.attendance.dao;
 
+import com.ideashin.attendance.entity.Note;
+
+import java.util.List;
+
 /**
  * @Author: Shin
- * @Date: 2019/7/12 10:43
+ * @Date: 2019/7/12 16:04
  * @Blog: ideashin.com
  */
-public class NoteDao extends BaseDao<NoteDao>{
+public interface NoteDao {
+
+    /**
+     * 增加
+     * @param note
+     */
+    void insert(Note note);
+
+    /**
+     * 更新
+     * @param note
+     */
+    void update(Note note);
+
+    /**
+     * 查询所有
+     */
+    List<Note> selectAll();
+
+    /**
+     * 查询单个
+     */
+    Note selectOne();
+
 
 }
