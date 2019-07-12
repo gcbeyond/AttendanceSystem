@@ -21,8 +21,6 @@ public class Note {
     private String startTime;
     private Date endDate;
     private String endTime;
-    private String vehicle;
-    private String projectName;
     private Integer adminId;
     private String noteMemo;
     private Integer operatorId;
@@ -150,22 +148,6 @@ public class Note {
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
-    }
-
-    public String getVehicle() {
-        return vehicle;
-    }
-
-    public void setVehicle(String vehicle) {
-        this.vehicle = vehicle;
-    }
-
-    public String getProjectName() {
-        return projectName;
-    }
-
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
     }
 
     public Integer getAdminId() {

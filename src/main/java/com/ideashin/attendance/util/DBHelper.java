@@ -18,7 +18,7 @@ public class DBHelper {
 	 * @param params
 	 * @return
 	 */
-	public List execQuery(String sql, Class clazz, Object... params) {
+	public static List execQuery(String sql, Class clazz, Object... params) {
 		Connection conn = null;
 		List list = null;
 		QueryRunner runner = new QueryRunner();
@@ -41,7 +41,7 @@ public class DBHelper {
 	 * @param params
 	 * @return
 	 */
-	public Object execQueryOne(String sql, Class clazz, Object... params) {
+	public static Object execQueryOne(String sql, Class clazz, Object... params) {
 		Connection conn = null;
 		Object obj = null;
 		QueryRunner runner = new QueryRunner();
@@ -62,7 +62,7 @@ public class DBHelper {
 	 * @param sql
 	 * @param params
 	 */
-	public boolean execUpdate(String sql, Object... params) {
+	public static boolean execUpdate(String sql, Object... params) {
 		boolean result = true;
 		Connection conn = null;
 		QueryRunner runner = new QueryRunner();
@@ -84,7 +84,7 @@ public class DBHelper {
 	 * @param sql
 	 * @param params
 	 */
-	public void execUpdateRou(Connection conn, String sql, Object... params) {
+	public static void execUpdateRou(Connection conn, String sql, Object... params) {
 		QueryRunner runner = new QueryRunner();
 
 		try {
@@ -99,7 +99,7 @@ public class DBHelper {
 	 * @param sql
 	 * @return
 	 */
-	public int getCount(String sql) {
+	public static int getCount(String sql) {
 		int empCount = 0;
 		Connection conn = null;
 		QueryRunner runner = new QueryRunner();

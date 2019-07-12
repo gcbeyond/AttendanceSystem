@@ -178,7 +178,7 @@ FROM Att_Note inner join Att_Employee
                          ON Att_Note.EmployeeID = Att_Employee.EmployeeID
               LEFT OUTER JOIN Att_Department d
                               ON Att_Employee.DepartmentID = d.DepartmentID
-              LEFT OUTER JOIN Att_Attendancetype t
+              LEFT OUTER JOIN Att_AttendanceType t
                               ON Att_Note.NoteTypeID = t.TypeId
 WHERE
         Att_Note.AdminID = 2
