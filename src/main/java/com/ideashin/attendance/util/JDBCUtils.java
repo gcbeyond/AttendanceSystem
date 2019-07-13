@@ -17,8 +17,6 @@ public class JDBCUtils {
 	/** 解决并发问题 */
 	private static ThreadLocal<Connection> tl = new ThreadLocal<Connection>();
 
-
-
 	public static Connection getConnection() throws SQLException{
 		/** 首先从ThreadLocal中获得连接对象 */
 		Connection conn = tl.get();
@@ -39,7 +37,6 @@ public class JDBCUtils {
 		Connection conn = getConnection();
 		conn.setAutoCommit(false);
 
-		conn.rollback();
 	}
 
 	/**

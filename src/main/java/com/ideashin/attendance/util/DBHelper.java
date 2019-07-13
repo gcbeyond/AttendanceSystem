@@ -84,14 +84,30 @@ public class DBHelper {
 	 * @param sql
 	 * @param params
 	 */
-	public static void execUpdateRou(Connection conn, String sql, Object... params) {
+	public static void execUpdateRou(Boolean isOpen, Boolean isClose, String sql, Object... params) {
+		Connection conn = null;
 		QueryRunner runner = new QueryRunner();
 
 		try {
 			conn = JDBCUtils.getConnection();
+			if (isOpen == true) {
+				JDBCUtils.startTransaction();
+			}
+
 			runner.update(conn, sql, params);
+
+			if (isClose == true) {
+				JDBCUtils.commit();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			if (isClose == true) {
+				try {
+					JDBCUtils.rollback();
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+				}
+			}
 		}
 	}
 	/**
@@ -100,16 +116,18 @@ public class DBHelper {
 	 * @return
 	 */
 	public static int getCount(String sql) {
-		int empCount = 0;
+		int count = 0;
 		Connection conn = null;
 		QueryRunner runner = new QueryRunner();
 
 		try {
 			conn = JDBCUtils.getConnection();
-			empCount = runner.query(conn,sql, new ScalarHandler<Long>()).intValue();
+			count = runner.query(conn,sql, new ScalarHandler<Long>()).intValue();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		return empCount;
+		}finally {
+            JDBCUtils.close(conn);
+    }
+		return count;
 	}
 }

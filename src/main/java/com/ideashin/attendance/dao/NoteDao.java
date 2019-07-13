@@ -29,9 +29,14 @@ public interface NoteDao {
     List<Note> selectAll();
 
     /**
-     * 查询单个
+     * 查询单条
      */
     Note selectOne();
 
-
+    /**
+     * 删除单条
+     * @param noteID
+     * @return
+     */
+    Boolean deleteOne(int noteID);
 }

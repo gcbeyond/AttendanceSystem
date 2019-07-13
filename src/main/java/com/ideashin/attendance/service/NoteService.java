@@ -15,22 +15,28 @@ public interface NoteService {
      * 增加
      * @param note
      */
-    void insert(Note note);
+    void addOne(Note note);
 
     /**
      * 更新
      * @param note
      */
-    void update(Note note);
+    void editOne(Note note);
 
     /**
      * 查询所有
      */
-    List<Note> selectAll();
+    List<Note> findAllNotes();
 
     /**
-     * 查询单个
+     * 查询单条
      */
-    Note selectOne();
+    Note findOne();
 
+    /**
+     * 删除单条
+     * @param noteID
+     * @return
+     */
+    Boolean removeOneNote(int noteID);
 }

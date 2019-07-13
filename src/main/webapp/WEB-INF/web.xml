@@ -14,7 +14,27 @@
     </filter>
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/controller/*</url-pattern>
     </filter-mapping>
+
+    <filter>
+        <filter-name>optFilter</filter-name>
+        <filter-class>com.ideashin.attendance.filter.OptFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>optFilter</filter-name>
+        <url-pattern>/controller/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>noteController</servlet-name>
+        <servlet-class>com.ideashin.attendance.controller.NoteController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>noteController</servlet-name>
+        <url-pattern>/controller/note/*</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

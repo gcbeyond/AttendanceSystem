@@ -148,11 +148,11 @@ INSERT INTO Att_Admin VALUES (NULL, 'admin2', '1234', '1', '2', '明哥');
 INSERT INTO Att_Admin VALUES (NULL, 'admin3', '1234', '1', '2', '黑哥');
 
 -- 请假单
-INSERT INTO Att_Note VALUES (NULL,'6', '1', '13', '老婆快生了', '2019-01-11', '没意见', '同意', '可以', '2019-01-15', '2019-01-15 12:00:12', '2019-12-19', '2019-12-19 12:33;22', '2', '无', NULL, '1');
-INSERT INTO Att_Note VALUES (NULL,'2', '2', '9', '家中有事', '2019-01-09', '没意见', '同意', '可以', '2019-02-15', '2019-02-15 12:00:12', '2019-12-19', '2019-12-19 12:33;22', '2', '无', '4', '1');
-INSERT INTO Att_Note VALUES (NULL,'3', '3', '10', '感冒了', '2019-01-11', '没意见', '同意', '可以', '2019-02-15', '2019-02-15 12:00:12', '2019-12-19', '2019-12-19 12:33;22', '3', '无', NULL, '0');
-INSERT INTO Att_Note VALUES (NULL,'7', '4', '11', '马上结婚了', '2019-01-09', '没意见', '同意', '可以', '2019-02-15', '2019-02-15 12:00:12', '2019-12-19', '2019-12-19 12:33;22', '2', '无', NULL, '1');
-INSERT INTO Att_Note VALUES (NULL,'5', '5', '10', '生病了', '2019-01-01', '没意见', '同意', '可以', '2019-03-15', '2019-03-15 12:00:12', '2019-12-19', '2019-12-19 12:33;22', '3', '无', '1', '1');
+INSERT INTO Att_Note VALUES (NULL,'6', '1', '13', '老婆快生了', '2019-01-11', '没意见', '同意', '可以', '2019-01-15', '上午', '2019-12-19', '下午', '2', '无', NULL, '1');
+INSERT INTO Att_Note VALUES (NULL,'2', '2', '9', '家中有事', '2019-01-09', '没意见', '同意', '可以', '2019-02-15', '下午', '2019-12-19', '上午', '2', '无', '4', '1');
+INSERT INTO Att_Note VALUES (NULL,'3', '3', '10', '感冒了', '2019-01-11', '没意见', '同意', '可以', '2019-02-15', '下午', '2019-12-19', '上午', '3', '无', NULL, '0');
+INSERT INTO Att_Note VALUES (NULL,'7', '4', '11', '马上结婚了', '2019-01-09', '没意见', '同意', '可以', '2019-02-15', '上午', '2019-12-19', '下午', '2', '无', NULL, '1');
+INSERT INTO Att_Note VALUES (NULL,'5', '5', '10', '生病了', '2019-01-01', '没意见', '同意', '可以', '2019-03-15', '上午', '2019-12-19', '下午', '3', '无', '1', '1');
 
 
 
@@ -165,7 +165,7 @@ SELECT
     d.DepartmentID  twoDID,
     d.DepartmentName twoDName,
     d.ParentID oneDID,
-    (SELECT DepartmentName FROM Att_Department d1 WHERE d.ParentID = d1.DepartmentID) oneName,
+    (SELECT DepartmentName FROM Att_Department d1 WHERE d.ParentID = d1.DepartmentID) oneDName,
     t.TypeID,
     t.TypeName,
     Att_Note.StartDate,

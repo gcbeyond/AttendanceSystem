@@ -16,7 +16,7 @@
 	{
 	  "text":"技术部",
 	  "iconCls":"icon-left05",
-	  "state":"closed",
+
 	  "children":[{
 	    "text":"前端工程",
 	    "iconCls":"icon-reload"

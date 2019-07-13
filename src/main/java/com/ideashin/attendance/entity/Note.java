@@ -8,11 +8,11 @@ import java.util.Date;
  * @Blog: ideashin.com
  */
 public class Note {
-    private Integer noteId;
-    private Integer departmentId;
-    private Integer employeeId;
-    private Integer noteTypeId;
-    private String Cause;
+    private Integer noteID;
+    private Integer departmentID;
+    private Integer employeeID;
+    private Integer noteTypeID;
+    private String cause;
     private Date fillInTime;
     private String directorSign;
     private String administrationSign;
@@ -21,9 +21,9 @@ public class Note {
     private String startTime;
     private Date endDate;
     private String endTime;
-    private Integer adminId;
+    private Integer adminID;
     private String noteMemo;
-    private Integer operatorId;
+    private Integer operatorID;
     private String isVerify;
 
     /**
@@ -34,56 +34,58 @@ public class Note {
     /** 申请人姓名 */
     private String employeeName;
     /** 二级部门编号,等效于数据库中的departmentId */
-    private String twoDId;
+    private String twoDID;
     /** 二级部门名称 */
     private String twoDName;
     /** 一级部门编号 */
-    private String oneDId;
+    private String oneDID;
     /** 一级部门名称 */
-    private String oneName;
+    private String oneDName;
     /** 请假类型名称 */
     private String typeName;
+    /** 代理人卡号 */
+    private String operatorCardNum;
     /** 代理人姓名 */
     private String operatorName;
 
-    public Integer getNoteId() {
-        return noteId;
+    public Integer getNoteID() {
+        return noteID;
     }
 
-    public void setNoteId(Integer noteId) {
-        this.noteId = noteId;
+    public void setNoteID(Integer noteID) {
+        this.noteID = noteID;
     }
 
-    public Integer getDepartmentId() {
-        return departmentId;
+    public Integer getDepartmentID() {
+        return departmentID;
     }
 
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartmentID(Integer departmentID) {
+        this.departmentID = departmentID;
     }
 
-    public Integer getEmployeeId() {
-        return employeeId;
+    public Integer getEmployeeID() {
+        return employeeID;
     }
 
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployeeID(Integer employeeID) {
+        this.employeeID = employeeID;
     }
 
-    public Integer getNoteTypeId() {
-        return noteTypeId;
+    public Integer getNoteTypeID() {
+        return noteTypeID;
     }
 
-    public void setNoteTypeId(Integer noteTypeId) {
-        this.noteTypeId = noteTypeId;
+    public void setNoteTypeID(Integer noteTypeID) {
+        this.noteTypeID = noteTypeID;
     }
 
     public String getCause() {
-        return Cause;
+        return cause;
     }
 
     public void setCause(String cause) {
-        Cause = cause;
+        this.cause = cause;
     }
 
     public Date getFillInTime() {
@@ -150,12 +152,12 @@ public class Note {
         this.endTime = endTime;
     }
 
-    public Integer getAdminId() {
-        return adminId;
+    public Integer getAdminID() {
+        return adminID;
     }
 
-    public void setAdminId(Integer adminId) {
-        this.adminId = adminId;
+    public void setAdminID(Integer adminID) {
+        this.adminID = adminID;
     }
 
     public String getNoteMemo() {
@@ -166,12 +168,12 @@ public class Note {
         this.noteMemo = noteMemo;
     }
 
-    public Integer getOperatorId() {
-        return operatorId;
+    public Integer getOperatorID() {
+        return operatorID;
     }
 
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
+    public void setOperatorID(Integer operatorID) {
+        this.operatorID = operatorID;
     }
 
     public String getIsVerify() {
@@ -198,12 +200,12 @@ public class Note {
         this.employeeName = employeeName;
     }
 
-    public String getTwoDId() {
-        return twoDId;
+    public String getTwoDID() {
+        return twoDID;
     }
 
-    public void setTwoDId(String twoDId) {
-        this.twoDId = twoDId;
+    public void setTwoDID(String twoDID) {
+        this.twoDID = twoDID;
     }
 
     public String getTwoDName() {
@@ -214,20 +216,20 @@ public class Note {
         this.twoDName = twoDName;
     }
 
-    public String getOneDId() {
-        return oneDId;
+    public String getOneDID() {
+        return oneDID;
     }
 
-    public void setOneDId(String oneDId) {
-        this.oneDId = oneDId;
+    public void setOneDID(String oneDID) {
+        this.oneDID = oneDID;
     }
 
-    public String getOneName() {
-        return oneName;
+    public String getOneDName() {
+        return oneDName;
     }
 
-    public void setOneName(String oneName) {
-        this.oneName = oneName;
+    public void setOneDName(String oneDName) {
+        this.oneDName = oneDName;
     }
 
     public String getTypeName() {
@@ -236,6 +238,14 @@ public class Note {
 
     public void setTypeName(String typeName) {
         this.typeName = typeName;
+    }
+
+    public String getOperatorCardNum() {
+        return operatorCardNum;
+    }
+
+    public void setOperatorCardNum(String operatorCardNum) {
+        this.operatorCardNum = operatorCardNum;
     }
 
     public String getOperatorName() {

@@ -19,22 +19,27 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public void insert(Note note) {
+    public void addOne(Note note) {
 
     }
 
     @Override
-    public void update(Note note) {
+    public void editOne(Note note) {
 
     }
 
     @Override
-    public List<Note> selectAll() {
+    public List<Note> findAllNotes() {
         return noteDao.selectAll();
     }
 
     @Override
-    public Note selectOne() {
+    public Note findOne() {
         return null;
+    }
+
+    @Override
+    public Boolean removeOneNote(int noteID) {
+        return noteDao.deleteOne(noteID);
     }
 }
