@@ -11,7 +11,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
@@ -49,6 +48,10 @@ public class NoteController extends HttpServlet {
             case "departmentTree":
                 departmentTree(req, resp);
                 break;
+            case "findSomeNotes":
+                findSomeNotes(req, resp);
+                break;
+            default:
         }
     }
 
@@ -73,6 +76,32 @@ public class NoteController extends HttpServlet {
         out.close();
     }
 
+    public void findSomeNotes(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        System.out.println(req.getParameter("noteTypeSearch"));
+        Integer noteTypeSearch = Integer.valueOf(req.getParameter("noteTypeSearch"));
+        String deptSelect = req.getParameter("deptSelect");
+        String empSearch = req.getParameter("empSearch");
+        String dateSearchS = req.getParameter("dateSearch");
+        Date dateSearch = null;
+        try {
+            dateSearch = new SimpleDateFormat("yyyy-MM-dd").parse(dateSearchS);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        List<Note> list = noteService.findSomeNotes(noteTypeSearch, deptSelect, empSearch, dateSearch);
+        System.out.println("ahah==============="+list);
+        HashMap<String, Object> map = new HashMap<>(2);
+
+        map.put("total", list.size());
+        map.put("rows", list);
+
+        String jsonString = JSON.toJSONString(map);
+        PrintWriter out = resp.getWriter();
+        out.print(jsonString);
+        out.flush();
+        out.close();
+    }
+
     /**
      * 删除单条
      * @param req
@@ -83,7 +112,6 @@ public class NoteController extends HttpServlet {
     public void removeOneNote(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Integer noteID = Integer.valueOf(req.getParameter("noteID"));
         Boolean data = noteService.removeOneNote(noteID);
-        System.out.println(noteID);
 
         PrintWriter out = resp.getWriter();
         out.print(data);
@@ -229,4 +257,5 @@ public class NoteController extends HttpServlet {
         super.init();
         noteService = new NoteServiceImpl();
     }
+
 }

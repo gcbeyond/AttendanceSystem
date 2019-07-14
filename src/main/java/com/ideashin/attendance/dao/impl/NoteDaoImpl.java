@@ -99,7 +99,7 @@ public class NoteDaoImpl implements NoteDao {
     }
 
     @Override
-    public List selectSome(int adminID, int noteTypeID, int employeeID, String employeeName, Date startDate, Date endDate) {
+    public List selectSome(int noteTypeSearch, String deptSelect, String empSearch, Date dateSearch) {
         String sql = "SELECT\n" +
                 "    Att_Note.NoteID,\n" +
                 "    Att_Note.FillInTime,\n" +
@@ -130,41 +130,58 @@ public class NoteDaoImpl implements NoteDao {
                 "              LEFT OUTER JOIN Att_AttendanceType t\n" +
                 "                              ON Att_Note.NoteTypeID = t.TypeID\n"+
                 "WHERE\n" +
-                "        Att_Note.AdminID = ?\n" +
-                "  AND Att_Employee.EmployeeName like ?'\n" +
-                "  AND ( ? > SYSDATE()\n" +
-                "    AND ? < SYSDATE() )";
-        if (noteTypeID == 0 && employeeID == 0) {
+                "   Att_Employee.EmployeeName like ?";
+        if (noteTypeSearch != 0 && deptSelect.equals("全部") && dateSearch == null) {
+            sql = sql + " AND Att_Note.NoteTypeID = ? AND Att_Note.DepartmentID = ?";
             return DBHelper.execQuery(sql, Note.class,
-                    adminID,
-                    employeeID,
-                    new java.sql.Date(startDate.getTime()),
-                    new java.sql.Date(endDate.getTime()));
-        } else if (noteTypeID != 0 && employeeID == 0) {
-            sql = sql + " AND Att_Note.NoteTypeID = ?";
+                    empSearch,
+                    noteTypeSearch,
+                    deptSelect
+            );
+        } else if (noteTypeSearch != 0 && deptSelect.equals("全部") && dateSearch == null) {
+            sql = sql + "  AND Att_Note.NoteTypeID = ? ";
             return DBHelper.execQuery(sql, Note.class,
-                    adminID,
-                    employeeID,
-                    new java.sql.Date(startDate.getTime()),
-                    new java.sql.Date(endDate.getTime()),
-                    noteTypeID);
-        } else if (noteTypeID == 0 && employeeID != 0) {
-            sql = sql + " AND Att_EmployeeID = ?";
+                    empSearch,
+                    noteTypeSearch
+            );
+        } else if (noteTypeSearch == 0 && !deptSelect.equals("全部") && dateSearch == null) {
+            sql = sql + " AND Att_Employee.EmployeeName = ?";
             return DBHelper.execQuery(sql, Note.class,
-                    adminID,
-                    employeeID,
-                    new java.sql.Date(startDate.getTime()),
-                    new java.sql.Date(endDate.getTime()),
-                    employeeID);
-        } else {
-            sql = sql + " AND Att_Note.NoteTypeID = ? AND Att_EmployeeID = ?";
+                    empSearch,
+                    deptSelect
+            );
+        }else if (noteTypeSearch == 0 && !deptSelect.equals("全部") && dateSearch != null) {
+            sql = sql + " AND Att_Employee.EmployeeName = ? AND ( Att_Note.EndDate > ? AND Att_Note.StartDate < ?)";
             return DBHelper.execQuery(sql, Note.class,
-                    adminID,
-                    employeeID,
-                    new java.sql.Date(startDate.getTime()),
-                    new java.sql.Date(endDate.getTime()),
-                    noteTypeID,
-                    employeeID);
+                    empSearch,
+                    deptSelect,
+                    new java.sql.Date(dateSearch.getTime()),
+                    new java.sql.Date(dateSearch.getTime())
+            );
+        }else if (noteTypeSearch == 0 && deptSelect.equals("全部") && dateSearch != null) {
+            sql = sql + "AND ( Att_Note.EndDate > ? AND Att_Note.StartDate < ?)";
+            return DBHelper.execQuery(sql, Note.class,
+                    empSearch,
+                    new java.sql.Date(dateSearch.getTime()),
+                    new java.sql.Date(dateSearch.getTime())
+            );
+        }else if (noteTypeSearch != 0 && deptSelect.equals("全部") && dateSearch != null) {
+            sql = sql + " AND Att_Note.NoteTypeID = ? AND ( Att_Note.EndDate > ? AND Att_Note.StartDate < ?)";
+            return DBHelper.execQuery(sql, Note.class,
+                    empSearch,
+                    noteTypeSearch,
+                    new java.sql.Date(dateSearch.getTime()),
+                    new java.sql.Date(dateSearch.getTime())
+            );
+        }else {
+            sql = sql + "  AND Att_Note.NoteTypeID = ? AND Att_Employee.EmployeeName = ? AND ( Att_Note.EndDate > ? AND Att_Note.StartDate < ?)";
+            return DBHelper.execQuery(sql, Note.class,
+                    empSearch,
+                    noteTypeSearch,
+                    deptSelect,
+                    new java.sql.Date(dateSearch.getTime()),
+                    new java.sql.Date(dateSearch.getTime())
+            );
         }
     }
 
@@ -181,6 +198,6 @@ public class NoteDaoImpl implements NoteDao {
 //        for (Note note : list) {
 //            System.out.println( note.toString() );
 //        }
-        System.out.println(new NoteDaoImpl().deleteOne(12));
+//        System.out.println(new NoteDaoImpl().selectSome(9, 2, "%%", null));
     }
 }

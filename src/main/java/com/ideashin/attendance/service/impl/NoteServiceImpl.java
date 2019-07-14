@@ -5,6 +5,7 @@ import com.ideashin.attendance.dao.impl.NoteDaoImpl;
 import com.ideashin.attendance.entity.Note;
 import com.ideashin.attendance.service.NoteService;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,8 +35,9 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public Note findOne() {
-        return null;
+    public List findSomeNotes(int noteTypeSearch, String deptSelect, String empSearch, Date dateSearch) {
+        empSearch = "%" + empSearch + "%";
+        return noteDao.selectSome(noteTypeSearch, deptSelect, empSearch, dateSearch);
     }
 
     @Override

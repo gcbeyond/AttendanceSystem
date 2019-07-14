@@ -25,6 +25,6 @@ public interface DepartmentDao {
     /**
      * 查询所有
      */
-    List<Department> selectAll();
+    List selectAll();
 
 }

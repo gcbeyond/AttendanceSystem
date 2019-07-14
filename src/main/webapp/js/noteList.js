@@ -1,7 +1,7 @@
 $(
     //自动获取列表
     function () {
-        initSelectAllNotes();
+        initSelectAllNotes('/controller/note/findAllNotes');
         initSelect();
     }
 );
@@ -21,12 +21,13 @@ $("#deptSelect").combotree({
 })
 
 //请假单列表加载
-function initSelectAllNotes() {
+function initSelectAllNotes(isUrl) {
+    alert(isUrl);
     // 加载表格
     $("#table").datagrid({
         title: "请假单列表",
         iconCls: "icon-left02",
-        url: '/controller/note/findAllNotes',
+        url: isUrl,
         fitColumns: true,
         striped: true,
         pagination: true,
@@ -230,7 +231,6 @@ function editOne(rowEdit) {
 
 //删除请假单
 function removeOne(noteID) {
-
     $.messager.confirm('提示信息', '是否删除所选择请假单',
         function (flg) {
             if (flg) {
@@ -313,7 +313,7 @@ function submitEdit() {
         },
         success:function (data) {
             if (data == "true") {
-                $("#addBox").dialog({
+                $("#editBox").dialog({
                     closed: true
                 });
 
@@ -329,7 +329,6 @@ function submitEdit() {
             }
         }
     })
-
 }
 
 //清空添加
@@ -342,30 +341,20 @@ function clearEdit(){
     $('#editForm').form('clear');
 }
 
-//
-function find() {
-    $("#editForm").form('submit',{
-        url:"/controller/note/editOneNote",
+//查询
+function findSomeNotes() {
+    var d = $("#findSomeForm").form('submit',{
+        url:"/controller/note/findSomeNotes",
         onSubmit:function () {
             return $(this).form('validate')
         },
         success:function (data) {
-            if (data == "true") {
-                $("#addBox").dialog({
-                    closed: true
-                });
+            var json = eval('(' + data + ')');
+            alert(typeof json);
 
-                $.messager.show({
-                    title: '提示',
-                    msg: '信息修改成功'
-                });
-            } else {
-                $.messager.show({
-                    title: '提示',
-                    msg: '信息修改失败'
-                });
-            }
-        }
+            initSelectAllNotes(json);
+         }
     })
 
+    alert(d.noteTypeSearch);
 }

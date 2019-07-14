@@ -25,10 +25,35 @@
     </div>
 </div>
 
-<!--弹出：新增修改弹出框-->
+<!--弹出：新增弹出框-->
 <div id="addBox" >
     <form id="addForm" method="post">
         <div id="tabs" class="easyui-tabs">
+            <div title="基本信息">
+                <table class="TailTable">
+                    <tr>
+                        <td class="TailLabel">职务名称：</td>
+                        <td>
+                            <input type="text" class="easyui-validatebox TailInput" name="positionName" data-options="required:true">
+                            <span class="formSpan">*</span>
+                        </td>
+                    </tr>
+                </table>
+                <div class="forSubmint" id="forSubmint">
+                    <a href="javascript:void(0)" class="easyui-linkbutton"
+                       iconCls="icon-ok" onclick="submitAdd()" >提交</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton"
+                       iconCls="icon-redo" onclick="clearAdd()">重置</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--弹出：修改弹出框-->
+<div id="editBox" >
+    <form id="editForm" method="post">
+        <div id="tabs2" class="easyui-tabs">
             <div title="基本信息">
                 <table class="TailTable">
                     <tr>
@@ -46,9 +71,11 @@
                         </td>
                     </tr>
                 </table>
-                <div class="forSubmint">
-                    <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >保存</a>
-                    <a href="#" class="easyui-linkbutton"  iconCls="icon-redo" >重置</a>
+                <div class="forSubmint" >
+                    <a href="javascript:void(0)" class="easyui-linkbutton"
+                       iconCls="icon-ok" onclick="submitEdit()" >提交</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton"
+                       iconCls="icon-redo" onclick="clearEdit()">重置</a>
                 </div>
             </div>
         </div>

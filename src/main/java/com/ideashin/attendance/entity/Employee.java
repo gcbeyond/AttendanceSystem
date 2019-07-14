@@ -12,7 +12,7 @@ public class Employee {
     private int positionID;
     private int departmentID;
     private String cardNumber;
-    private String employeState;
+    private String employeeState;
     private String employeeMemo;
 
     public int getEmployeeID() {
@@ -63,12 +63,12 @@ public class Employee {
         this.cardNumber = cardNumber;
     }
 
-    public String getEmployeState() {
-        return employeState;
+    public String getEmployeeState() {
+        return employeeState;
     }
 
-    public void setEmployeState(String employeState) {
-        this.employeState = employeState;
+    public void setEmployeeState(String employeeState) {
+        this.employeeState = employeeState;
     }
 
     public String getEmployeeMemo() {

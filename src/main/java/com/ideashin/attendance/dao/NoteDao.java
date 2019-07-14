@@ -31,8 +31,13 @@ public interface NoteDao {
 
     /**
      * 条件查询
+     * @param noteTypeSearch
+     * @param deptSelect
+     * @param empSearch
+     * @param dateSearch
+     * @return
      */
-    List selectSome(int adminID, int noteTypeID, int employeeID, String employeeName, Date startDate, Date endDate);
+    List selectSome(int noteTypeSearch, String deptSelect, String empSearch, Date dateSearch);
 
     /**
      * 删除单条

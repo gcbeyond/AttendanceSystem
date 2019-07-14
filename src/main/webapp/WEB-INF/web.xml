@@ -36,5 +36,14 @@
         <url-pattern>/controller/note/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>positionController</servlet-name>
+        <servlet-class>com.ideashin.attendance.controller.PositionController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>positionController</servlet-name>
+        <url-pattern>/controller/position/*</url-pattern>
+    </servlet-mapping>
 
 </web-app>

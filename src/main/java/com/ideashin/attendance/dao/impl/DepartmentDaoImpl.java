@@ -19,7 +19,6 @@ public class DepartmentDaoImpl implements DepartmentDao {
 
     @Override
     public void update(Department department) {
-
     }
 
     @Override

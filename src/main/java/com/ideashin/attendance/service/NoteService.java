@@ -1,8 +1,8 @@
 package com.ideashin.attendance.service;
 
 import com.ideashin.attendance.entity.Note;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,12 +27,17 @@ public interface NoteService {
     /**
      * 查询所有
      */
-    List<Note> findAllNotes();
+    List findAllNotes();
 
     /**
-     * 查询单条
+     * 条件查询
+     * @param noteTypeSearch
+     * @param deptSelect
+     * @param empSearch
+     * @param dateSearch
+     * @return
      */
-    Note findOne();
+    List findSomeNotes(int noteTypeSearch, String deptSelect, String empSearch, Date dateSearch);
 
     /**
      * 删除单条
