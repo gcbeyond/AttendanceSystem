@@ -19,13 +19,13 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public void addOne(Note note) {
-
+    public Boolean addOne(Note note) {
+        return noteDao.insert(note);
     }
 
     @Override
-    public void editOne(Note note) {
-
+    public Boolean editOne(Note note) {
+        return noteDao.update(note);
     }
 
     @Override

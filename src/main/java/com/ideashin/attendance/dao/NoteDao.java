@@ -2,6 +2,7 @@ package com.ideashin.attendance.dao;
 
 import com.ideashin.attendance.entity.Note;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,23 +16,23 @@ public interface NoteDao {
      * 增加
      * @param note
      */
-    void insert(Note note);
+    Boolean insert(Note note);
 
     /**
      * 更新
      * @param note
      */
-    void update(Note note);
+    Boolean update(Note note);
 
     /**
      * 查询所有
      */
-    List<Note> selectAll();
+    List selectAll();
 
     /**
-     * 查询单条
+     * 条件查询
      */
-    Note selectOne();
+    List selectSome(int adminID, int noteTypeID, int employeeID, String employeeName, Date startDate, Date endDate);
 
     /**
      * 删除单条

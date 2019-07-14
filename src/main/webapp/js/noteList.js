@@ -276,24 +276,66 @@ function formatDate(val) {
         date.getDate();
 }
 
-//提交添加修改
-function submitOne() {
+//提交添加
+function submitAdd() {
     $("#addForm").form('submit',{
-        url:"/controller/note/"+ isUrl +"OneNote",
+        url:"/controller/note/addOneNote",
         onSubmit:function () {
             return $(this).form('validate')
         },
-        success:function (data) {  //data 这个数据没有值
+        success:function (data) {
+            if (data == "true") {
+                $("#addBox").dialog({
+                    closed: true
+                });
 
-            $("#addBox").dialog({
-                closed: true
-            })
-
-            $.messager.show({
-                title:'提示',
-                msg:'信息保存成功'
-            })
+                $.messager.show({
+                    title: '提示',
+                    msg: '信息保存成功'
+                });
+            } else {
+                $.messager.show({
+                    title: '提示',
+                    msg: '信息保存失败'
+                });
+            }
         }
     })
 
+}
+
+//提交修改
+function submitEdit() {
+    $("#editForm").form('submit',{
+        url:"/controller/note/editOneNote",
+        onSubmit:function () {
+            return $(this).form('validate')
+        },
+        success:function (data) {
+            if (data == "true") {
+                $("#addBox").dialog({
+                    closed: true
+                });
+
+                $.messager.show({
+                    title: '提示',
+                    msg: '信息修改成功'
+                });
+            } else {
+                $.messager.show({
+                    title: '提示',
+                    msg: '信息修改失败'
+                });
+            }
+        }
+    })
+
+}
+
+function clearAdd(){
+    $('#addForm').form('clear');
+}
+
+function clearEdit(){
+    $('#editForm').form('clear');
 }

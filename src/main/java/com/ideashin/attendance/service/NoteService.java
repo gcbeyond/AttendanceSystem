@@ -1,6 +1,7 @@
 package com.ideashin.attendance.service;
 
 import com.ideashin.attendance.entity.Note;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.List;
 
@@ -15,13 +16,13 @@ public interface NoteService {
      * 增加
      * @param note
      */
-    void addOne(Note note);
+    Boolean addOne(Note note);
 
     /**
      * 更新
      * @param note
      */
-    void editOne(Note note);
+    Boolean editOne(Note note);
 
     /**
      * 查询所有

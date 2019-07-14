@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @Author: Shin
- * @Date: 2019/7/13 22:50
+ * @Date: 2019/7/13 10:30
  * @Blog: ideashin.com
  */
 public interface DepartmentDao {
@@ -26,10 +26,5 @@ public interface DepartmentDao {
      * 查询所有
      */
     List<Department> selectAll();
-
-    /**
-     * 查询单个
-     */
-    Department selectOne();
 
 }

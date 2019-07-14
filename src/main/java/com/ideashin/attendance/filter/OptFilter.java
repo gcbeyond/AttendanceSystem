@@ -22,7 +22,7 @@ public class OptFilter implements Filter {
         String url = req.getRequestURL().toString();
         String[] urs = url.split("/");
         String opt = urs[ urs.length - 1 ];
-
+        System.out.println("opt=================" + opt);
         req.setAttribute("opt", opt);
 
         chain.doFilter(req, response);
