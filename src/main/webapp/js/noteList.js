@@ -8,7 +8,7 @@ $(
 
 // 加载部门下拉框
 $("#deptSelect").combotree({
-    url:'json/deptSelect.json',
+    url:'/controller/note/departmentTree',
     height:26,
     width:'16%',
     onSelect:function () {
@@ -332,10 +332,40 @@ function submitEdit() {
 
 }
 
+//清空添加
 function clearAdd(){
     $('#addForm').form('clear');
 }
 
+//清空修改
 function clearEdit(){
     $('#editForm').form('clear');
+}
+
+//
+function find() {
+    $("#editForm").form('submit',{
+        url:"/controller/note/editOneNote",
+        onSubmit:function () {
+            return $(this).form('validate')
+        },
+        success:function (data) {
+            if (data == "true") {
+                $("#addBox").dialog({
+                    closed: true
+                });
+
+                $.messager.show({
+                    title: '提示',
+                    msg: '信息修改成功'
+                });
+            } else {
+                $.messager.show({
+                    title: '提示',
+                    msg: '信息修改失败'
+                });
+            }
+        }
+    })
+
 }

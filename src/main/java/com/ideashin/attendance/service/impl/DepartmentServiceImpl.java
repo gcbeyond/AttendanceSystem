@@ -39,10 +39,10 @@ public class DepartmentServiceImpl implements DepartmentService {
         String json = "[";
         for (Department d1 : list) {
             if (d1.getParentID() == 0) {
-                json = json + "{ id: " + d1.getDepartmentID() + ", text: \'" + d1.getDepartmentName() + "\',children: [";
+                json = json + "{ \"id\": " + d1.getDepartmentID() + ", \"text\": \"" + d1.getDepartmentName() + "\",\"iconCls\":\"icon-left05\",\"children\": [";
                 for (Department d2 : list) {
                     if (d2.getParentID() == d1.getDepartmentID()){
-                        json = json + "{id: " + d2.getDepartmentID() + ", text: \'" + d1.getDepartmentName() + "\'},";
+                        json = json + "{\"id\": " + d2.getDepartmentID() + ", \"text\": \"" + d1.getDepartmentName() + "\", \"iconCls\":\"icon-left03\"},";
                     }
                 }
                 json = json.substring(0, json.length() - 1);
