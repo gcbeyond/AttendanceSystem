@@ -30,12 +30,24 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public List<Position> findAllPositions() {
+    public List<Position> findAll() {
         return positionDao.selectAll();
     }
 
     @Override
-    public Boolean removeOnePosition(int positionID) {
+    public String positionTree() {
+        List<Position> list = positionDao.selectAll();
+        String json = "[";
+        for (Position d1 : list) {
+            json = json + "{ \"id\": " + d1.getPositionID() + ", \"text\": \"" + d1.getPositionName() + "\"},";
+        }
+        json = json.substring(0, json.length() - 1);
+        json = json + "]";
+        return json;
+    }
+
+    @Override
+    public Boolean removeOne(int positionID) {
         return positionDao.deleteOne(positionID);
     }
 }

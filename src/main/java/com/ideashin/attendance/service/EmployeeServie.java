@@ -1,4 +1,4 @@
-package com.ideashin.attendance.dao;
+package com.ideashin.attendance.service;
 
 import com.ideashin.attendance.entity.Employee;
 
@@ -6,32 +6,32 @@ import java.util.List;
 
 /**
  * @Author: Shin
- * @Date: 2019/7/15 0:14
+ * @Date: 2019/7/15 0:56
  * @Blog: ideashin.com
  */
-public interface EmployeeDao {
+public interface EmployeeServie {
+
     /**
      * 增加
      * @param employee
      */
-    Boolean insert(Employee employee);
+    Boolean addOne(Employee employee);
 
     /**
      * 更新
      * @param employee
      */
-    Boolean update(Employee employee);
+    Boolean editOne(Employee employee);
 
     /**
      * 查询所有
      */
-    List selectAll();
+    List<Employee> findAll();
 
     /**
      * 删除单条
      * @param employeeID
      * @return
      */
-    Boolean deleteOne(int employeeID);
-
+    Boolean removeOne(int employeeID);
 }

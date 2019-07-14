@@ -46,4 +46,24 @@
         <url-pattern>/controller/position/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>employeeController</servlet-name>
+        <servlet-class>com.ideashin.attendance.controller.EmployeeController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>employeeController</servlet-name>
+        <url-pattern>/controller/employee/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>departmentController</servlet-name>
+        <servlet-class>com.ideashin.attendance.controller.DepartmentController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>departmentController</servlet-name>
+        <url-pattern>/controller/department/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>

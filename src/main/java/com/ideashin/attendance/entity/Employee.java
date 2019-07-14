@@ -15,6 +15,9 @@ public class Employee {
     private String employeeState;
     private String employeeMemo;
 
+    private String positionName;
+    private String departmentName;
+
     public int getEmployeeID() {
         return employeeID;
     }
@@ -77,5 +80,21 @@ public class Employee {
 
     public void setEmployeeMemo(String employeeMemo) {
         this.employeeMemo = employeeMemo;
+    }
+
+    public String getPositionName() {
+        return positionName;
+    }
+
+    public void setPositionName(String positionName) {
+        this.positionName = positionName;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 }

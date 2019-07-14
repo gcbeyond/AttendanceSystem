@@ -93,7 +93,7 @@ function editOne(rowEdit) {
 
 //删除职位
 function removeOne(positionID) {
-    $.messager.confirm('提示信息', '是否删除所选择请假单',
+    $.messager.confirm('提示信息', '是否删除所选择职位',
         function (flg) {
             if (flg) {
                 $.ajax({
@@ -114,12 +114,12 @@ function removeOne(positionID) {
                             $("#table").datagrid("unselectRow");
                             $.messager.show({
                                 title: '提示信息',
-                                msg: "信息删除成功"
+                                msg: "职位删除成功"
                             })
                         } else {
                             $.messager.show({
                                 title: '警示信息',
-                                msg: "信息删除失败"
+                                msg: "职位删除失败"
                             })
                         }
                     }

@@ -2,9 +2,7 @@ package com.ideashin.attendance.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.ideashin.attendance.entity.Note;
-import com.ideashin.attendance.service.DepartmentService;
 import com.ideashin.attendance.service.NoteService;
-import com.ideashin.attendance.service.impl.DepartmentServiceImpl;
 import com.ideashin.attendance.service.impl.NoteServiceImpl;
 
 import javax.servlet.ServletException;
@@ -44,9 +42,6 @@ public class NoteController extends HttpServlet {
                 break;
             case "editOneNote":
                 editOneNote(req, resp);
-                break;
-            case "departmentTree":
-                departmentTree(req, resp);
                 break;
             case "findSomeNotes":
                 findSomeNotes(req, resp);
@@ -234,16 +229,6 @@ public class NoteController extends HttpServlet {
 //        out.print(data);
 //        out.flush();
 //        out.close();
-    }
-
-    public void departmentTree(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DepartmentService departmentService = new DepartmentServiceImpl();
-        String json = departmentService.departmentTree();
-
-        PrintWriter out = resp.getWriter();
-        out.print(json);
-        out.flush();
-        out.close();
     }
 
     @Override

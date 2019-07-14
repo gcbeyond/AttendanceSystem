@@ -8,7 +8,7 @@ $(
 
 // 加载部门下拉框
 $("#deptSelect").combotree({
-    url:'/controller/note/departmentTree',
+    url:'/controller/department/departmentTree',
     height:26,
     width:'16%',
     onSelect:function () {

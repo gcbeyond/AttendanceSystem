@@ -27,17 +27,82 @@
             <table id="table" class="tableStyle"></table>
             <div id="tabelBut">
                 <div>
-                    <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add" onclick="addOne()">新增</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" iconCls="icon-add" onclick="addOne()">新增</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!--弹出：新增修改弹出框-->
+<!--弹出：新增弹出框-->
 <div id="addBox" >
     <form id="addForm" method="post">
         <div id="tabs" class="easyui-tabs">
+            <div title="基本信息">
+                <table class="TailTable">
+                    <tr>
+                        <td class="TailLabel">姓名：</td>
+                        <td>
+                            <input type="text" class="easyui-validatebox TailInput" name="employeeName">
+                            <span class="formSpan">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">性别：</td>
+                        <td>
+                            <input type="radio" name="employeeGender" value="1" checked /><span>男</span>
+                            <input type="radio" name="employeeGender" value="0"/><span>女</span>
+                            <span class="formSpan">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">部门：</td>
+                        <td>
+                            <input type="text" id="deptSelect2" name="departmentName" class="TailInput" value="请选择"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">职位：</td>
+                        <td>
+                            <input type="text" id="positionSelect" name="positionName" class="TailInput" value="请选择"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">卡号：</td>
+                        <td>
+                            <input type="text" class="easyui-validatebox TailInput" name="cardNumber">
+                            <span class="formSpan">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">状态：</td>
+                        <td>
+                            <input type="radio" name="employeeState" value="1" checked /><span>正常</span>
+                            <input type="radio" name="employeeState" value="0"/><span>停用</span>
+                            <span class="formSpan">*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">备注：</td>
+                        <td colspan="4"><textarea class="TailArea" name="employeeMemo"></textarea></td>
+                    </tr>
+                </table>
+                <div class="forSubmint" >
+                    <a href="javascript:void(0)" class="easyui-linkbutton"
+                       iconCls="icon-ok" onclick="submitAdd()" >提交</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton"
+                       iconCls="icon-redo" onclick="clearAdd()">重置</a>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!--弹出：修改弹出框-->
+<div id="editBox" >
+    <form id="editForm" method="post">
+        <div id="tabs2" class="easyui-tabs">
             <div title="基本信息">
                 <table class="TailTable">
                     <tr>
@@ -65,29 +130,13 @@
                     <tr>
                         <td class="TailLabel">部门：</td>
                         <td>
-                            <input type="text"  id="deptSelect2" class="TailInput" value="请选择"/>
-<!--                            下面的暂存，不一定使用哪个-->
-<!--                            <select name="departmentID" class="easyui-combobox"style="width:160px;height:30px;">-->
-<!--                                <option value="">请选择</option>-->
-<!--                                <option value="1">财务部</option>-->
-<!--                                <option value="2">人事部</option>-->
-<!--                                <option value="3">花钱不</option>-->
-<!--                                <option value="4">吃饭不</option>-->
-<!--                            </select>-->
+                            <input type="text" id="deptSelect3" class="TailInput" value="请选择"/>
                         </td>
                     </tr>
                     <tr>
-                        <td class="TailLabel">职务：</td>
+                        <td class="TailLabel">职位：</td>
                         <td>
-                            <select name="positionID" class="easyui-combobox"style="width:197px;height:30px;">
-                                <option value="">请选择</option>
-                                <option value="1">财务部</option>
-                                <option value="2">人事部</option>
-                                <option value="3">花钱不</option>
-                                <option value="4">吃饭不</option>
-                            </select>
-<!--                            <input type="text"  id="positionName" class="TailSelect"/>-->
-<!--                            <span class="formSpan">*</span>-->
+                            <input type="text" id="positionSelect2" class="TailInput" value="请选择"/>
                         </td>
                     </tr>
                     <tr>
@@ -110,15 +159,18 @@
                         <td colspan="4"><textarea class="TailArea" name="employeeMemo"></textarea></td>
                     </tr>
                 </table>
-                <div class="forSubmint">
-                     <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >保存</a>
-                    <a href="#" class="easyui-linkbutton"  iconCls="icon-redo" >重置</a>
+                <div class="forSubmint" >
+                    <a href="javascript:void(0)" class="easyui-linkbutton"
+                       iconCls="icon-ok" onclick="submitEdit()" >提交</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton"
+                       iconCls="icon-redo" onclick="clearEdit()">重置</a>
                 </div>
             </div>
         </div>
 
     </form>
 </div>
+
 
 <script src="js/jquery-easyui/jquery.min.js"></script>
 <script src="js/jquery-easyui/jquery.easyui.min.js"></script>

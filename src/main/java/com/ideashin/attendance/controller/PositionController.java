@@ -39,6 +39,9 @@ public class PositionController extends HttpServlet {
             case "editOnePosition":
                 editOnePosition(req, resp);
                 break;
+             case "positionTree":
+                 positionTree(req, resp);
+                break;
              default:
         }
     }
@@ -51,7 +54,7 @@ public class PositionController extends HttpServlet {
      * @throws IOException
      */
     public void findAllPositions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Position> list = positionService.findAllPositions();
+        List<Position> list = positionService.findAll();
         HashMap<String, Object> map = new HashMap<>(2);
 
         map.put("total", list.size());
@@ -73,7 +76,7 @@ public class PositionController extends HttpServlet {
      */
     public void removeOnePosition(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Integer positionID = Integer.valueOf(req.getParameter("positionID"));
-        Boolean data = positionService.removeOnePosition(positionID);
+        Boolean data = positionService.removeOne(positionID);
 
         PrintWriter out = resp.getWriter();
         out.print(data);
@@ -123,6 +126,22 @@ public class PositionController extends HttpServlet {
         out.close();
     }
 
+    /**
+     * 职位下拉框
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void positionTree(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        PositionService positionService = new PositionServiceImpl();
+        String json = positionService.positionTree();
+
+        PrintWriter out = resp.getWriter();
+        out.print(json);
+        out.flush();
+        out.close();
+    }
     @Override
     public void destroy() {
         super.destroy();

@@ -5,13 +5,81 @@ $(
     }
 );
 
+// 加载部门下拉框
+$("#deptSelect").combotree({
+    url:'/controller/department/departmentTree',
+    height:26,
+    width:'16%',
+    onSelect:function () {
+        var t=$("#deptSelect").combotree('tree');
+        var n=t.tree('getSelected');
+        var text=n.text;
+        $("#deptSelect").combotree('setValue',text);
+
+    }
+})
+
+// 加载编辑框部门下拉框修改
+$("#deptSelect2").combotree({
+    url:'/controller/department/departmentTree',
+    height:26,
+    width:197,
+    onSelect:function () {
+        var t=$("#deptSelect2").combotree('tree');
+        var n=t.tree('getSelected');
+        var text=n.text;
+        $("#deptSelect2").combotree('setValue',text);
+    }
+})
+
+// 加载编辑框部门下拉框添加
+$("#deptSelect3").combotree({
+    url:'/controller/department/departmentTree',
+    height:26,
+    width:197,
+    onSelect:function () {
+        var t=$("#deptSelect3").combotree('tree');
+        var n=t.tree('getSelected');
+        var text=n.text;
+        $("#deptSelect3").combotree('setValue',text);
+    }
+})
+
+// 加载弹出职位下拉框修改
+$("#positionSelect").combotree({
+    url:'/controller/position/positionTree',
+    height:26,
+    width:'197',
+    onSelect:function () {
+        var t=$("#positionSelect").combotree('tree');
+        var n=t.tree('getSelected');
+        var text=n.text;
+        $("#positionSelect").combotree('setValue',text);
+
+    }
+})
+
+// 加载弹出职位下拉框添加
+$("#positionSelect2").combotree({
+    url:'/controller/position/positionTree',
+    height:26,
+    width:'197',
+    onSelect:function () {
+        var t=$("#positionSelect2").combotree('tree');
+        var n=t.tree('getSelected');
+        var text=n.text;
+        $("#positionSelect2").combotree('setValue',text);
+
+    }
+})
+
 //员工列表加载
 function initEmployeeList() {
     // 加载表格
     $("#table").datagrid({
         title: "员工列表",
         iconCls: "icon-left02",
-        url: 'json/employeeList.json',
+        url: '/controller/employee/findAllEmployees',
         fitColumns: true,
         striped: true,
         pagination: true,
@@ -97,7 +165,8 @@ function initEmployeeList() {
                 width:100,
                 align:'center',
                 formatter:function (val,row) {
-                    var rowEdit = [row.employeeID, row.employeeName, row.employeeGender, row.positionName, row.departmentName, row.cardNumber, row.employeeState, row.employeeMemo]
+                    var rowEdit = [row.employeeID, row.employeeName, row.employeeGender, row.positionID,
+                        row.departmentID, row.cardNumber, row.employeeState, row.employeeMemo]
                     e = '<a  id="add" data-id="98" class=" operA"  onclick="editOne(\'' + rowEdit + '\')">编辑</a> ';
                     d = '<a  id="add" data-id="98" class=" operA01"  onclick="delOne(\'' + row.employeeID + '\')">删除</a> ';
                     return e+d;
@@ -109,37 +178,8 @@ function initEmployeeList() {
     })
 }
 
-// 加载部门下拉框
-$("#deptSelect").combotree({
-    url:'json/deptSelect.json',
-    height:26,
-    width:'16%',
-    onSelect:function () {
-        var t=$("#deptSelect").combotree('tree');
-        var n=t.tree('getSelected');
-        var text=n.text;
-        $("#deptSelect").combotree('setValue',text);
-
-    }
-})
-
-// 加载编辑框部门下拉框
-$("#deptSelect2").combotree({
-    url:'json/deptSelect.json',
-    height:26,
-    width:197,
-    onSelect:function () {
-        var t=$("#deptSelect2").combotree('tree');
-        var n=t.tree('getSelected');
-        var text=n.text;
-        $("#deptSelect2").combotree('setValue',text);
-
-    }
-})
-
 //添加员工
 function addOne() {
-    $('#addForm').form('clear');
     $("#addBox").dialog({
         title: "员工编辑",
         width: 650,
@@ -153,7 +193,7 @@ function addOne() {
 //编辑员工
 function editOne(rowEdit) {
 
-    $("#addBox").dialog({
+    $("#editBox").dialog({
         title:"员工编辑",
         width: 650,
         height: 300,
@@ -163,7 +203,7 @@ function editOne(rowEdit) {
     })
 
     var rows = rowEdit.split(",");
-    $('#addForm').form('load',{
+    $('#editForm').form('load',{
         employeeID: rows[0],
         employeeName: rows[1],
         employeeGender: rows[2],
@@ -173,22 +213,109 @@ function editOne(rowEdit) {
         employeeState: rows[6],
         employeeMemo: rows[7]
     });
-    $("input[name='employeeID']").attr("readonly", "readonly");
+    $("#editForm input[name='employeeID']").attr("readonly", "readonly");
 }
 
 //删除员工
-function delOne(index) {
+function delOne(employeeID) {
+    $.messager.confirm('提示信息', '是否删除所选择员工',
+        function (flg) {
+            if (flg) {
+                $.ajax({
+                    type: 'post',
+                    url: '/controller/employee/removeOneEmployee',
+                    data: {
+                        employeeID: employeeID
+                    },
+                    beforeSend: function () {
+                        $("#table").datagrid('loading');
 
-    $.messager.confirm("提示", "是否要删除该员工",
-        function (flag) {
-            if (flag == false) {
-                return;
+                    },
+                    success: function (data) {
+
+                        if (data == "true") {
+                            $("#table").datagrid("loaded");
+                            $("#table").datagrid("load");
+                            $("#table").datagrid("unselectRow");
+                            $.messager.show({
+                                title: '提示信息',
+                                msg: "员工删除成功"
+                            })
+                        } else {
+                            $.messager.show({
+                                title: '警示信息',
+                                msg: "员工删除失败"
+                            })
+                        }
+                    }
+                })
             }
-        })
-    $("#table").datagrid("deleteRow", index);
-    $.messager.show({
-        title: "提示",
-        msg: "删除员工成功"
-    });
+        }
+    );
+}
 
+//提交添加
+function submitAdd() {
+    $("#addForm").form('submit',{
+        url:"/controller/employee/addOneEmployee",
+        onSubmit:function () {
+            return $(this).form('validate')
+        },
+        success:function (data) {
+            if (data == "true") {
+                $("#addBox").dialog({
+                    closed: true
+                });
+                $("#table").datagrid('reload');
+                $.messager.show({
+                    title: '提示',
+                    msg: '信息保存成功'
+                });
+            } else {
+                $.messager.show({
+                    title: '提示',
+                    msg: '信息保存失败'
+                });
+            }
+        }
+    })
+
+}
+
+//提交修改
+function submitEdit() {
+    $("#editForm").form('submit',{
+        url:"/controller/employee/editOneEmployee",
+        onSubmit:function () {
+            return $(this).form('validate')
+        },
+        success:function (data) {
+            if (data == "true") {
+                $("#editBox").dialog({
+                    closed: true
+                });
+                $("#table").datagrid('reload');
+                $.messager.show({
+                    title: '提示',
+                    msg: '信息修改成功'
+                });
+
+            } else {
+                $.messager.show({
+                    title: '提示',
+                    msg: '信息修改失败'
+                });
+            }
+        }
+    })
+}
+
+//清空添加
+function clearAdd(){
+    $('#addForm').form('clear');
+}
+
+//清空修改
+function clearEdit(){
+    $('#editForm').form('clear');
 }

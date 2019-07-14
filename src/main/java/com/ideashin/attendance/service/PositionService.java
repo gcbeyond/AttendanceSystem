@@ -26,12 +26,17 @@ public interface PositionService {
     /**
      * 查询所有
      */
-    List<Position> findAllPositions();
+    List<Position> findAll();
+
+    /**
+     * 返回json下拉列表
+     */
+    String positionTree();
 
     /**
      * 删除单条
      * @param positionID
      * @return
      */
-    Boolean removeOnePosition(int positionID);
+    Boolean removeOne(int positionID);
 }
