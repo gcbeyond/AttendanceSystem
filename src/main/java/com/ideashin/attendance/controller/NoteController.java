@@ -71,8 +71,13 @@ public class NoteController extends HttpServlet {
         out.close();
     }
 
+    /**
+     * 条件查询
+     * @param req
+     * @param resp
+     * @throws IOException
+     */
     public void findSomeNotes(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        System.out.println(req.getParameter("noteTypeSearch"));
         Integer noteTypeSearch = Integer.valueOf(req.getParameter("noteTypeSearch"));
         String deptSelect = req.getParameter("deptSelect");
         String empSearch = req.getParameter("empSearch");
@@ -84,7 +89,6 @@ public class NoteController extends HttpServlet {
             e.printStackTrace();
         }
         List<Note> list = noteService.findSomeNotes(noteTypeSearch, deptSelect, empSearch, dateSearch);
-        System.out.println("ahah==============="+list);
         HashMap<String, Object> map = new HashMap<>(2);
 
         map.put("total", list.size());

@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.Inet4Address;
 import java.util.HashMap;
 import java.util.List;
 
@@ -43,12 +42,46 @@ public class EmployeeController extends HttpServlet {
             case "editOneEmployee":
                 editOneEmployee(req, resp);
                 break;
-
+            case "findSomeEmployees":
+                findSomeEmployees(req, resp);
+                break;
             default:
         }
     }
-    public void findAllEmployees(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    /**
+     * 查询所有
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void findAllEmployees(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         List<Employee> list = employeeServie.findAll();
+        HashMap<String, Object> map = new HashMap<>(2);
+
+        map.put("total", list.size());
+        map.put("rows", list);
+
+        String jsonString = JSON.toJSONString(map);
+        PrintWriter out = resp.getWriter();
+        out.print(jsonString);
+        out.flush();
+        out.close();
+    }
+
+    /**
+     * 条件查询
+     * @param req
+     * @param resp
+     * @throws IOException
+     */
+    public void findSomeEmployees(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String empSearch = req.getParameter("empSearch");
+        String deptSelect = req.getParameter("deptSelect");
+
+        List<Employee> list = employeeServie.findSomeEmployees(empSearch, deptSelect);
+        System.out.println("=======" + list);
         HashMap<String, Object> map = new HashMap<>(2);
 
         map.put("total", list.size());
@@ -127,7 +160,6 @@ public class EmployeeController extends HttpServlet {
         String cardNumber = req.getParameter("cardNumber");
         String employeeState = req.getParameter("employeeState");
         String employeeMemo = req.getParameter("employeeMemo");
-
 
         Employee employee = new Employee();
         employee.setEmployeeID(employeeID);

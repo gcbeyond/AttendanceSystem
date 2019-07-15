@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>表格列表</title>
 
-    <link type="text/css" rel="stylesheet" href="js/jquery-easyui/themes/easyui.css"/>
+    <link type="text/css" rel="stylesheet" href="js/jquery-easyui/themes/default/easyui.css"/>
     <link type="text/css" rel="stylesheet" href="js/jquery-easyui/themes/icon.css"/>
     <link type="text/css" rel="stylesheet" href="css/main.css">
 
@@ -17,9 +17,9 @@
         <!--表格查询-->
         <div class="tableFind">
             <p>
-                <label>姓名：</label><input type="text" id="empSearch"/>
-                <label>部门：</label><input type="text" id="deptSelect" value="全部"/>
-                <a id="btn" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="find()">查询</a>
+                <label>姓名：</label><input type="text" id="empSearch" name="empSearch"/>
+                <label>部门：</label><input type="text" id="deptSelect" name="deptSelect" value="全部"/>
+                <a id="btn" href="javascript:void(0)" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="findSomeEmployees()">查询</a>
             </p>
         </div>
         <!--表格列表-->
@@ -130,13 +130,13 @@
                     <tr>
                         <td class="TailLabel">部门：</td>
                         <td>
-                            <input type="text" id="deptSelect3" class="TailInput" value="请选择"/>
+                            <input type="text" id="deptSelect3" name="departmentName" class="TailInput" value="请选择"/>
                         </td>
                     </tr>
                     <tr>
                         <td class="TailLabel">职位：</td>
                         <td>
-                            <input type="text" id="positionSelect2" class="TailInput" value="请选择"/>
+                            <input type="text" id="positionSelect2" name="positionName" class="TailInput" value="请选择"/>
                         </td>
                     </tr>
                     <tr>
@@ -174,7 +174,7 @@
 
 <script src="js/jquery-easyui/jquery.min.js"></script>
 <script src="js/jquery-easyui/jquery.easyui.min.js"></script>
-<script src="js/jquery-easyui/easyui-lang-zh_CN.js"></script>
+<script src="js/jquery-easyui/local/easyui-lang-zh_CN.js"></script>
 <script src="js/employeeList.js"></script>
 
 </body>

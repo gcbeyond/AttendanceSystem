@@ -31,13 +31,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public Boolean update(Employee employee) {
+    public Boolean update(Employee employee) { ;
         String sql = "UPDATE Att_Employee SET " +
-                "EmployeeName = ?, EmployeeGender = ?, " +
-                "PositionID = (SELECT  Att_Position.PositionID FROM Att_Position WHERE Att_Position.PositionName = ?)," +
-                "DepartmentID = (SELECT  Att_Department.DepartmentID FROM Att_Department WHERE Att_Department.DepartmentName = ?), " +
-                "CardNumber = ?, EmployeeState = ?,EmployeeMemo = ? " +
-                "WHERE EmployeeID = ?";
+                "           EmployeeName = ?, EmployeeGender = ?, " +
+                "           PositionID = (SELECT  Att_Position.PositionID FROM Att_Position WHERE Att_Position.PositionName = ?)," +
+                "           DepartmentID = (SELECT  Att_Department.DepartmentID FROM Att_Department WHERE Att_Department.DepartmentName = ?), " +
+                "           CardNumber = ?, EmployeeState = ?,EmployeeMemo = ? " +
+                "       WHERE EmployeeID = ?";
         return DBHelper.execUpdate(sql,
                 employee.getEmployeeName(),
                 employee.getEmployeeGender(),
@@ -63,6 +63,29 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 "\tAtt_Employee.EmployeeMemo\n" +
                 "\tFrom Att_Employee";
         return DBHelper.execQuery(sql, Employee.class);
+    }
+
+    @Override
+    public List selectSome(String empSearch, String deptSelect) {
+        String sql = "SELECT\n" +
+                "\tAtt_Employee.EmployeeID,\n" +
+                "\tAtt_Employee.EmployeeName,\n" +
+                "\tAtt_Employee.EmployeeGender,\n" +
+                "\tAtt_Employee.PositionID,\n" +
+                "\t(SELECT PositionName FROM Att_Position WHERE Att_Position.PositionID = Att_Employee.PositionID) PositionName,\n" +
+                "\tAtt_Employee.DepartmentID,\n" +
+                "\t(SELECT DepartmentName FROM Att_Department WHERE Att_Department.DepartmentID = Att_Employee.DepartmentID) DepartmentName,\n" +
+                "\tAtt_Employee.CardNumber,\n" +
+                "\tAtt_Employee.EmployeeState,\n" +
+                "\tAtt_Employee.EmployeeMemo\n" +
+                "\tFrom Att_Employee" +
+                "\tWHERE EmployeeName like ?";
+        if (deptSelect.equals("全部")) {
+            return DBHelper.execQuery(sql, Employee.class, empSearch);
+        } else {
+            sql = sql + " AND DepartmentID = (SELECT DepartmentID FROM Att_Department WHERE DepartmentName = ?)";
+            return DBHelper.execQuery(sql, Employee.class, empSearch, deptSelect);
+        }
     }
 
     @Override

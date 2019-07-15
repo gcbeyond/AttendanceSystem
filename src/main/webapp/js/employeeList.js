@@ -1,7 +1,7 @@
 $(
     //自动获取列表
     function () {
-        initEmployeeList();
+        initEmployeeList('/controller/employee/findAllEmployees');
     }
 );
 
@@ -74,12 +74,12 @@ $("#positionSelect2").combotree({
 })
 
 //员工列表加载
-function initEmployeeList() {
+function initEmployeeList(isUrl) {
     // 加载表格
     $("#table").datagrid({
         title: "员工列表",
         iconCls: "icon-left02",
-        url: '/controller/employee/findAllEmployees',
+        url: isUrl,
         fitColumns: true,
         striped: true,
         pagination: true,
@@ -165,8 +165,8 @@ function initEmployeeList() {
                 width:100,
                 align:'center',
                 formatter:function (val,row) {
-                    var rowEdit = [row.employeeID, row.employeeName, row.employeeGender, row.positionID,
-                        row.departmentID, row.cardNumber, row.employeeState, row.employeeMemo]
+                    var rowEdit = [row.employeeID, row.employeeName, row.employeeGender, row.positionName,
+                        row.departmentName, row.cardNumber, row.employeeState, row.employeeMemo]
                     e = '<a  id="add" data-id="98" class=" operA"  onclick="editOne(\'' + rowEdit + '\')">编辑</a> ';
                     d = '<a  id="add" data-id="98" class=" operA01"  onclick="delOne(\'' + row.employeeID + '\')">删除</a> ';
                     return e+d;
@@ -318,4 +318,15 @@ function clearAdd(){
 //清空修改
 function clearEdit(){
     $('#editForm').form('clear');
+}
+
+//查询
+function findSomeEmployees() {
+    var empSearch = $("#empSearch").val();
+    var deptSelect = $("#deptSelect").val();
+
+    initEmployeeList('/controller/employee/findSomeEmployees?' +
+        'empSearch=' + empSearch +
+        '&deptSelect=' + deptSelect
+    );
 }

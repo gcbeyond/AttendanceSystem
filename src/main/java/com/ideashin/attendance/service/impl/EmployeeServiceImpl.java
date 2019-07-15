@@ -35,6 +35,12 @@ public class EmployeeServiceImpl implements EmployeeServie {
     }
 
     @Override
+    public List findSomeEmployees(String empSearch, String deptSelect) {
+        empSearch = "%" + empSearch + "%";
+        return employeeDao.selectSome(empSearch, deptSelect);
+    }
+
+    @Override
     public Boolean removeOne(int employeeID) {
         return employeeDao.deleteOne(employeeID);
     }

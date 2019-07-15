@@ -20,9 +20,9 @@ public class OptFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         String url = req.getRequestURL().toString();
+        System.out.println("opt=================" + url);
         String[] urs = url.split("/");
         String opt = urs[ urs.length - 1 ];
-        System.out.println("opt=================" + opt);
         req.setAttribute("opt", opt);
 
         chain.doFilter(req, response);

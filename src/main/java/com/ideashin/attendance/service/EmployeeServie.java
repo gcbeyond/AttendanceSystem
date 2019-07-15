@@ -29,6 +29,14 @@ public interface EmployeeServie {
     List<Employee> findAll();
 
     /**
+     * 条件查询
+     * @param empSearch
+     * @param deptSelect
+     * @return
+     */
+    List findSomeEmployees(String empSearch, String deptSelect);
+
+    /**
      * 删除单条
      * @param employeeID
      * @return

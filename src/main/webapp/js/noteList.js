@@ -1,7 +1,7 @@
 $(
     //自动获取列表
     function () {
-        initSelectAllNotes('/controller/note/findAllNotes');
+        initNoteList('/controller/note/findAllNotes');
         initSelect();
     }
 );
@@ -21,7 +21,7 @@ $("#deptSelect").combotree({
 })
 
 //请假单列表加载
-function initSelectAllNotes(isUrl) {
+function initNoteList(isUrl) {
     alert(isUrl);
     // 加载表格
     $("#table").datagrid({
@@ -343,18 +343,15 @@ function clearEdit(){
 
 //查询
 function findSomeNotes() {
-    var d = $("#findSomeForm").form('submit',{
-        url:"/controller/note/findSomeNotes",
-        onSubmit:function () {
-            return $(this).form('validate')
-        },
-        success:function (data) {
-            var json = eval('(' + data + ')');
-            alert(typeof json);
+    var noteTypeSearch = $("#noteTypeSearch").val();
+    var deptSelect = $("#deptSelect").val();
+    var empSearch = $("#empSearch").val();
+    var dateSearch = $("#dateSearch").val();
 
-            initSelectAllNotes(json);
-         }
-    })
-
-    alert(d.noteTypeSearch);
+    initNoteList('/controller/note/findAllNotes/findSomeNotes?' +
+        '&noteTypeSearch=' + noteTypeSearch +
+        '&deptSelect=' + deptSelect +
+        '&empSearch=' + empSearch +
+        '&dateSearch=' + dateSearch
+    );
 }

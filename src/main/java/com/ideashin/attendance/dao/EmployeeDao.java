@@ -28,6 +28,14 @@ public interface EmployeeDao {
     List selectAll();
 
     /**
+     * 条件查询
+     * @param empSearch
+     * @param deptSelect
+     * @return
+     */
+    List selectSome(String empSearch, String deptSelect);
+
+    /**
      * 删除单条
      * @param employeeID
      * @return
