@@ -181,8 +181,13 @@ FROM Att_Note inner join Att_Employee
               LEFT OUTER JOIN Att_AttendanceType t
                               ON Att_Note.NoteTypeID = t.TypeId
 WHERE
-        Att_Note.AdminID = 2
-  AND Att_Note.NoteTypeID = 13
-  AND Att_Employee.EmployeeName like '%明%'
+    (Att_Note.AdminID = ? OR ? IS NULL OR ? = '')
+    AND (Att_Note.NoteTypeID = ? OR ? IS NULL OR ? = '')
+    AND (d.DepartmentName = ? OR ? = '全部')
+    AND (Att_Employee.EmployeeName LIKE ?)
+
+#         Att_Note.AdminID = 2
+#   AND Att_Note.NoteTypeID = 13
+#   AND Att_Employee.EmployeeName like '%明%'
   AND (Att_Note.EndDate > SYSDATE()
     AND Att_Note.StartDate < SYSDATE())

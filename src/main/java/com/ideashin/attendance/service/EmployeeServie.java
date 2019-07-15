@@ -26,7 +26,7 @@ public interface EmployeeServie {
     /**
      * 查询所有
      */
-    List<Employee> findAll();
+    List<Employee> findAll(int page, int rows);
 
     /**
      * 条件查询
@@ -34,7 +34,7 @@ public interface EmployeeServie {
      * @param deptSelect
      * @return
      */
-    List findSomeEmployees(String empSearch, String deptSelect);
+    List findSome(String empSearch, String deptSelect);
 
     /**
      * 删除单条
@@ -42,4 +42,10 @@ public interface EmployeeServie {
      * @return
      */
     Boolean removeOne(int employeeID);
+
+    /**
+     * 查询条数
+     * @return
+     */
+    int getCount();
 }

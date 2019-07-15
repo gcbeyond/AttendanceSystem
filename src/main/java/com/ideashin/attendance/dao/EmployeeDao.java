@@ -10,6 +10,7 @@ import java.util.List;
  * @Blog: ideashin.com
  */
 public interface EmployeeDao {
+
     /**
      * 增加
      * @param employee
@@ -25,7 +26,7 @@ public interface EmployeeDao {
     /**
      * 查询所有
      */
-    List selectAll();
+    List selectAll(int offset, int rows);
 
     /**
      * 条件查询
@@ -42,4 +43,9 @@ public interface EmployeeDao {
      */
     Boolean deleteOne(int employeeID);
 
+    /**
+     * 查询条数
+     * @return
+     */
+    int getCount();
 }

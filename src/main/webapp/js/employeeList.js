@@ -15,7 +15,13 @@ $("#deptSelect").combotree({
         var n=t.tree('getSelected');
         var text=n.text;
         $("#deptSelect").combotree('setValue',text);
-
+    },
+    onBeforeSelect:function(node) {
+        var tree = $(this).tree;
+        var isLeaf = tree("isLeaf", node.target);
+        if (!isLeaf) {
+            $("#deptSelect").treegrid(unselect)
+        }
     }
 })
 
@@ -29,6 +35,13 @@ $("#deptSelect2").combotree({
         var n=t.tree('getSelected');
         var text=n.text;
         $("#deptSelect2").combotree('setValue',text);
+    },
+    onBeforeSelect:function(node) {
+        var tree = $(this).tree;
+        var isLeaf = tree("isLeaf", node.target);
+        if (!isLeaf) {
+            $("#deptSelect").treegrid(unselect)
+        }
     }
 })
 
@@ -42,6 +55,13 @@ $("#deptSelect3").combotree({
         var n=t.tree('getSelected');
         var text=n.text;
         $("#deptSelect3").combotree('setValue',text);
+    },
+    onBeforeSelect:function(node) {
+        var tree = $(this).tree;
+        var isLeaf = tree("isLeaf", node.target);
+        if (!isLeaf) {
+            $("#deptSelect").treegrid(unselect)
+        }
     }
 })
 

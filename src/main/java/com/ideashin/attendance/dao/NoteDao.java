@@ -27,7 +27,7 @@ public interface NoteDao {
     /**
      * 查询所有
      */
-    List selectAll();
+    List selectAll(int offset, int rows);
 
     /**
      * 条件查询
@@ -45,4 +45,10 @@ public interface NoteDao {
      * @return
      */
     Boolean deleteOne(int noteID);
+
+    /**
+     * 查询条数
+     * @return
+     */
+    int getCount();
 }

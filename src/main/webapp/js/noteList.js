@@ -2,7 +2,6 @@ $(
     //自动获取列表
     function () {
         initNoteList('/controller/note/findAllNotes');
-        initSelect();
     }
 );
 
@@ -16,13 +15,18 @@ $("#deptSelect").combotree({
         var n=t.tree('getSelected');
         var text=n.text;
         $("#deptSelect").combotree('setValue',text);
-
+    },
+    onBeforeSelect:function(node) {
+        var tree = $(this).tree;
+        var isLeaf = tree("isLeaf", node.target);
+        if (!isLeaf) {
+            $("#deptSelect").treegrid(unselect)
+        }
     }
 })
 
 //请假单列表加载
 function initNoteList(isUrl) {
-    alert(isUrl);
     // 加载表格
     $("#table").datagrid({
         title: "请假单列表",
@@ -62,13 +66,13 @@ function initNoteList(isUrl) {
                 align:'center'
             },
             {
-                field:'oneDName',
+                field:'firstDName',
                 title:'一级部门',
                 width:100,
                 align:'center'
             },
             {
-                field:'twoDName',
+                field:'secondDName',
                 title:'二级部门',
                 width:100,
                 align:'center'

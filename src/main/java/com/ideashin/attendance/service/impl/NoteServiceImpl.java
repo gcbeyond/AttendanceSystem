@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class NoteServiceImpl implements NoteService {
     private NoteDao noteDao;
+
     public NoteServiceImpl(){
         noteDao = new NoteDaoImpl();
     }
@@ -30,18 +31,24 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public List<Note> findAllNotes() {
-        return noteDao.selectAll();
+    public List<Note> findAll(int page, int rows) {
+        int offset = (page - 1) * rows;
+        return noteDao.selectAll(offset, rows);
     }
 
     @Override
-    public List findSomeNotes(int noteTypeSearch, String deptSelect, String empSearch, Date dateSearch) {
+    public List findSome(int noteTypeSearch, String deptSelect, String empSearch, Date dateSearch) {
         empSearch = "%" + empSearch + "%";
         return noteDao.selectSome(noteTypeSearch, deptSelect, empSearch, dateSearch);
     }
 
     @Override
-    public Boolean removeOneNote(int noteID) {
+    public Boolean removeOne(int noteID) {
         return noteDao.deleteOne(noteID);
+    }
+
+    @Override
+    public int getCount() {
+        return noteDao.getCount();
     }
 }

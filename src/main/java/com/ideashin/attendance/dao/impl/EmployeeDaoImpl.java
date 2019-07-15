@@ -51,7 +51,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public List selectAll() {
+    public List selectAll(int offset, int rows) {
         String sql = "SELECT\n" +
                 "\tAtt_Employee.EmployeeID,\n" +
                 "\tAtt_Employee.EmployeeName,\n" +
@@ -61,8 +61,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 "\tAtt_Employee.CardNumber,\n" +
                 "\tAtt_Employee.EmployeeState,\n" +
                 "\tAtt_Employee.EmployeeMemo\n" +
-                "\tFrom Att_Employee";
-        return DBHelper.execQuery(sql, Employee.class);
+                "\tFrom Att_Employee " +
+                "\tLIMIT ?, ?";
+
+        return DBHelper.execQuery(sql, Employee.class, offset, rows);
     }
 
     @Override
@@ -78,20 +80,23 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 "\tAtt_Employee.CardNumber,\n" +
                 "\tAtt_Employee.EmployeeState,\n" +
                 "\tAtt_Employee.EmployeeMemo\n" +
-                "\tFrom Att_Employee" +
-                "\tWHERE EmployeeName like ?";
-        if (deptSelect.equals("全部")) {
-            return DBHelper.execQuery(sql, Employee.class, empSearch);
-        } else {
-            sql = sql + " AND DepartmentID = (SELECT DepartmentID FROM Att_Department WHERE DepartmentName = ?)";
-            return DBHelper.execQuery(sql, Employee.class, empSearch, deptSelect);
-        }
+                "\tFrom Att_Employee\n" +
+                "\tWHERE EmployeeName like ?\n" +
+                "\tAND (DepartmentID = (SELECT DepartmentID FROM Att_Department WHERE DepartmentName = ?) OR ? = '全部')";
+
+        return DBHelper.execQuery(sql, Employee.class, empSearch, deptSelect, deptSelect);
     }
 
     @Override
     public Boolean deleteOne(int employeeID) {
         String sql = "DELETE FROM Att_Employee WHERE EmployeeID = ?";
         return DBHelper.execUpdate(sql, employeeID);
+    }
+
+    @Override
+    public int getCount() {
+        String sql = "SELECT COUNT(*) FROM Att_Employee";
+        return DBHelper.getCount(sql);
     }
 
 }

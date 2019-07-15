@@ -10,21 +10,33 @@ import java.util.List;
  * @Blog: ideashin.com
  */
 public interface DepartmentDao {
+
     /**
      * 增加
      * @param department
      */
-    void insert(Department department);
+    Boolean insert(Department department);
 
     /**
      * 更新
      * @param department
      */
-    void update(Department department);
+    Boolean update(Department department);
 
     /**
      * 查询所有
      */
     List selectAll();
 
+    /**
+     * 查询所有的一级部门
+     * @return
+     */
+    List selectAllFirst();
+
+    /**
+     * 查询属于某个一级部门的所有二级部门
+     * @return
+     */
+    List selectAllSecondFromFirst(int parentID);
 }

@@ -10,6 +10,7 @@ import java.util.List;
  * @Blog: ideashin.com
  */
 public interface PositionDao {
+
     /**
      * 增加
      * @param position

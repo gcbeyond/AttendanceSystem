@@ -34,13 +34,13 @@ public class Note {
     /** 申请人姓名 */
     private String employeeName;
     /** 二级部门编号,等效于数据库中的departmentId */
-    private String twoDID;
+    private String SecondDID;
     /** 二级部门名称 */
-    private String twoDName;
+    private String SecondDName;
     /** 一级部门编号 */
-    private String oneDID;
+    private String FirstDID;
     /** 一级部门名称 */
-    private String oneDName;
+    private String FirstDName;
     /** 请假类型名称 */
     private String typeName;
     /** 代理人卡号 */
@@ -200,36 +200,36 @@ public class Note {
         this.employeeName = employeeName;
     }
 
-    public String getTwoDID() {
-        return twoDID;
+    public String getSecondDID() {
+        return SecondDID;
     }
 
-    public void setTwoDID(String twoDID) {
-        this.twoDID = twoDID;
+    public void setSecondDID(String secondDID) {
+        SecondDID = secondDID;
     }
 
-    public String getTwoDName() {
-        return twoDName;
+    public String getSecondDName() {
+        return SecondDName;
     }
 
-    public void setTwoDName(String twoDName) {
-        this.twoDName = twoDName;
+    public void setSecondDName(String secondDName) {
+        SecondDName = secondDName;
     }
 
-    public String getOneDID() {
-        return oneDID;
+    public String getFirstDID() {
+        return FirstDID;
     }
 
-    public void setOneDID(String oneDID) {
-        this.oneDID = oneDID;
+    public void setFirstDID(String firstDID) {
+        FirstDID = firstDID;
     }
 
-    public String getOneDName() {
-        return oneDName;
+    public String getFirstDName() {
+        return FirstDName;
     }
 
-    public void setOneDName(String oneDName) {
-        this.oneDName = oneDName;
+    public void setFirstDName(String firstDName) {
+        FirstDName = firstDName;
     }
 
     public String getTypeName() {

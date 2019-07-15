@@ -23,19 +23,25 @@ public interface DepartmentService {
     Boolean editOne(Department department);
 
     /**
-     * 查询所有
+     * 查询所有一级部门
      */
-    List<Department> findAllDepartments();
+    List<Department> findAllFirst();
 
     /**
-     * 返回json下拉列表
+     * 查询所有二级部门
      */
-    String departmentTree();
+    List<Department> findAllSecondFromOne();
 
     /**
      * 删除单条
      * @param departmentID
      * @return
      */
-    Boolean removeOneDepartment(int departmentID);
+    Boolean removeOne(int departmentID);
+
+    /**
+     * 返回json下拉列表
+     */
+    String departmentTree();
+
 }

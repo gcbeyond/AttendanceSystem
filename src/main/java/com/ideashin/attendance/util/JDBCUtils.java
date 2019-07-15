@@ -27,7 +27,6 @@ public class JDBCUtils {
 		return conn;
 	}
 
-
 	/**
 	 * 开始事务
 	 * @throws SQLException
@@ -96,6 +95,7 @@ public class JDBCUtils {
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * 测试
 	 * @param args

@@ -30,12 +30,13 @@ public class EmployeeServiceImpl implements EmployeeServie {
     }
 
     @Override
-    public List<Employee> findAll() {
-        return employeeDao.selectAll();
+    public List<Employee> findAll(int page, int rows) {
+        int offset = (page - 1) * rows;
+        return employeeDao.selectAll(offset, rows);
     }
 
     @Override
-    public List findSomeEmployees(String empSearch, String deptSelect) {
+    public List findSome(String empSearch, String deptSelect) {
         empSearch = "%" + empSearch + "%";
         return employeeDao.selectSome(empSearch, deptSelect);
     }
@@ -43,5 +44,10 @@ public class EmployeeServiceImpl implements EmployeeServie {
     @Override
     public Boolean removeOne(int employeeID) {
         return employeeDao.deleteOne(employeeID);
+    }
+
+    @Override
+    public int getCount() {
+        return employeeDao.getCount();
     }
 }

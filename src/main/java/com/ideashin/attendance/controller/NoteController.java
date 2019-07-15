@@ -57,11 +57,15 @@ public class NoteController extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    public void findAllNotes(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        List<Note> list = noteService.findAllNotes();
+    public void findAllNotes(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int page = Integer.valueOf(req.getParameter("page"));
+        int rows = Integer.valueOf(req.getParameter("rows"));
+        int total = noteService.getCount();
+
+        List<Note> list = noteService.findAll(page, rows);
         HashMap<String, Object> map = new HashMap<>(2);
 
-        map.put("total", list.size());
+        map.put("total", total);
         map.put("rows", list);
 
         String jsonString = JSON.toJSONString(map);
@@ -77,18 +81,22 @@ public class NoteController extends HttpServlet {
      * @param resp
      * @throws IOException
      */
-    public void findSomeNotes(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void findSomeNotes(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer noteTypeSearch = Integer.valueOf(req.getParameter("noteTypeSearch"));
         String deptSelect = req.getParameter("deptSelect");
         String empSearch = req.getParameter("empSearch");
         String dateSearchS = req.getParameter("dateSearch");
+
         Date dateSearch = null;
-        try {
-            dateSearch = new SimpleDateFormat("yyyy-MM-dd").parse(dateSearchS);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if (dateSearchS != null && !dateSearchS.equals("")) {
+            try {
+                dateSearch = new SimpleDateFormat("yyyy-MM-dd").parse(dateSearchS);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
-        List<Note> list = noteService.findSomeNotes(noteTypeSearch, deptSelect, empSearch, dateSearch);
+
+        List<Note> list = noteService.findSome(noteTypeSearch, deptSelect, empSearch, dateSearch);
         HashMap<String, Object> map = new HashMap<>(2);
 
         map.put("total", list.size());
@@ -108,9 +116,9 @@ public class NoteController extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    public void removeOneNote(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void removeOneNote(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer noteID = Integer.valueOf(req.getParameter("noteID"));
-        Boolean data = noteService.removeOneNote(noteID);
+        Boolean data = noteService.removeOne(noteID);
 
         PrintWriter out = resp.getWriter();
         out.print(data);
@@ -125,7 +133,7 @@ public class NoteController extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    public void addOneNote(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void addOneNote(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         Integer employeeID = Integer.valueOf(req.getParameter("employeeID"));
         Integer departmentID = Integer.valueOf(req.getParameter("departmentID"));

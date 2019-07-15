@@ -57,10 +57,14 @@ public class EmployeeController extends HttpServlet {
      * @throws IOException
      */
     public void findAllEmployees(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        List<Employee> list = employeeServie.findAll();
+        int page = Integer.valueOf(req.getParameter("page"));
+        int rows = Integer.valueOf(req.getParameter("rows"));
+        int total = employeeServie.getCount();
+
+        List<Employee> list = employeeServie.findAll(page, rows);
         HashMap<String, Object> map = new HashMap<>(2);
 
-        map.put("total", list.size());
+        map.put("total", total);
         map.put("rows", list);
 
         String jsonString = JSON.toJSONString(map);
@@ -80,7 +84,7 @@ public class EmployeeController extends HttpServlet {
         String empSearch = req.getParameter("empSearch");
         String deptSelect = req.getParameter("deptSelect");
 
-        List<Employee> list = employeeServie.findSomeEmployees(empSearch, deptSelect);
+        List<Employee> list = employeeServie.findSome(empSearch, deptSelect);
         System.out.println("=======" + list);
         HashMap<String, Object> map = new HashMap<>(2);
 
@@ -178,7 +182,6 @@ public class EmployeeController extends HttpServlet {
         out.flush();
         out.close();
     }
-
 
     @Override
     public void destroy() {

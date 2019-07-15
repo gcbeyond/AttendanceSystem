@@ -53,7 +53,7 @@ public class PositionController extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    public void findAllPositions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void findAllPositions(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         List<Position> list = positionService.findAll();
         HashMap<String, Object> map = new HashMap<>(2);
 
@@ -133,7 +133,7 @@ public class PositionController extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    public void positionTree(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void positionTree(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         PositionService positionService = new PositionServiceImpl();
         String json = positionService.positionTree();
 
@@ -142,6 +142,7 @@ public class PositionController extends HttpServlet {
         out.flush();
         out.close();
     }
+
     @Override
     public void destroy() {
         super.destroy();

@@ -1,10 +1,14 @@
 package com.ideashin.attendance.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.ideashin.attendance.dao.DepartmentDao;
 import com.ideashin.attendance.dao.impl.DepartmentDaoImpl;
 import com.ideashin.attendance.entity.Department;
 import com.ideashin.attendance.service.DepartmentService;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -14,6 +18,7 @@ import java.util.List;
  */
 public class DepartmentServiceImpl implements DepartmentService {
     private DepartmentDao departmentDao;
+
     public DepartmentServiceImpl() {
         departmentDao = new DepartmentDaoImpl();
     }
@@ -29,7 +34,17 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public List<Department> findAllDepartments() {
+    public List<Department> findAllFirst() {
+        return null;
+    }
+
+    @Override
+    public List<Department> findAllSecondFromOne() {
+        return null;
+    }
+
+    @Override
+    public Boolean removeOne(int departmentID) {
         return null;
     }
 
@@ -54,8 +69,39 @@ public class DepartmentServiceImpl implements DepartmentService {
         return json;
     }
 
-    @Override
-    public Boolean removeOneDepartment(int departmentID) {
-        return null;
+    public void departmentTreePut() {
+        List<Department> list = departmentDao.selectAll();
+
+        List< HashMap<String, Object>> map1L = new ArrayList();
+        List< HashMap<String, Object>> map2L = null;
+        HashMap<String, Object> map1 =null;
+        HashMap<String, Object> map2 = null;
+
+
+        for (Department d1 : list) {
+            if (d1.getParentID() == 0) {
+                map1 = new HashMap<>();
+                map2L = new ArrayList();
+
+                map1.put("id", d1.getDepartmentID());
+                map1.put("text", d1.getDepartmentName());
+
+                for (Department d2 : list) {
+                    if (d2.getParentID() == d1.getDepartmentID()){
+                        map2 = new HashMap<>();
+
+                        map2.put("id", d2.getDepartmentID());
+                        map2.put("text", d2.getDepartmentName());
+
+                        map2L.add(map2);
+                    }
+                }
+                map1.put("children", map2L);
+                map1L.add(map1);
+            }
+        }
+
+        String jsonString = JSON.toJSONString(map1L);
     }
+
 }
