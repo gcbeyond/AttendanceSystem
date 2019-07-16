@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class DepartmentDaoImpl implements DepartmentDao {
     @Override
-    public Boolean insert(Department department) {
+    public Boolean insertFirst(Department department) {
         String sql = "INSERT INTO Att_Department VALUES(?, ?, ?, ?, ?, ?, ?)";
         return DBHelper.execUpdate(sql,
                 null,
@@ -22,7 +22,22 @@ public class DepartmentDaoImpl implements DepartmentDao {
                 department.getEndTimeAM(),
                 department.getStartTimePM(),
                 department.getEndTimePM(),
-                department.getParentID()
+                0
+        );
+    }
+
+    @Override
+    public Boolean insertSecond(Department department) {
+        String sql = "INSERT INTO Att_Department VALUES(?, ?, ?, ?, ?, ? ," +
+                "(SELECT d.departmentID FROM Att_Department d WHERE d.departmentName = ? AND parentID = 0))";
+        return DBHelper.execUpdate(sql,
+                null,
+                department.getDepartmentName(),
+                department.getStartTimeAM(),
+                department.getEndTimeAM(),
+                department.getStartTimePM(),
+                department.getEndTimePM(),
+                department.getDeptSelect()
         );
     }
 
@@ -34,7 +49,6 @@ public class DepartmentDaoImpl implements DepartmentDao {
                 "   EndTimeAM = ?," +
                 "   StartTimePM = ?," +
                 "   EndTimePM = ?," +
-                "   ParentID = ?" +
                 "WHERE " +
                 "   DepartmentID = ?";
         return DBHelper.execUpdate(sql,
@@ -43,7 +57,6 @@ public class DepartmentDaoImpl implements DepartmentDao {
                 department.getEndTimeAM(),
                 department.getStartTimePM(),
                 department.getEndTimePM(),
-                department.getParentID(),
                 department.getDepartmentID()
         );
     }
@@ -55,14 +68,27 @@ public class DepartmentDaoImpl implements DepartmentDao {
     }
 
     @Override
-    public List selectAllFirst() {
-        String sql = "SELECT * FROM Att_Department WHERE ParentID = 0";
-        return DBHelper.execQuery(sql, Department.class);
+    public List selectAllFirst(int offset, int rows) {
+        String sql = "SELECT * FROM Att_Department WHERE ParentID = 0 " +
+                "\tLIMIT ?, ?";
+        return DBHelper.execQuery(sql, Department.class, offset, rows);
     }
 
     @Override
     public List selectAllSecondFromFirst(int parentID) {
         String sql = "SELECT * FROM Att_Department WHERE ParentID = ?";
         return DBHelper.execQuery(sql, Department.class, parentID);
+    }
+
+    @Override
+    public Boolean deleteOne(int departmentID) {
+        String sql = "DELETE FROM Att_Department WHERE departmentID = ?";
+        return DBHelper.execUpdate(sql, departmentID);
+    }
+
+    @Override
+    public int getCount() {
+        String sql = "SELECT COUNT(*) FROM Att_Department";
+        return DBHelper.getCount(sql);
     }
 }

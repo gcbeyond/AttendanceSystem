@@ -14,6 +14,9 @@ public class Department {
     private String endTimePM;
     private int parentID;
 
+    /** 用于暂存一级部门名称 */
+    private String deptSelect;
+
     public int getDepartmentID() {
         return departmentID;
     }
@@ -68,5 +71,13 @@ public class Department {
 
     public void setParentID(int parentID) {
         this.parentID = parentID;
+    }
+
+    public String getDeptSelect() {
+        return deptSelect;
+    }
+
+    public void setDeptSelect(String deptSelect) {
+        this.deptSelect = deptSelect;
     }
 }

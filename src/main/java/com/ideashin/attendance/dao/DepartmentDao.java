@@ -12,10 +12,17 @@ import java.util.List;
 public interface DepartmentDao {
 
     /**
-     * 增加
+     * 增加一级部门
      * @param department
      */
-    Boolean insert(Department department);
+    Boolean insertFirst(Department department);
+
+    /**
+     * 增加二级部门
+     * @param department
+     * @return
+     */
+    Boolean insertSecond(Department department);
 
     /**
      * 更新
@@ -32,11 +39,24 @@ public interface DepartmentDao {
      * 查询所有的一级部门
      * @return
      */
-    List selectAllFirst();
+    List selectAllFirst(int offset, int rows);
 
     /**
      * 查询属于某个一级部门的所有二级部门
      * @return
      */
     List selectAllSecondFromFirst(int parentID);
+
+    /**
+     * 删除单条
+     * @param departmentID
+     * @return
+     */
+    Boolean deleteOne(int departmentID);
+
+    /**
+     * 查询条数
+     * @return
+     */
+    int getCount();
 }

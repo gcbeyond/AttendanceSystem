@@ -25,12 +25,12 @@ public interface DepartmentService {
     /**
      * 查询所有一级部门
      */
-    List<Department> findAllFirst();
+    List<Department> findAllFirst(int page, int rows);
 
     /**
      * 查询所有二级部门
      */
-    List<Department> findAllSecondFromOne();
+    List<Department> findAllSecondFromOne(int parentID);
 
     /**
      * 删除单条
@@ -44,4 +44,15 @@ public interface DepartmentService {
      */
     String departmentTree();
 
+    /**
+     * 返回一级下拉列表
+     * @return
+     */
+    String departmentFirstTree();
+
+    /**
+     * 查询条数
+     * @return
+     */
+    int getCount();
 }

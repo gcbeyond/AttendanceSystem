@@ -25,51 +25,64 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Boolean addOne(Department department) {
-        return null;
+        if (department.getDeptSelect() == null || "".equals(department.getDeptSelect())) {
+            return departmentDao.insertFirst(department);
+        } else {
+            return departmentDao.insertSecond(department);
+        }
     }
 
     @Override
     public Boolean editOne(Department department) {
-        return null;
+        return departmentDao.update(department);
     }
 
     @Override
-    public List<Department> findAllFirst() {
-        return null;
+    public List<Department> findAllFirst(int page, int rows) {
+        int offset = (page - 1) * rows;
+        return departmentDao.selectAllFirst(offset, rows);
     }
 
     @Override
-    public List<Department> findAllSecondFromOne() {
-        return null;
+    public List<Department> findAllSecondFromOne(int parentID) {
+        return departmentDao.selectAllSecondFromFirst(parentID);
     }
 
     @Override
     public Boolean removeOne(int departmentID) {
-        return null;
+        return departmentDao.deleteOne(departmentID);
+    }
+
+    @Override
+    public String departmentFirstTree() {
+        List<Department> list = departmentDao.selectAll();
+
+        List< HashMap<String, Object>> mapL = new ArrayList();
+        HashMap<String, Object> map =null;
+
+
+        for (Department d1 : list) {
+            if (d1.getParentID() == 0) {
+                map = new HashMap<>();
+
+                map.put("id", d1.getDepartmentID());
+                map.put("text", d1.getDepartmentName());
+                map.put("iconCls", "icon-left05");
+
+                mapL.add(map);
+            }
+        }
+
+        return JSON.toJSONString(mapL);
+    }
+
+    @Override
+    public int getCount() {
+        return departmentDao.getCount();
     }
 
     @Override
     public String departmentTree() {
-        List<Department> list = departmentDao.selectAll();
-        String json = "[";
-        for (Department d1 : list) {
-            if (d1.getParentID() == 0) {
-                json = json + "{ \"id\": " + d1.getDepartmentID() + ", \"text\": \"" + d1.getDepartmentName() + "\",\"iconCls\":\"icon-left05\",\"children\": [";
-                for (Department d2 : list) {
-                    if (d2.getParentID() == d1.getDepartmentID()){
-                        json = json + "{\"id\": " + d2.getDepartmentID() + ", \"text\": \"" + d2.getDepartmentName() + "\", \"iconCls\":\"icon-left03\"},";
-                    }
-                }
-                json = json.substring(0, json.length() - 1);
-                json = json + "]},";
-            }
-        }
-        json = json.substring(0, json.length() - 1);
-        json = json + "]";
-        return json;
-    }
-
-    public void departmentTreePut() {
         List<Department> list = departmentDao.selectAll();
 
         List< HashMap<String, Object>> map1L = new ArrayList();
@@ -85,6 +98,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
                 map1.put("id", d1.getDepartmentID());
                 map1.put("text", d1.getDepartmentName());
+                map1.put("iconCls", "icon-left05");
 
                 for (Department d2 : list) {
                     if (d2.getParentID() == d1.getDepartmentID()){
@@ -92,6 +106,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
                         map2.put("id", d2.getDepartmentID());
                         map2.put("text", d2.getDepartmentName());
+                        map2.put("iconCls", "icon-left03");
 
                         map2L.add(map2);
                     }
@@ -101,7 +116,7 @@ public class DepartmentServiceImpl implements DepartmentService {
             }
         }
 
-        String jsonString = JSON.toJSONString(map1L);
+       return JSON.toJSONString(map1L);
     }
 
 }

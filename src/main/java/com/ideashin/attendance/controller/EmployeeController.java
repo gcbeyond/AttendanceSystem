@@ -33,9 +33,6 @@ public class EmployeeController extends HttpServlet {
             case "findAllEmployees":
                 findAllEmployees(req, resp);
                 break;
-            case "removeOneEmployee":
-                removeOneEmployee(req, resp);
-                break;
             case "addOneEmployee":
                 addOneEmployee(req, resp);
                 break;
@@ -44,6 +41,9 @@ public class EmployeeController extends HttpServlet {
                 break;
             case "findSomeEmployees":
                 findSomeEmployees(req, resp);
+                break;
+            case "removeOneEmployee":
+                removeOneEmployee(req, resp);
                 break;
             default:
         }
@@ -94,23 +94,6 @@ public class EmployeeController extends HttpServlet {
         String jsonString = JSON.toJSONString(map);
         PrintWriter out = resp.getWriter();
         out.print(jsonString);
-        out.flush();
-        out.close();
-    }
-
-    /**
-     * 删除单条
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
-     */
-    public void removeOneEmployee(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        Integer employeeID  = Integer.valueOf(req.getParameter("employeeID"));
-        Boolean data = employeeServie.removeOne(employeeID);
-
-        PrintWriter out = resp.getWriter();
-        out.print(data);
         out.flush();
         out.close();
     }
@@ -176,6 +159,23 @@ public class EmployeeController extends HttpServlet {
         employee.setEmployeeMemo(employeeMemo);
 
         Boolean data = employeeServie.editOne(employee);
+
+        PrintWriter out = resp.getWriter();
+        out.print(data);
+        out.flush();
+        out.close();
+    }
+
+    /**
+     * 删除单条
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void removeOneEmployee(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        Integer employeeID  = Integer.valueOf(req.getParameter("employeeID"));
+        Boolean data = employeeServie.removeOne(employeeID);
 
         PrintWriter out = resp.getWriter();
         out.print(data);
