@@ -6,17 +6,24 @@ package com.ideashin.attendance.entity;
  * @Blog: ideashin.com
  */
 public class Admin {
-    private int adminID;
+    private Integer adminID;
     private String adminAccount;
+    private String adminPwd;
     private String adminState;
     private String adminRight;
-    private String AdminName;
+    private String adminName;
 
-    public int getAdminID() {
+    private Integer popedomID;
+    private Integer secondDID;
+    private String secondDName;
+    private Integer firstDID;
+    private String firstDName;
+
+    public Integer getAdminID() {
         return adminID;
     }
 
-    public void setAdminID(int adminID) {
+    public void setAdminID(Integer adminID) {
         this.adminID = adminID;
     }
 
@@ -26,6 +33,14 @@ public class Admin {
 
     public void setAdminAccount(String adminAccount) {
         this.adminAccount = adminAccount;
+    }
+
+    public String getAdminPwd() {
+        return adminPwd;
+    }
+
+    public void setAdminPwd(String adminPwd) {
+        this.adminPwd = adminPwd;
     }
 
     public String getAdminState() {
@@ -45,10 +60,50 @@ public class Admin {
     }
 
     public String getAdminName() {
-        return AdminName;
+        return adminName;
     }
 
     public void setAdminName(String adminName) {
-        AdminName = adminName;
+        this.adminName = adminName;
+    }
+
+    public Integer getPopedomID() {
+        return popedomID;
+    }
+
+    public void setPopedomID(Integer popedomID) {
+        this.popedomID = popedomID;
+    }
+
+    public Integer getSecondDID() {
+        return secondDID;
+    }
+
+    public void setSecondDID(Integer secondDID) {
+        this.secondDID = secondDID;
+    }
+
+    public String getSecondDName() {
+        return secondDName;
+    }
+
+    public void setSecondDName(String secondDName) {
+        this.secondDName = secondDName;
+    }
+
+    public Integer getFirstDID() {
+        return firstDID;
+    }
+
+    public void setFirstDID(Integer firstDID) {
+        this.firstDID = firstDID;
+    }
+
+    public String getFirstDName() {
+        return firstDName;
+    }
+
+    public void setFirstDName(String firstDName) {
+        this.firstDName = firstDName;
     }
 }

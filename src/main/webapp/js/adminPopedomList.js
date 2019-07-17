@@ -1,17 +1,17 @@
 $(
     //自动获取列表
     function () {
-        initAdminPopedomList();
+        initAdminPopedomList('/controller/admin/findAllAdmins');
     }
 );
 
 //权限列表加载
-function initAdminPopedomList() {
+function initAdminPopedomList(isUrl) {
     // 加载表格
     $("#table").datagrid({
         title: "权限列表",
         iconCls: "icon-left02",
-        url: 'json/adminPopedomList.json',
+        url: isUrl,
         fitColumns: true,
         striped: true,
         pagination: true,
@@ -22,7 +22,7 @@ function initAdminPopedomList() {
         pageNumber: 1,
         nowrap: true,
         height: 'auto',
-        sortName: 'popedomID',
+        sortName: 'adminAccount',
         checkOnSelect: false,
         sortOrder: 'asc',
         toolbar: '#tabelBut',
@@ -33,12 +33,6 @@ function initAdminPopedomList() {
                 width:100,
                 align:'center'
             },
-            // {
-            //     field:'popedomID',
-            //     title:'编号',
-            //     width:100,
-            //     align:'center'
-            // },
             {
                 field:'adminAccount',
                 title:'账号',
@@ -58,16 +52,26 @@ function initAdminPopedomList() {
                 align:'center'
 
             }, {
-                field:'departmentOne',
+                field:'firstDName',
                 title:'一级部门（编号）',
                 width:100,
-                align:'center'
+                align:'center',
+                formatter:function (val, row) {
+                    if (row.secondDName != undefined) {
+                        return '<div>' + row.firstDName + '(' + row.firstDID + ')' + '</div>';
+                    }
+                }
             },
             {
-                field:'departmentTow',
+                field:'secondDName',
                 title:'二级部门（编号）',
                 width:100,
-                align:'center'
+                align:'center',
+                formatter:function (val, row) {
+                    if (row.secondDName != undefined) {
+                        return '<div>'+ row.secondDName + '(' + row.secondDID + ')' +'</div>';
+                    }
+                }
             },
             {
                 field:'adminRight',
@@ -89,12 +93,12 @@ function initAdminPopedomList() {
 }
 
 //编辑权限列表加载
-function initEditAdminPopedomList() {
+function initEditAdminPopedomList(isUrl) {
     // 加载表格
     $("#tableTow").datagrid({
         title: "权限列表",
         iconCls: "icon-left02",
-        url: 'json/adminPopedomList.json',
+        url: isUrl,
         fitColumns: true,
         striped: true,
         pagination: true,
@@ -108,7 +112,6 @@ function initEditAdminPopedomList() {
         sortName: 'employeeID',
         checkOnSelect: false,
         sortOrder: 'asc',
-        toolbar: '#tabelBut',
         columns:[[
             {
                 checkbox:true,
@@ -167,7 +170,7 @@ function editSelect() {
     $("#addBox").dialog({
         title: "权限编辑",
         width: 650,
-        height: 300,
+        height: 450,
         closed: false,
         modal: true,
         shadow: true
@@ -178,7 +181,7 @@ function editSelect() {
         adminAccount: rows.adminAccount,
         adminName: rows.adminName
     });
-    initEditAdminPopedomList();
+    initEditAdminPopedomList('/controller/admin/findOneAdmin?adminID=' + rows.adminID);
 }
 
 //删除权限
@@ -196,4 +199,13 @@ function delOne(index) {
         msg: "删除权限成功"
     });
 
+}
+
+//查询
+function findSomeAdmins() {
+    var adminName = $("#adminName").val();
+
+    initAdminPopedomList('/controller/admin/findSomeAdmins?' +
+        'adminName=' + adminName
+    );
 }

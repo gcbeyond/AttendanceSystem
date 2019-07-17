@@ -21,6 +21,7 @@ import java.util.List;
  */
 public class DepartmentController extends HttpServlet {
     private  DepartmentService departmentService;
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String opt = req.getAttribute("opt").toString();

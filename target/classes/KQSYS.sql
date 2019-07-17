@@ -191,3 +191,22 @@ WHERE
 #   AND Att_Employee.EmployeeName like '%明%'
   AND (Att_Note.EndDate > SYSDATE()
     AND Att_Note.StartDate < SYSDATE())
+
+
+SELECT
+    an.AdminID,
+    an.AdminAccount,
+    an.AdminPwd,
+    an.AdminName,
+    ap.DepartmentID SecondDID,
+    dt.DepartmentName SecondDName,
+    dt.ParentID FirstDName,
+    (SELECT DepartmentName FROM Att_Department WHERE DepartmentID = dt.ParentID) FirstDName,
+    ap.PopedomID,
+    an.AdminRight
+FROM
+    Att_Admin an LEFT JOIN Att_Adminpopedom ap
+                           ON an.AdminID = ap.AdminID
+                 LEFT JOIN att_Department dt
+                           ON ap.DepartmentID = dt.DepartmentID
+LIMIT 0, 10
