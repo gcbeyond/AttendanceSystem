@@ -71,6 +71,10 @@ public class NoteDaoImpl implements NoteDao {
                 "    Att_Employee.CardNumber,\n" +
                 "    Att_Note.EmployeeID,\n" +
                 "    Att_Employee.EmployeeName,\n" +
+                "    d.StartTimeAM,\n" +
+                "    d.EndTimeAM,\n" +
+                "    d.StartTimePM,\n" +
+                "    d.EndTimePM,\n" +
                 "    d.DepartmentID SecondDID,\n" +
                 "    d.DepartmentName SecondDName,\n" +
                 "    d.ParentID FirstDID,\n" +
@@ -107,6 +111,10 @@ public class NoteDaoImpl implements NoteDao {
                 "    Att_Employee.CardNumber,\n" +
                 "    Att_Note.EmployeeID,\n" +
                 "    Att_Employee.EmployeeName,\n" +
+                "    d.StartTimeAM,\n" +
+                "    d.EndTimeAM,\n" +
+                "    d.StartTimePM,\n" +
+                "    d.EndTimePM,\n" +
                 "    d.DepartmentID  SecondDID,\n" +
                 "    d.DepartmentName SecondDName,\n" +
                 "    d.ParentID FirstDID,\n" +

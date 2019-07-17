@@ -93,6 +93,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return DBHelper.execUpdate(sql, employeeID);
     }
 
+
     @Override
     public int getCount() {
         String sql = "SELECT COUNT(*) FROM Att_Employee";

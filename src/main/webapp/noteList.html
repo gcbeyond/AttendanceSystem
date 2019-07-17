@@ -52,94 +52,6 @@
     </div>
 </div>
 
-<!--弹出：查看弹出框-->
-<div id="selectBox" >
-    <form id="selectForm" method="post">
-        <div id="tabs1" class="easyui-tabs">
-            <div title="基本信息">
-                <table class="TailTable">
-                    <tr>
-                        <td class="TailLabel">申请人：</td>
-                        <td colspan="4">
-                            <input type="text" class="easyui-validatebox TailInput" name="employeeName">
-                            <span class="formSpan">*</span>
-                            <a id="btnFindEmp1" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="findEmp()">查询</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="TailLabel">代理人：</td>
-                        <td colspan="4">
-                            <input type="text" class="easyui-validatebox TailInput" name="operatorName">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="TailLabel">请假类型：</td>
-                        <td colspan="4">
-                            <select name="noteTypeID"  class="easyui-combobox" style="width:160px;height:30px;">
-                                <option value="">请选择类型</option>
-                                <option value="9">事假</option>
-                                <option value="10">病假</option>
-                                <option value="11">婚假</option>
-                                <option value="12">丧假</option>
-                                <option value="13">产假</option>
-                            </select>
-                            <span class="formSpan">*</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="TailLabel">填表日期：</td>
-                        <td colspan="4">
-                            <input type="text" name="fillInTime" class="easyui-datebox"style="width: 120px;height:26px;"/>
-                            <span class="formSpan">*</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="TailLabel">请假理由：</td>
-                        <td colspan="4">
-                            <textarea class="TailArea" name="cause"></textarea>
-                            <span class="formSpan">*</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="TailLabel">请假起始时间：</td>
-                        <td>
-                            <input type="text" name="startDate" class="easyui-datebox"style="width: 120px;height:26px;"/>
-                            <select class="easyui-combobox" name="startTime"  style="width:60px;height:30px;">
-                                <option value="上午">上午</option>
-                                <option value="下午">下午</option>
-                            </select>
-                            <span class="formSpan">*</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="TailLabel">请假结束时间：：</td>
-                        <td>
-                            <input type="text" name="endDate" class="easyui-datebox"style="width: 120px;height:26px;"/>
-                            <select class="easyui-combobox"name="endTime" style="width:60px;height:30px;">
-                                <option value="上午">上午</option>
-                                <option value="下午">下午</option>
-                            </select>
-                            <span class="formSpan">*</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="TailLabel">主管经理意见：</td>
-                        <td colspan="4"><textarea class="TailArea" name="directorSign"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td class="TailLabel">行政部经理签字：</td>
-                        <td colspan="4"><textarea class="TailArea" name="administrationSign"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td class="TailLabel">总裁审批：</td>
-                        <td colspan="4"><textarea class="TailArea" name="presidentSign"></textarea></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </form>
-</div>
-
 <!--弹出：新增弹出框-->
 <div id="addBox" >
     <form id="addForm" method="post">
@@ -151,13 +63,14 @@
                         <td colspan="4">
                             <input type="text" class="easyui-validatebox TailInput" name="employeeName">
                             <span class="formSpan">*</span>
+                            <a id="employeeAddSee" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="departmentAddSee()"></a>
                         </td>
                     </tr>
                     <tr>
                         <td class="TailLabel">代理人：</td>
                         <td colspan="4">
                             <input type="text" class="easyui-validatebox TailInput" name="operatorName">
-                        </td>
+                            <a id="operatorAddSee" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="departmentAddSee()"></a>                        </td>
                     </tr>
                     <tr>
                         <td class="TailLabel">请假类型：</td>
@@ -242,15 +155,20 @@
                     <tr>
                         <td class="TailLabel">申请人：</td>
                         <td colspan="4">
-                            <input type="text" class="easyui-validatebox TailInput" name="employeeName" >
+                            <input type="text" class="easyui-validatebox TailInput" name="employeeName" id="employeeName" >
+                            <input type="hidden" name="employeeID" id="employeeID">
+                            <input type="hidden" name="firstDName" id="firstDName">
+                            <input type="hidden" name="secondDName" id="secondDName">
                             <span class="formSpan">*</span>
-                            <a id="btnFindEmp" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="findEmp()">查询</a>
+                            <a id="employeeEditSee" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'"
+                               onclick="employeeEditSee($('#employeeID').val(), $('#employeeName').val(), $('#firstDName').val(), $('#secondDName').val())">查看</a>
                         </td>
                     </tr>
                     <tr>
                         <td class="TailLabel">代理人：</td>
                         <td colspan="4">
                             <input type="text" class="easyui-validatebox TailInput" name="operatorName">
+                            <a id="operatorEditSee" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="departmentAddSee()">查看</a>
                         </td>
                     </tr>
                     <tr>
@@ -286,8 +204,6 @@
                         <td>
                             <input type="text" id="startDate" name="startDate" class="easyui-datebox"style="width: 120px;height:26px;"/>
                             <select class="easyui-combobox" name="startTime" id="startTime" style="width:60px;height:30px;">
-                                <option value="上午">上午</option>
-                                <option value="下午">下午</option>
                             </select>
                             <span class="formSpan">*</span>
                         </td>
@@ -297,8 +213,6 @@
                         <td>
                             <input type="text" id="endDate" name="endDate" class="easyui-datebox"style="width: 120px;height:26px;"/>
                             <select class="easyui-combobox" id="endTime" name="endTime" style="width:60px;height:30px;">
-                                <option value="上午">上午</option>
-                                <option value="下午">下午</option>
                             </select>
                             <span class="formSpan">*</span>
                         </td>
@@ -321,6 +235,74 @@
                        iconCls="icon-ok" onclick="submitEdit()" >提交</a>
                     <a href="javascript:void(0)" class="easyui-linkbutton"
                        iconCls="icon-redo" onclick="clearEdit()">重置</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--查看修改界面的申请人信息-->
+<div id="editEmpSeeBox" >
+    <form id="editEmpSeeForm" method="post">
+        <div id="tabs4" class="easyui-tabs">
+            <div title="基本信息">
+                <table class="TailTable">
+                    <tr>
+                        <td class="TailLabel">员工一级部门：</td>
+                        <td colspan="4">
+                            <input type="text" class="easyui-validatebox TailInput" name="firstDName" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">员工二级部门：</td>
+                        <td colspan="4">
+                            <input type="text" class="easyui-validatebox TailInput" name="secondDName" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">员工编号：</td>
+                        <td colspan="4">
+                            <input type="text" class="easyui-validatebox TailInput" name="employeeID" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">员工姓名：</td>
+                        <td colspan="4">
+                            <input type="text" class="easyui-validatebox TailInput" name="employeeName" >
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--查看添加界面的申请人信息-->
+<div id="addEmpSeeBox" >
+    <form id="addEmpSeeForm" method="post">
+        <div id="tabs5" class="easyui-tabs">
+            <div title="基本信息">
+                <table class="TailTable">
+                    <tr>
+                        <td class="TailLabel">员工部门：</td>
+                        <input type="text" id="addEmpSeeDeptSelect" name="deptSelect" value="请选择"/>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">员工姓名：</td>
+                        <td colspan="4">
+                            <input type="text" id="addEmpSeeEmpSelect" name="employeeName" value="请选择"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="TailLabel">员工编号：</td>
+                        <td colspan="4">
+                            <input type="text" class="easyui-validatebox TailInput" name="employeeID" readonly>
+                        </td>
+                    </tr>
+                </table>
+                <div class="forSubmint">
+                    <a href="javascript:void(0)" class="easyui-linkbutton"
+                       iconCls="icon-ok" onclick="submitEmployeeName()" >确定</a>
                 </div>
             </div>
         </div>
