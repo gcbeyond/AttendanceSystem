@@ -104,7 +104,7 @@ public class NoteDaoImpl implements NoteDao {
     }
 
     @Override
-    public List selectSome(int noteTypeSearch, String deptSelect, String empSearch, Date dateSearch) {
+    public List selectSome(int noteTypeSearch, int deptSelect, String empSearch, Date dateSearch) {
         String sql = "SELECT\n" +
                 "    Att_Note.NoteID,\n" +
                 "    Att_Note.FillInTime,\n" +
@@ -141,7 +141,7 @@ public class NoteDaoImpl implements NoteDao {
                 "WHERE\n" +
                 "   (Att_Note.AdminID = ? OR ? = 0)\n" +
                 "   AND (Att_Note.NoteTypeID = ? OR ? IS NULL OR ? = '')\n" +
-                "   AND (d.DepartmentName = ? OR ? = '全部')\n" +
+                "   AND (d.DepartmentID = ? OR ? IS NULL OR ? = '')\n" +
                 "   AND (Att_Employee.EmployeeName LIKE ?) ";
         String isDateNull = dateSearch == null || "".equals(dateSearch) ? "" :
                 " AND (Att_Note.EndDate > ? AND Att_Note.StartDate < ?)";
@@ -156,6 +156,7 @@ public class NoteDaoImpl implements NoteDao {
                     noteTypeSearch,
                     deptSelect,
                     deptSelect,
+                    deptSelect,
                     empSearch
                     );
         }
@@ -165,6 +166,7 @@ public class NoteDaoImpl implements NoteDao {
                 noteTypeSearch,
                 noteTypeSearch,
                 noteTypeSearch,
+                deptSelect,
                 deptSelect,
                 deptSelect,
                 empSearch,

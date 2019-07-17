@@ -63,14 +63,14 @@
                         <td colspan="4">
                             <input type="text" class="easyui-validatebox TailInput" name="employeeName">
                             <span class="formSpan">*</span>
-                            <a id="employeeAddSee" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="departmentAddSee()"></a>
+                            <a id="employeeAddSee" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="departmentAddSee('addEmp')">查看</a>
                         </td>
                     </tr>
                     <tr>
                         <td class="TailLabel">代理人：</td>
                         <td colspan="4">
                             <input type="text" class="easyui-validatebox TailInput" name="operatorName">
-                            <a id="operatorAddSee" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="departmentAddSee()"></a>                        </td>
+                            <a id="operatorAddSee" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="departmentAddSee('addOperator')">查看</a>                        </td>
                     </tr>
                     <tr>
                         <td class="TailLabel">请假类型：</td>
@@ -168,7 +168,7 @@
                         <td class="TailLabel">代理人：</td>
                         <td colspan="4">
                             <input type="text" class="easyui-validatebox TailInput" name="operatorName">
-                            <a id="operatorEditSee" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="departmentAddSee()">查看</a>
+                            <a id="operatorEditSee" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="departmentAddSee('editOperator')">查看</a>
                         </td>
                     </tr>
                     <tr>
@@ -284,8 +284,11 @@
             <div title="基本信息">
                 <table class="TailTable">
                     <tr>
+                        <input type="hidden" name="isEmp" id="isEmp" value="">
                         <td class="TailLabel">员工部门：</td>
-                        <input type="text" id="addEmpSeeDeptSelect" name="deptSelect" value="请选择"/>
+                        <td colspan="4">
+                            <input type="text" id="addEmpSeeDeptSelect" name="deptSelect" value="请选择"/>
+                        </td>
                     </tr>
                     <tr>
                         <td class="TailLabel">员工姓名：</td>

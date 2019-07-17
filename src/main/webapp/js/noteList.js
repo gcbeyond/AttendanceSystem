@@ -2,28 +2,24 @@ $(
     //自动获取列表
     function () {
         initNoteList('/controller/note/findAllNotes');
-    }
-);
+        // 加载部门下拉框
+        $("#deptSelect").combotree({
+            url:'json/deptTree.json',
+            // url:'/controller/department/departmentTree',
+            height:26,
+            width:'16%',
+            onBeforeSelect:function(node) {
+                var tree = $(this).tree;
+                var isLeaf = tree("isLeaf", node.target);
+                if (!isLeaf) {
+                    $("#deptSelect").treegrid(unselect)
+                }
+            }
+        })
 
-// 加载部门下拉框
-$("#deptSelect").combotree({
-    url:'/controller/department/departmentTree',
-    height:26,
-    width:'16%',
-    onSelect:function () {
-        var t=$("#deptSelect").combotree('tree');
-        var n=t.tree('getSelected');
-        var text=n.text;
-        $("#deptSelect").combotree('setValue',text);
-    },
-    onBeforeSelect:function(node) {
-        var tree = $(this).tree;
-        var isLeaf = tree("isLeaf", node.target);
-        if (!isLeaf) {
-            $("#deptSelect").treegrid(unselect)
-        }
     }
-})
+
+);
 
 //请假单列表加载
 function initNoteList(isUrl) {
@@ -217,10 +213,6 @@ function editOne(rowEdit) {
         firstDName: rows[18],
         secondDName: rows[19]
     });
-    //将input值置空，待思考：不能直接比较null应该等于""
-    if (rows[2] == "") {
-        $("#editForm input[name='operatorName']").val("");
-    }
 
     $("#editForm input[name='employeeName']").attr("readonly", "readonly");
 }
@@ -378,12 +370,12 @@ function employeeEditSee(employeeID, employeeName, firstDName, secondDName) {
 }
 
 //添加页面：查看请假人信息，部门下拉框
-function departmentAddSee() {
+function departmentAddSee(isEmp) {
     // 加载部门下拉框
     $("#addEmpSeeDeptSelect").combotree({
         url: '/controller/department/departmentTree',
         height: 26,
-        width: '16%',
+        width: '167',
         onSelect: function () {
             var t = $("#addEmpSeeDeptSelect").combotree('tree');
             var n = t.tree('getSelected');
@@ -402,7 +394,7 @@ function departmentAddSee() {
         }
     });
 
-    $("#editEmpSeeBox").dialog({
+    $("#addEmpSeeBox").dialog({
         title:"请假人信息查看",
         width: 400,
         height: 250,
@@ -410,6 +402,8 @@ function departmentAddSee() {
         modal:true,
         shadow:true
     })
+
+    $("#addEmpSeeBox input[name='isEmp']").val(isEmp);
 }
 
 //添加页面：查看请假人信息，员工姓名下拉框
@@ -418,13 +412,7 @@ function addEmpSeeEmpSelect(departmentID) {
     $("#addEmpSeeEmpSelect").combotree({
         url:'/controller/employee/employeeTree?departmentID=' + departmentID,
         height:26,
-        width:'16%',
-        onSelect:function () {
-            var t=$("#addEmpSeeEmpSelect").combotree('tree');
-            var n=t.tree('getSelected');
-            var text=n.text;
-            $("#addEmpSeeEmpSelect").combotree('setValue',text);
-        },
+        width:'167',
         onSelect:function (record) {
             $("#addEmpSeeForm input[name='employeeID']").val(record.id);
         }
@@ -432,6 +420,18 @@ function addEmpSeeEmpSelect(departmentID) {
 }
 
 function submitEmployeeName() {
-    var employeeName = $("#addEmpSeeForm input[name='employeeName']").val();
-    $("#addForm input[name='employeeName']").val(employeeName);
+    var employeeName = $("#addEmpSeeEmpSelect").combotree("getText")
+    var isEmp =  $("#addEmpSeeBox input[name='isEmp']").val();
+    if (isEmp == "addEmp") {
+        $("#addForm input[name='employeeName']").val(employeeName);
+    }
+    if (isEmp == "addOperator") {
+        $("#addForm input[name='operatorName']").val(employeeName);
+    } else {
+        $("#editForm input[name='operatorName']").val(employeeName);
+    }
+
+    $("#addEmpSeeBox").dialog({
+        closed: true
+    });
 }
