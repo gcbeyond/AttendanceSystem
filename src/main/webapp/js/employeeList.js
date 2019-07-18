@@ -10,12 +10,6 @@ $("#deptSelect").combotree({
     url:'/controller/department/departmentTree',
     height:26,
     width:'16%',
-    onSelect:function () {
-        var t=$("#deptSelect").combotree('tree');
-        var n=t.tree('getSelected');
-        var text=n.text;
-        $("#deptSelect").combotree('setValue',text);
-    },
     onBeforeSelect:function(node) {
         var tree = $(this).tree;
         var isLeaf = tree("isLeaf", node.target);
@@ -30,12 +24,6 @@ $("#deptSelect2, #deptSelect3").combotree({
     url:'/controller/department/departmentTree',
     height:26,
     width:197,
-    onSelect:function () {
-        var t=$("#deptSelect2").combotree('tree');
-        var n=t.tree('getSelected');
-        var text=n.text;
-        $("#deptSelect2").combotree('setValue',text);
-    },
     onBeforeSelect:function(node) {
         var tree = $(this).tree;
         var isLeaf = tree("isLeaf", node.target);
@@ -50,12 +38,6 @@ $("#deptSelect3").combotree({
     url:'/controller/department/departmentTree',
     height:26,
     width:197,
-    onSelect:function () {
-        var t=$("#deptSelect3").combotree('tree');
-        var n=t.tree('getSelected');
-        var text=n.text;
-        $("#deptSelect3").combotree('setValue',text);
-    },
     onBeforeSelect:function(node) {
         var tree = $(this).tree;
         var isLeaf = tree("isLeaf", node.target);
@@ -70,13 +52,6 @@ $("#positionSelect").combotree({
     url:'/controller/position/positionTree',
     height:26,
     width:'197',
-    onSelect:function () {
-        var t=$("#positionSelect").combotree('tree');
-        var n=t.tree('getSelected');
-        var text=n.text;
-        $("#positionSelect").combotree('setValue',text);
-
-    }
 })
 
 // 加载弹出职位下拉框添加
@@ -84,13 +59,6 @@ $("#positionSelect2").combotree({
     url:'/controller/position/positionTree',
     height:26,
     width:'197',
-    onSelect:function () {
-        var t=$("#positionSelect2").combotree('tree');
-        var n=t.tree('getSelected');
-        var text=n.text;
-        $("#positionSelect2").combotree('setValue',text);
-
-    }
 })
 
 //员工列表加载

@@ -82,7 +82,10 @@ public class EmployeeController extends HttpServlet {
      */
     public void findSomeEmployees(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String empSearch = req.getParameter("empSearch");
-        String deptSelect = req.getParameter("deptSelect");
+        Integer deptSelect = null;
+        if (!"全部".equals(req.getParameter("deptSelect"))) {
+            deptSelect = Integer.valueOf(req.getParameter("deptSelect"));
+        }
 
         List<Employee> list = employeeService.findSome(empSearch, deptSelect);
         System.out.println("=======" + list);
@@ -108,8 +111,8 @@ public class EmployeeController extends HttpServlet {
 
         String employeeName = req.getParameter("employeeName");
         String employeeGender = req.getParameter("employeeGender");
-        String departmentName = req.getParameter("departmentName");
-        String positionName = req.getParameter("positionName");
+        Integer departmentID = Integer.valueOf(req.getParameter("departmentName"));
+        Integer positionID = Integer.valueOf(req.getParameter("positionName"));
         String cardNumber = req.getParameter("cardNumber");
         String employeeState = req.getParameter("employeeState");
         String employeeMemo = req.getParameter("employeeMemo");
@@ -118,8 +121,8 @@ public class EmployeeController extends HttpServlet {
         Employee employee = new Employee();
         employee.setEmployeeName(employeeName);
         employee.setEmployeeGender(employeeGender);
-        employee.setDepartmentName(departmentName);
-        employee.setPositionName(positionName);
+        employee.setDepartmentID(departmentID);
+        employee.setPositionID(positionID);
         employee.setCardNumber(cardNumber);
         employee.setEmployeeState(employeeState);
         employee.setEmployeeMemo(employeeMemo);
@@ -142,8 +145,8 @@ public class EmployeeController extends HttpServlet {
         Integer employeeID = Integer.valueOf(req.getParameter("employeeID"));
         String employeeName = req.getParameter("employeeName");
         String employeeGender = req.getParameter("employeeGender");
-        String departmentName = req.getParameter("departmentName");
-        String positionName = req.getParameter("positionName");
+        Integer departmentID = Integer.valueOf(req.getParameter("departmentName"));
+        Integer positionID = Integer.valueOf(req.getParameter("positionName"));
         String cardNumber = req.getParameter("cardNumber");
         String employeeState = req.getParameter("employeeState");
         String employeeMemo = req.getParameter("employeeMemo");
@@ -152,8 +155,8 @@ public class EmployeeController extends HttpServlet {
         employee.setEmployeeID(employeeID);
         employee.setEmployeeName(employeeName);
         employee.setEmployeeGender(employeeGender);
-        employee.setDepartmentName(departmentName);
-        employee.setPositionName(positionName);
+        employee.setDepartmentID(departmentID);
+        employee.setPositionID(positionID);
         employee.setCardNumber(cardNumber);
         employee.setEmployeeState(employeeState);
         employee.setEmployeeMemo(employeeMemo);

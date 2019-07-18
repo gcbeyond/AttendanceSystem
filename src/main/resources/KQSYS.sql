@@ -60,6 +60,7 @@ CREATE TABLE Att_AttendanceRecord(
                                      AdminID INT NOT NULL COMMENT '外键（用户） 考勤员编号',
                                      TempDepartmentId INT NOT NULL COMMENT '外键（部门） 部门编号',
                                      NoteId INT NOT NULL COMMENT '外键（单据） 单据编号'
+
 );
 
 -- 考勤状态表:这个表没有程序
@@ -156,57 +157,58 @@ INSERT INTO Att_Note VALUES (NULL,'5', '5', '10', '生病了', '2019-01-01', '�
 
 
 
-SELECT
-    Att_Note.NoteID,
-    Att_Note.FillInTime,
-    Att_Employee.CardNumber,
-    Att_Note.EmployeeID,
-    Att_Employee.EmployeeName,
-    d.DepartmentID  twoDID,
-    d.DepartmentName twoDName,
-    d.ParentID oneDID,
-    (SELECT DepartmentName FROM Att_Department d1 WHERE d.ParentID = d1.DepartmentID) oneDName,
-    t.TypeID,
-    t.TypeName,
-    Att_Note.StartDate,
-    Att_Note.StartTime,
-    Att_Note.EndDate,
-    Att_Note.EndTime,
-    Att_note.OperatorID,
-    (SELECT e1.EmployeeName FROM Att_Employee e1 WHERE 	Att_Note.OperatorID = e1.EmployeeID) operatorName
-FROM Att_Note inner join Att_Employee
-                         ON Att_Note.EmployeeID = Att_Employee.EmployeeID
-              LEFT OUTER JOIN Att_Department d
-                              ON Att_Employee.DepartmentID = d.DepartmentID
-              LEFT OUTER JOIN Att_AttendanceType t
-                              ON Att_Note.NoteTypeID = t.TypeId
-WHERE
-    (Att_Note.AdminID = ? OR ? IS NULL OR ? = '')
-    AND (Att_Note.NoteTypeID = ? OR ? IS NULL OR ? = '')
-    AND (d.DepartmentName = ? OR ? = '全部')
-    AND (Att_Employee.EmployeeName LIKE ?)
+SELECT Att_Note.NoteID,
+       Att_Note.FillInTime,
+       Att_Employee.CardNumber,
+       Att_Note.EmployeeID,
+       Att_Employee.EmployeeName,
+       d.DepartmentID                                                                          twoDID,
+       d.DepartmentName                                                                        twoDName,
+       d.ParentID                                                                              oneDID,
+       (SELECT DepartmentName FROM Att_Department d1 WHERE d.ParentID = d1.DepartmentID)       oneDName,
+       t.TypeID,
+       t.TypeName,
+       Att_Note.StartDate,
+       Att_Note.StartTime,
+       Att_Note.EndDate,
+       Att_Note.EndTime,
+       Att_note.OperatorID,
+       (SELECT e1.EmployeeName FROM Att_Employee e1 WHERE Att_Note.OperatorID = e1.EmployeeID) operatorName
+FROM Att_Note
+         inner join Att_Employee
+                    ON Att_Note.EmployeeID = Att_Employee.EmployeeID
+         LEFT OUTER JOIN Att_Department d
+                         ON Att_Employee.DepartmentID = d.DepartmentID
+         LEFT OUTER JOIN Att_AttendanceType t
+                         ON Att_Note.NoteTypeID = t.TypeId
+WHERE (Att_Note.AdminID = ? OR ? IS NULL OR ? = '')
+  AND (Att_Note.NoteTypeID = ? OR ? IS NULL OR ? = '')
+  AND (d.DepartmentName = ? OR ? = '全部')
+  AND (Att_Employee.EmployeeName LIKE ?)
 
 #         Att_Note.AdminID = 2
 #   AND Att_Note.NoteTypeID = 13
 #   AND Att_Employee.EmployeeName like '%明%'
   AND (Att_Note.EndDate > SYSDATE()
-    AND Att_Note.StartDate < SYSDATE())
+    AND Att_Note.StartDate < SYSDATE());
+
 
 
 SELECT
-    an.AdminID,
-    an.AdminAccount,
-    an.AdminPwd,
-    an.AdminName,
-    ap.DepartmentID SecondDID,
-    dt.DepartmentName SecondDName,
-    dt.ParentID FirstDName,
-    (SELECT DepartmentName FROM Att_Department WHERE DepartmentID = dt.ParentID) FirstDName,
-    ap.PopedomID,
-    an.AdminRight
+    ee.CardNumber,
+    ee.EmployeeID,
+    ee.EmployeeName,
+    ee.DepartmentId,
+    (SELECT DepartmentName FROM att_department dt WHERE dt.DepartmentId = ee.DepartmentID) DepartmentName,
+    ar.AttendanceDate,
+    ar.AttendanceTime,
+    ar.AttendanceType,
+    ar.AttendanceMemo,
+    ar.AdminID,
+    ar.NoteId
+
 FROM
-    Att_Admin an LEFT JOIN Att_Adminpopedom ap
-                           ON an.AdminID = ap.AdminID
-                 LEFT JOIN att_Department dt
-                           ON ap.DepartmentID = dt.DepartmentID
-LIMIT 0, 10
+    att_employee ee LEFT JOIN att_attendancerecord ar ON ee.EmployeeID = ar.EmployeeID
+
+
+

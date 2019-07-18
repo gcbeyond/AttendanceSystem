@@ -31,19 +31,19 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public List<Note> findAll(int page, int rows) {
+    public List<Note> findAll(Integer page, Integer rows) {
         int offset = (page - 1) * rows;
         return noteDao.selectAll(offset, rows);
     }
 
     @Override
-    public List findSome(int noteTypeSearch, int deptSelect, String empSearch, Date dateSearch) {
+    public List findSome(Integer noteTypeSearch, Integer deptSelect, String empSearch, Date dateSearch) {
         empSearch = "%" + empSearch + "%";
         return noteDao.selectSome(noteTypeSearch, deptSelect, empSearch, dateSearch);
     }
 
     @Override
-    public Boolean removeOne(int noteID) {
+    public Boolean removeOne(Integer noteID) {
         return noteDao.deleteOne(noteID);
     }
 

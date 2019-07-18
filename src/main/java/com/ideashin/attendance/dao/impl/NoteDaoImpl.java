@@ -82,7 +82,7 @@ public class NoteDaoImpl implements NoteDao {
     }
 
     @Override
-    public List selectAll(int offset, int rows) {
+    public List selectAll(Integer offset, Integer rows) {
         String sql = "SELECT\n" +
                 "    Att_Note.NoteID,\n" +
                 "    Att_Note.FillInTime,\n" +
@@ -118,7 +118,7 @@ public class NoteDaoImpl implements NoteDao {
     }
 
     @Override
-    public List selectSome(int noteTypeSearch, int deptSelect, String empSearch, Date dateSearch) {
+    public List selectSome(Integer noteTypeSearch, Integer deptSelect, String empSearch, Date dateSearch) {
         String sql = "SELECT\n" +
                 "    Att_Note.NoteID,\n" +
                 "    Att_Note.FillInTime,\n" +
@@ -189,7 +189,7 @@ public class NoteDaoImpl implements NoteDao {
     }
 
     @Override
-    public Boolean deleteOne(int noteID) {
+    public Boolean deleteOne(Integer noteID) {
         String sql = "DELETE FROM Att_Note WHERE NoteID = ?";
         Boolean  result = DBHelper.execUpdate(sql, noteID);
         return result;

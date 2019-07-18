@@ -1,37 +1,24 @@
 $(
     //自动获取列表
     function () {
-        initEmployeeList();
+        initAttendanceToday('/controller/attendanceRecord/findAllAttendanceRecords', formatDate(new Date()));
     }
 );
 
 // 加载部门下拉框
 $("#deptSelect").combotree({
-    url:'json/deptSelect.json',
+    url:'/controller/department/departmentTree',
     height:26,
     width:'16%',
-    onSelect:function () {
-        var t=$("#deptSelect").combotree('tree');
-        var n=t.tree('getSelected');
-        var text=n.text;
-        $("#deptSelect").combotree('setValue',text);
-
-    }
 })
 
 //出勤列表加载
-function initEmployeeList() {
-    var myJson = [
-        {"id": "1", "text": "男"},
-        {"id": "2", "text": "女"}
-    ];
-
+function initAttendanceToday(isUrl, toDay) {
     // 加载表格
     $("#table").datagrid({
-
         title: "出勤列表",
         iconCls: "icon-left02",
-        url: 'json/attendanToday.json',
+        url: isUrl,
         fitColumns: true,
         striped: true,
         pagination: true,
@@ -42,7 +29,7 @@ function initEmployeeList() {
         pageNumber: 1,
         nowrap: true,
         height: 'auto',
-        sortName: 'attendanceID',
+        sortName: 'cardNumber',
         checkOnSelect: false,
         sortOrder: 'asc',
         toolbar: '#tabelBut',
@@ -54,7 +41,7 @@ function initEmployeeList() {
                 align:'center'
             },
             {
-                field:'attendanceID',
+                field:'cardNumber',
                 title:'考勤编号',
                 width:100,
                 align:'center'
@@ -75,24 +62,21 @@ function initEmployeeList() {
                 field:'attendanceDate',
                 title:'出勤日期',
                 width:100,
-                align:'center'
+                align:'center',
+                formatter:function (val, row) {
+
+                    if(row.attendanceDate != undefined){
+                        return '<div>'+ row.attendanceDate +'</div>';
+                    }else{
+                        return '<div>'+ toDay +'</div>';
+                    }
+                }
             },
             {
                 field:'attendanceType',
                 title:'出勤状态',
                 width:100,
-                align:'center',
-                editor: {
-                    type: 'combobox',
-                    options: {
-                        data: myJson,
-                        valueField: 'id',
-                        textField: 'text',
-                        panelHeight: 'auto',
-                        editable: true,
-                        required: false
-                    }
-                }
+                align:'center'
             },
             {
                 field:"opr",
@@ -101,9 +85,8 @@ function initEmployeeList() {
                 align:'left',
                 formatter:function (val,row) {
 
-                    e = '<a  id="add" data-id="98" class=" operA"  onclick="searchOne(\'' + row.attendanceID + '\')">查询</a> ';
+                    e = '<a  id="add" data-id="98" class=" operA"  onclick="searchOne(\'' + row.cardNumber + '\')">查询</a> ';
                     return e;
-
                 }
 
             }
@@ -111,7 +94,22 @@ function initEmployeeList() {
     })
 }
 
-//编辑出勤
-function searchOne(rowEdit) {
+//查询出勤
+function findSome() {
+    var deptSelect = $("#deptSelect").val();
+    var attendanceTime = $("#attendanceTime").val();
+    var attendanceDate = $("#attendanceDate").val();
+    var isUrl = '/controller/attendanceRecord/findSomeAttendanceRecords?' +
+        'deptSelect=' + deptSelect +
+        '&attendanceDate=' + attendanceDate +
+        '&attendanceTime=' + attendanceTime;
 
+    initAttendanceToday(isUrl, attendanceDate);
+}
+
+//时间格式化
+function formatDate(val) {
+    return val.getFullYear() + "-" +
+        (val.getMonth() + 1) + "-" +
+        val.getDate();
 }

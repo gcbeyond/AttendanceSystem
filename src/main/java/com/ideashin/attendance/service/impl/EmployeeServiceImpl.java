@@ -39,19 +39,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List findSome(String empSearch, String deptSelect) {
+    public List findSome(String empSearch, Integer deptSelect) {
         empSearch = "%" + empSearch + "%";
         return employeeDao.selectSome(empSearch, deptSelect);
     }
 
     @Override
-    public List findEmpFromDept(int departmentID) {
+    public List findEmpFromDept(Integer departmentID) {
         return employeeDao.selectEmpFromDept(departmentID);
 
     }
 
     @Override
-    public Boolean removeOne(int employeeID) {
+    public Boolean removeOne(Integer employeeID) {
         return employeeDao.deleteOne(employeeID);
     }
 

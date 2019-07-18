@@ -83,7 +83,10 @@ public class NoteController extends HttpServlet {
      */
     public void findSomeNotes(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer noteTypeSearch = Integer.valueOf(req.getParameter("noteTypeSearch"));
-        Integer deptSelect =  Integer.valueOf(req.getParameter("deptSelect"));
+        Integer deptSelect = null;
+        if (!"全部".equals(req.getParameter("deptSelect"))) {
+            deptSelect = Integer.valueOf(req.getParameter("deptSelect"));
+        }
         String empSearch = req.getParameter("empSearch");
         String dateSearchS = req.getParameter("dateSearch");
 

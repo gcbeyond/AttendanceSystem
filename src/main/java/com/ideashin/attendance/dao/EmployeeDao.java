@@ -33,7 +33,7 @@ public interface EmployeeDao {
      * @param departmentID
      * @return
      */
-    List selectEmpFromDept(int departmentID);
+    List selectEmpFromDept(Integer departmentID);
 
     /**
      * 条件查询
@@ -41,14 +41,14 @@ public interface EmployeeDao {
      * @param deptSelect
      * @return
      */
-    List selectSome(String empSearch, String deptSelect);
+    List selectSome(String empSearch, Integer deptSelect);
 
     /**
      * 删除单条
      * @param employeeID
      * @return
      */
-    Boolean deleteOne(int employeeID);
+    Boolean deleteOne(Integer employeeID);
 
     /**
      * 查询条数

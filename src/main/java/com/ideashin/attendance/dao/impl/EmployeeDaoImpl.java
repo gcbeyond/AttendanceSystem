@@ -14,16 +14,13 @@ import java.util.List;
 public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     public Boolean insert(Employee employee) {
-        String sql = "INSERT INTO Att_Employee VALUES(?, ?, ?," +
-                "(SELECT PositionID FROM Att_Position WHERE Att_Position.PositionName = ?)," +
-                "(SELECT DepartmentID FROM Att_Department WHERE Att_Department.DepartmentName = ?)," +
-                " ?, ?, ?)";
+        String sql = "INSERT INTO Att_Employee VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
         return DBHelper.execUpdate(sql,
                 null,
                 employee.getEmployeeName(),
                 employee.getEmployeeGender(),
-                employee.getPositionName(),
-                employee.getDepartmentName(),
+                employee.getPositionID(),
+                employee.getDepartmentID(),
                 employee.getCardNumber(),
                 employee.getEmployeeState(),
                 employee.getEmployeeMemo()
@@ -34,15 +31,15 @@ public class EmployeeDaoImpl implements EmployeeDao {
     public Boolean update(Employee employee) { ;
         String sql = "UPDATE Att_Employee SET " +
                 "           EmployeeName = ?, EmployeeGender = ?, " +
-                "           PositionID = (SELECT  Att_Position.PositionID FROM Att_Position WHERE Att_Position.PositionName = ?)," +
-                "           DepartmentID = (SELECT  Att_Department.DepartmentID FROM Att_Department WHERE Att_Department.DepartmentName = ?), " +
+                "           PositionID = ?," +
+                "           DepartmentID =  ?, " +
                 "           CardNumber = ?, EmployeeState = ?,EmployeeMemo = ? " +
                 "       WHERE EmployeeID = ?";
         return DBHelper.execUpdate(sql,
                 employee.getEmployeeName(),
                 employee.getEmployeeGender(),
-                employee.getPositionName(),
-                employee.getDepartmentName(),
+                employee.getPositionID(),
+                employee.getDepartmentID(),
                 employee.getCardNumber(),
                 employee.getEmployeeState(),
                 employee.getEmployeeMemo(),
@@ -68,7 +65,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public List selectEmpFromDept(int departmentID) {
+    public List selectEmpFromDept(Integer departmentID) {
         String sql = "SELECT\n" +
                 "\tAtt_Employee.EmployeeID,\n" +
                 "\tAtt_Employee.EmployeeName,\n" +
@@ -84,7 +81,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public List selectSome(String empSearch, String deptSelect) {
+    public List selectSome(String empSearch, Integer deptSelect) {
         String sql = "SELECT\n" +
                 "\tAtt_Employee.EmployeeID,\n" +
                 "\tAtt_Employee.EmployeeName,\n" +
@@ -98,13 +95,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 "\tAtt_Employee.EmployeeMemo\n" +
                 "\tFrom Att_Employee\n" +
                 "\tWHERE EmployeeName like ?\n" +
-                "\tAND (DepartmentID = (SELECT DepartmentID FROM Att_Department WHERE DepartmentName = ?) OR ? = '全部')";
+                "\tAND DepartmentID = ? OR ? = '' OR ? IS NULL)";
 
-        return DBHelper.execQuery(sql, Employee.class, empSearch, deptSelect, deptSelect);
+        return DBHelper.execQuery(sql, Employee.class, empSearch, deptSelect, deptSelect, deptSelect);
     }
 
     @Override
-    public Boolean deleteOne(int employeeID) {
+    public Boolean deleteOne(Integer employeeID) {
         String sql = "DELETE FROM Att_Employee WHERE EmployeeID = ?";
         return DBHelper.execUpdate(sql, employeeID);
     }

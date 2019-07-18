@@ -1,5 +1,7 @@
 package com.ideashin.attendance.entity;
 
+import java.util.Date;
+
 /**
  * @Author: Shin
  * @Date: 2019/7/8 21:15
@@ -9,13 +11,17 @@ public class AttendanceRecord {
     private int attendanceID;
     private int employeeID;
     private String cardNumber;
-    private String attendanceDate;
+    private Date attendanceDate;
     private String attendanceTime;
     private int attendanceType;
     private String attendanceMemo;
     private int adminID;
     private int tempDepartmentId;
     private int noteId;
+
+    private String employeeName;
+    private String departmentName;
+
 
     public int getAttendanceID() {
         return attendanceID;
@@ -41,11 +47,11 @@ public class AttendanceRecord {
         this.cardNumber = cardNumber;
     }
 
-    public String getAttendanceDate() {
+    public Date getAttendanceDate() {
         return attendanceDate;
     }
 
-    public void setAttendanceDate(String attendanceDate) {
+    public void setAttendanceDate(Date attendanceDate) {
         this.attendanceDate = attendanceDate;
     }
 
@@ -95,5 +101,21 @@ public class AttendanceRecord {
 
     public void setNoteId(int noteId) {
         this.noteId = noteId;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 }

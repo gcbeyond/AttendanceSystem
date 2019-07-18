@@ -67,12 +67,22 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>adminController</servlet-name>
-        <servlet-class>com.ideashin.attendance.controller.AdminController</servlet-class>
-    </servlet>
+    <servlet-name>adminController</servlet-name>
+    <servlet-class>com.ideashin.attendance.controller.AdminController</servlet-class>
+</servlet>
 
     <servlet-mapping>
         <servlet-name>adminController</servlet-name>
         <url-pattern>/controller/admin/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>attendanceRecordController</servlet-name>
+        <servlet-class>com.ideashin.attendance.controller.AttendanceRecordController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>attendanceRecordController</servlet-name>
+        <url-pattern>/controller/attendanceRecord/*</url-pattern>
     </servlet-mapping>
 </web-app>

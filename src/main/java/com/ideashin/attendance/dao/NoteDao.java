@@ -27,7 +27,7 @@ public interface NoteDao {
     /**
      * 查询所有
      */
-    List selectAll(int offset, int rows);
+    List selectAll(Integer offset, Integer rows);
 
     /**
      * 条件查询
@@ -37,14 +37,14 @@ public interface NoteDao {
      * @param dateSearch
      * @return
      */
-    List selectSome(int noteTypeSearch, int deptSelect, String empSearch, Date dateSearch);
+    List selectSome(Integer noteTypeSearch, Integer deptSelect, String empSearch, Date dateSearch);
 
     /**
      * 删除单条
      * @param noteID
      * @return
      */
-    Boolean deleteOne(int noteID);
+    Boolean deleteOne(Integer noteID);
 
     /**
      * 查询条数

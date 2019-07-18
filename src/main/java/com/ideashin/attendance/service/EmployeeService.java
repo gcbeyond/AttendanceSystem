@@ -34,21 +34,21 @@ public interface EmployeeService {
      * @param deptSelect
      * @return
      */
-    List findSome(String empSearch, String deptSelect);
+    List findSome(String empSearch, Integer deptSelect);
 
     /**
      * 员工下拉列表
      * @param departmentID
      * @return
      */
-    List findEmpFromDept(int departmentID);
+    List findEmpFromDept(Integer departmentID);
 
     /**
      * 删除单条
      * @param employeeID
      * @return
      */
-    Boolean removeOne(int employeeID);
+    Boolean removeOne(Integer employeeID);
 
     /**
      * 查询条数

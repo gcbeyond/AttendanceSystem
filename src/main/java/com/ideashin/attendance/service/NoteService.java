@@ -27,7 +27,7 @@ public interface NoteService {
     /**
      * 查询所有
      */
-    List findAll(int page, int rows);
+    List findAll(Integer page, Integer rows);
 
     /**
      * 条件查询
@@ -37,14 +37,14 @@ public interface NoteService {
      * @param dateSearch
      * @return
      */
-    List findSome(int noteTypeSearch, int deptSelect, String empSearch, Date dateSearch);
+    List findSome(Integer noteTypeSearch, Integer deptSelect, String empSearch, Date dateSearch);
 
     /**
      * 删除单条
      * @param noteID
      * @return
      */
-    Boolean removeOne(int noteID);
+    Boolean removeOne(Integer noteID);
 
     /**
      * 查询条数
