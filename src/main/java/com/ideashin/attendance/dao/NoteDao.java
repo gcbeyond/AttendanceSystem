@@ -37,7 +37,7 @@ public interface NoteDao {
      * @param dateSearch
      * @return
      */
-    List selectSome(int noteTypeSearch, String deptSelect, String empSearch, Date dateSearch);
+    List selectSome(int noteTypeSearch, int deptSelect, String empSearch, Date dateSearch);
 
     /**
      * 删除单条

@@ -26,7 +26,7 @@ $("#deptSelect").combotree({
 })
 
 // 加载编辑框部门下拉框修改
-$("#deptSelect2").combotree({
+$("#deptSelect2, #deptSelect3").combotree({
     url:'/controller/department/departmentTree',
     height:26,
     width:197,

@@ -83,7 +83,7 @@ public class NoteController extends HttpServlet {
      */
     public void findSomeNotes(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer noteTypeSearch = Integer.valueOf(req.getParameter("noteTypeSearch"));
-        String deptSelect = req.getParameter("deptSelect");
+        Integer deptSelect =  Integer.valueOf(req.getParameter("deptSelect"));
         String empSearch = req.getParameter("empSearch");
         String dateSearchS = req.getParameter("dateSearch");
 
@@ -134,10 +134,12 @@ public class NoteController extends HttpServlet {
      * @throws IOException
      */
     public void addOneNote(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         Integer employeeID = Integer.valueOf(req.getParameter("employeeID"));
         Integer departmentID = Integer.valueOf(req.getParameter("departmentID"));
-        Integer operatorID = Integer.valueOf(req.getParameter("operatorID"));
+        Integer operatorID = null;
+        if (!"".equals(req.getParameter("operatorID")) && req.getParameter("operatorID") != null) {
+            operatorID = Integer.valueOf(req.getParameter("operatorID"));
+        }
         Integer noteTypeID = Integer.valueOf(req.getParameter("noteTypeID"));
         String  fillInTimeS = req.getParameter("fillInTime");
         String cause = req.getParameter("cause");
@@ -149,9 +151,9 @@ public class NoteController extends HttpServlet {
         String administrationSign = req.getParameter("administrationSign");
         String presidentSign = req.getParameter("presidentSign");
 
-        Integer adminID = Integer.valueOf(req.getParameter("adminID"));
-        String noteMemo = req.getParameter("noteMemo");
-        String isVerify = req.getParameter("isVerify");
+//        Integer adminID = Integer.valueOf(req.getParameter("adminID"));
+//        String noteMemo = req.getParameter("noteMemo");
+//        String isVerify = req.getParameter("isVerify");
         Date fillInTime = null;
         Date startDate = null;
         Date endDate = null;
@@ -180,7 +182,7 @@ public class NoteController extends HttpServlet {
 
         note.setAdminID(2);
         note.setNoteMemo("");
-//        note.setOperatorID();暂时不填
+        note.setIsVerify("1");
 
 
         Boolean data = noteService.addOne(note);
@@ -201,46 +203,65 @@ public class NoteController extends HttpServlet {
     public void editOneNote(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer noteID = Integer.valueOf(req.getParameter("noteID"));
         Integer employeeID = Integer.valueOf(req.getParameter("employeeID"));
-        Integer operatorID = Integer.valueOf(req.getParameter("operatorID"));
+        System.out.println(employeeID);
+        Integer departmentID = Integer.valueOf(req.getParameter("departmentID"));
+        Integer operatorID = null;
+        if (!"".equals(req.getParameter("operatorID")) && req.getParameter("operatorID") != null) {
+            operatorID = Integer.valueOf(req.getParameter("operatorID"));
+        }
         Integer noteTypeID = Integer.valueOf(req.getParameter("noteTypeID"));
-        String  fillInTime = req.getParameter("fillInTime");
+        String  fillInTimeS = req.getParameter("fillInTime");
         String cause = req.getParameter("cause");
-        String startDate = req.getParameter("startDate");
+        String startDateS = req.getParameter("startDate");
         String startTime = req.getParameter("startTime");
-        String endDate = req.getParameter("endDate");
+        String endDateS = req.getParameter("endDate");
         String endTime = req.getParameter("endTime");
         String directorSign = req.getParameter("directorSign");
         String administrationSign = req.getParameter("administrationSign");
         String presidentSign = req.getParameter("presidentSign");
 
-        Integer adminID = Integer.valueOf(req.getParameter("adminID"));
-        String noteMemo = req.getParameter("noteMemo");
-        String isVerify = req.getParameter("isVerify");
+//        Integer adminID = Integer.valueOf(req.getParameter("adminID"));
+//        String noteMemo = req.getParameter("noteMemo");
+//        String isVerify = req.getParameter("isVerify");
+
+        Date fillInTime = null;
+        Date startDate = null;
+        Date endDate = null;
+        try {
+            fillInTime = new SimpleDateFormat("yyyy-MM-dd").parse(fillInTimeS);
+            startDate = new SimpleDateFormat("yyyy-MM-dd").parse(startDateS);
+            endDate = new SimpleDateFormat("yyyy-MM-dd").parse(endDateS);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
 
         Note note = new Note();
-//                note.setDepartmentID();
-//                note.setEmployeeID();
-//                note.setNoteTypeID();
-//                note .setCause();
-//                note.setFillInTime();
-//                note.setDirectorSign();
-//                note.setAdministrationSign();
-//                note.setPresidentSign();
-//                note.setStartDate();
-//                note.setStartTime();
-//                note.setEndDate();
-//                note.setEndTime();
-//                note.setAdminID();
-//                note.setNoteMemo();
-//                note.setOperatorID();
-//        Integer noteID = Integer.valueOf(req.getParameter("noteID"));
-//        Boolean data = noteService.removeOneNote(noteID);
-//        System.out.println(noteID);
-//
-//        PrintWriter out = resp.getWriter();
-//        out.print(data);
-//        out.flush();
-//        out.close();
+        note.setNoteID(noteID);
+        note.setEmployeeID(employeeID);
+        note.setDepartmentID(departmentID);
+        note.setOperatorID(operatorID);
+        note.setNoteTypeID(noteTypeID);
+        note.setFillInTime(fillInTime);
+        note .setCause(cause);
+        note.setStartDate(startDate);
+        note.setStartTime(startTime);
+        note.setEndDate(endDate);
+        note.setEndTime(endTime);
+        note.setDirectorSign(directorSign);
+        note.setAdministrationSign(administrationSign);
+        note.setPresidentSign(presidentSign);
+
+        note.setAdminID(2);
+        note.setNoteMemo("");
+        note.setIsVerify("1");
+
+        Boolean data = noteService.editOne(note);
+
+        PrintWriter out = resp.getWriter();
+        out.print(data);
+        out.flush();
+        out.close();
     }
 
     @Override

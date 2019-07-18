@@ -1,11 +1,8 @@
 package com.ideashin.attendance.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.ideashin.attendance.dao.EmployeeDao;
 import com.ideashin.attendance.entity.Employee;
-import com.ideashin.attendance.service.DepartmentService;
-import com.ideashin.attendance.service.EmployeeServie;
-import com.ideashin.attendance.service.impl.DepartmentServiceImpl;
+import com.ideashin.attendance.service.EmployeeService;
 import com.ideashin.attendance.service.impl.EmployeeServiceImpl;
 
 import javax.servlet.ServletException;
@@ -23,7 +20,7 @@ import java.util.List;
  * @Blog: ideashin.com
  */
 public class EmployeeController extends HttpServlet {
-    private EmployeeServie employeeServie;
+    private EmployeeService employeeService;
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,6 +42,9 @@ public class EmployeeController extends HttpServlet {
             case "removeOneEmployee":
                 removeOneEmployee(req, resp);
                 break;
+            case "findEmpFromDept":
+                findEmpFromDept(req, resp);
+                break;
             default:
         }
     }
@@ -59,9 +59,9 @@ public class EmployeeController extends HttpServlet {
     public void findAllEmployees(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int page = Integer.valueOf(req.getParameter("page"));
         int rows = Integer.valueOf(req.getParameter("rows"));
-        int total = employeeServie.getCount();
+        int total = employeeService.getCount();
 
-        List<Employee> list = employeeServie.findAll(page, rows);
+        List<Employee> list = employeeService.findAll(page, rows);
         HashMap<String, Object> map = new HashMap<>(2);
 
         map.put("total", total);
@@ -84,7 +84,7 @@ public class EmployeeController extends HttpServlet {
         String empSearch = req.getParameter("empSearch");
         String deptSelect = req.getParameter("deptSelect");
 
-        List<Employee> list = employeeServie.findSome(empSearch, deptSelect);
+        List<Employee> list = employeeService.findSome(empSearch, deptSelect);
         System.out.println("=======" + list);
         HashMap<String, Object> map = new HashMap<>(2);
 
@@ -124,7 +124,7 @@ public class EmployeeController extends HttpServlet {
         employee.setEmployeeState(employeeState);
         employee.setEmployeeMemo(employeeMemo);
 
-        Boolean data = employeeServie.addOne(employee);
+        Boolean data = employeeService.addOne(employee);
 
         PrintWriter out = resp.getWriter();
         out.print(data);
@@ -158,10 +158,32 @@ public class EmployeeController extends HttpServlet {
         employee.setEmployeeState(employeeState);
         employee.setEmployeeMemo(employeeMemo);
 
-        Boolean data = employeeServie.editOne(employee);
+        Boolean data = employeeService.editOne(employee);
 
         PrintWriter out = resp.getWriter();
         out.print(data);
+        out.flush();
+        out.close();
+    }
+
+    /**
+     * 加载员工下拉框
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void findEmpFromDept(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Integer departmentID = Integer.valueOf(req.getParameter("departmentID"));
+        List<Employee> list = employeeService.findEmpFromDept(departmentID);
+        HashMap<String, Object> map = new HashMap<>(2);
+
+        map.put("total", list.size());
+        map.put("rows", list);
+
+        String jsonString = JSON.toJSONString(map);
+        PrintWriter out = resp.getWriter();
+        out.print(jsonString);
         out.flush();
         out.close();
     }
@@ -175,7 +197,7 @@ public class EmployeeController extends HttpServlet {
      */
     public void removeOneEmployee(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Integer employeeID  = Integer.valueOf(req.getParameter("employeeID"));
-        Boolean data = employeeServie.removeOne(employeeID);
+        Boolean data = employeeService.removeOne(employeeID);
 
         PrintWriter out = resp.getWriter();
         out.print(data);
@@ -186,12 +208,12 @@ public class EmployeeController extends HttpServlet {
     @Override
     public void destroy() {
         super.destroy();
-        employeeServie = null;
+        employeeService = null;
     }
 
     @Override
     public void init() throws ServletException {
         super.init();
-        employeeServie = new EmployeeServiceImpl();
+        employeeService = new EmployeeServiceImpl();
     }
 }

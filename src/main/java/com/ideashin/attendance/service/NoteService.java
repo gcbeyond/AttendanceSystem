@@ -37,7 +37,7 @@ public interface NoteService {
      * @param dateSearch
      * @return
      */
-    List findSome(int noteTypeSearch, String deptSelect, String empSearch, Date dateSearch);
+    List findSome(int noteTypeSearch, int deptSelect, String empSearch, Date dateSearch);
 
     /**
      * 删除单条

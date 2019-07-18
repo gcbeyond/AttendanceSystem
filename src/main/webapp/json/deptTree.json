@@ -1,0 +1,27 @@
+[{
+  "id": 1,
+  "text": "销售部",
+  "iconCls": "icon-left05",
+  "children": [{
+    "id": 3,
+    "text": "国内销售部",
+    "iconCls": "icon-left03"
+  }, {
+    "id": 8,
+    "text": "阿三",
+    "iconCls": "icon-left03"
+  }]
+}, {
+  "id": 4,
+  "text": "技术部",
+  "iconCls": "icon-left05",
+  "children": [{
+    "id": 6,
+    "text": "后端部",
+    "iconCls": "icon-left03"
+  }, {
+    "id": 7,
+    "text": "中间件部",
+    "iconCls": "icon-left03"
+  }]
+}]

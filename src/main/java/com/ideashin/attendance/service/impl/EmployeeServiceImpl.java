@@ -1,10 +1,13 @@
 package com.ideashin.attendance.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.ideashin.attendance.dao.EmployeeDao;
 import com.ideashin.attendance.dao.impl.EmployeeDaoImpl;
 import com.ideashin.attendance.entity.Employee;
-import com.ideashin.attendance.service.EmployeeServie;
+import com.ideashin.attendance.service.EmployeeService;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -12,7 +15,7 @@ import java.util.List;
  * @Date: 2019/7/15 0:59
  * @Blog: ideashin.com
  */
-public class EmployeeServiceImpl implements EmployeeServie {
+public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeDao employeeDao;
 
     public EmployeeServiceImpl() {
@@ -39,6 +42,12 @@ public class EmployeeServiceImpl implements EmployeeServie {
     public List findSome(String empSearch, String deptSelect) {
         empSearch = "%" + empSearch + "%";
         return employeeDao.selectSome(empSearch, deptSelect);
+    }
+
+    @Override
+    public List findEmpFromDept(int departmentID) {
+        return employeeDao.selectEmpFromDept(departmentID);
+
     }
 
     @Override

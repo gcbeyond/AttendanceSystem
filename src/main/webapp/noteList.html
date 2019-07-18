@@ -61,7 +61,9 @@
                     <tr>
                         <td class="TailLabel">申请人：</td>
                         <td colspan="4">
-                            <input type="text" class="easyui-validatebox TailInput" name="employeeName">
+                            <input type="hidden" name="employeeID"/>
+                            <input type="hidden" name="departmentID"/>
+                            <input type="text" class="easyui-validatebox TailInput" name="employeeName" readonly>
                             <span class="formSpan">*</span>
                             <a id="employeeAddSee" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="departmentAddSee('addEmp')">查看</a>
                         </td>
@@ -69,7 +71,8 @@
                     <tr>
                         <td class="TailLabel">代理人：</td>
                         <td colspan="4">
-                            <input type="text" class="easyui-validatebox TailInput" name="operatorName">
+                            <input type="hidden" name="operatorID">
+                            <input type="text" class="easyui-validatebox TailInput" name="operatorName" readonly>
                             <a id="operatorAddSee" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="departmentAddSee('addOperator')">查看</a>                        </td>
                     </tr>
                     <tr>
@@ -155,10 +158,10 @@
                     <tr>
                         <td class="TailLabel">申请人：</td>
                         <td colspan="4">
+                            <input type="hidden" name="noteID"/>
+                            <input type="hidden" name="employeeID"/>
+                            <input type="hidden" name="departmentID"/>
                             <input type="text" class="easyui-validatebox TailInput" name="employeeName" id="employeeName" >
-                            <input type="hidden" name="employeeID" id="employeeID">
-                            <input type="hidden" name="firstDName" id="firstDName">
-                            <input type="hidden" name="secondDName" id="secondDName">
                             <span class="formSpan">*</span>
                             <a id="employeeEditSee" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'"
                                onclick="employeeEditSee($('#employeeID').val(), $('#employeeName').val(), $('#firstDName').val(), $('#secondDName').val())">查看</a>
@@ -167,6 +170,7 @@
                     <tr>
                         <td class="TailLabel">代理人：</td>
                         <td colspan="4">
+                            <input type="hidden" name="operatorID"/>
                             <input type="text" class="easyui-validatebox TailInput" name="operatorName">
                             <a id="operatorEditSee" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="departmentAddSee('editOperator')">查看</a>
                         </td>
@@ -290,22 +294,10 @@
                             <input type="text" id="addEmpSeeDeptSelect" name="deptSelect" value="请选择"/>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="TailLabel">员工姓名：</td>
-                        <td colspan="4">
-                            <input type="text" id="addEmpSeeEmpSelect" name="employeeName" value="请选择"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="TailLabel">员工编号：</td>
-                        <td colspan="4">
-                            <input type="text" class="easyui-validatebox TailInput" name="employeeID" readonly>
-                        </td>
-                    </tr>
                 </table>
-                <div class="forSubmint">
-                    <a href="javascript:void(0)" class="easyui-linkbutton"
-                       iconCls="icon-ok" onclick="submitEmployeeName()" >确定</a>
+                <!--表格列表-->
+                <div class="tableCon">
+                    <table id="tableEmpSee" class="tableStyle"></table>
                 </div>
             </div>
         </div>

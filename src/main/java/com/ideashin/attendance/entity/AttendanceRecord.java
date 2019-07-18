@@ -11,7 +11,6 @@ public class AttendanceRecord {
     private String cardNumber;
     private String attendanceDate;
     private String attendanceTime;
-    private String attendanceFlag;
     private int attendanceType;
     private String attendanceMemo;
     private int adminID;
@@ -56,14 +55,6 @@ public class AttendanceRecord {
 
     public void setAttendanceTime(String attendanceTime) {
         this.attendanceTime = attendanceTime;
-    }
-
-    public String getAttendanceFlag() {
-        return attendanceFlag;
-    }
-
-    public void setAttendanceFlag(String attendanceFlag) {
-        this.attendanceFlag = attendanceFlag;
     }
 
     public int getAttendanceType() {

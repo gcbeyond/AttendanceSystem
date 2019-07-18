@@ -15,51 +15,69 @@ import java.util.List;
 public class NoteDaoImpl implements NoteDao {
     @Override
     public Boolean insert(Note note) {
-        String sql = "INSERT INTO Att_Note" +
+        String sql = "INSERT INTO Att_Note " +
                 "VALUES(?, ? ,? ,? ,? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
         return DBHelper.execUpdate(sql,
                 null,
                 note.getDepartmentID(),
                 note.getEmployeeID(),
                 note.getNoteTypeID(),
-                note .getCause(),
-                note.getFillInTime(),
+                note.getCause(),
+                new java.sql.Date(note.getFillInTime().getTime()),
                 note.getDirectorSign(),
                 note.getAdministrationSign(),
                 note.getPresidentSign(),
-                note.getStartDate(),
+                new java.sql.Date(note.getStartDate().getTime()),
                 note.getStartTime(),
-                note.getEndDate(),
+                new java.sql.Date(note.getEndDate().getTime()),
                 note.getEndTime(),
                 note.getAdminID(),
                 note.getNoteMemo(),
                 note.getOperatorID(),
-                1
+                note.getIsVerify()
         );
+
     }
 
     @Override
     public Boolean update(Note note) {
-        String sql = "UPDATE SET Att_Note" +
-                "VALUES(?, ? ,? ,? ,? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "UPDATE Att_Note SET \n" +
+                "DepartmentID= ?,\n" +
+                "EmployeeID = ?,\n" +
+                "NoteTypeID = ?,\n" +
+                "Cause = ?,\n" +
+                "FillInTime = ?,\n" +
+                "DirectorSign = ?,\n" +
+                "AdministrationSign = ?,\n" +
+                "PresidentSign = ?,\n" +
+                "StartDate = ?,\n" +
+                "StartTime = ?,\n" +
+                "EndDate = ?,\n" +
+                "EndTime = ?,\n" +
+                "AdminID = ?,\n" +
+                "NoteMemo = ?,\n" +
+                "OperatorID = ?,\n" +
+                "IsVerify = ?\n" +
+                "WHERE NoteID = ?";
         return DBHelper.execUpdate(sql,
-                note.getNoteID(),
                 note.getDepartmentID(),
                 note.getEmployeeID(),
                 note.getNoteTypeID(),
                 note .getCause(),
-                note.getFillInTime(),
+                new java.sql.Date(note.getFillInTime().getTime()),
                 note.getDirectorSign(),
                 note.getAdministrationSign(),
                 note.getPresidentSign(),
-                note.getStartDate(),
+                new java.sql.Date(note.getStartDate().getTime()),
                 note.getStartTime(),
-                note.getEndDate(),
+                new java.sql.Date(note.getEndDate().getTime()),
                 note.getEndTime(),
                 note.getAdminID(),
                 note.getNoteMemo(),
                 note.getOperatorID(),
-                1
+                note.getIsVerify(),
+                note.getNoteID()
         );
     }
 

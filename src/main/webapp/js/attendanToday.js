@@ -21,11 +21,14 @@ $("#deptSelect").combotree({
 
 //出勤列表加载
 function initEmployeeList() {
-
-    var div1 = $("#div1");
+    var myJson = [
+        {"id": "1", "text": "男"},
+        {"id": "2", "text": "女"}
+    ];
 
     // 加载表格
     $("#table").datagrid({
+
         title: "出勤列表",
         iconCls: "icon-left02",
         url: 'json/attendanToday.json',
@@ -79,9 +82,16 @@ function initEmployeeList() {
                 title:'出勤状态',
                 width:100,
                 align:'center',
-                formatter:function()
-                {
-                    return div1.html();
+                editor: {
+                    type: 'combobox',
+                    options: {
+                        data: myJson,
+                        valueField: 'id',
+                        textField: 'text',
+                        panelHeight: 'auto',
+                        editable: true,
+                        required: false
+                    }
                 }
             },
             {
@@ -90,6 +100,7 @@ function initEmployeeList() {
                 width:250,
                 align:'left',
                 formatter:function (val,row) {
+
                     e = '<a  id="add" data-id="98" class=" operA"  onclick="searchOne(\'' + row.attendanceID + '\')">查询</a> ';
                     return e;
 

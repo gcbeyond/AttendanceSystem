@@ -29,6 +29,13 @@ public interface EmployeeDao {
     List selectAll(int offset, int rows);
 
     /**
+     * 查询员工列表
+     * @param departmentID
+     * @return
+     */
+    List selectEmpFromDept(int departmentID);
+
+    /**
      * 条件查询
      * @param empSearch
      * @param deptSelect

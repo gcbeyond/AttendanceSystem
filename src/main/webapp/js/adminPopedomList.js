@@ -129,7 +129,7 @@ function initEditAdminPopedomList(isUrl) {
                 field:'adminAccount',
                 title:'账号',
                 width:100,
-                align:'center',
+                align:'center'
             },
             {
                 field:'adminName',

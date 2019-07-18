@@ -85,8 +85,9 @@ public class AdminController extends HttpServlet {
         out.print(jsonString);
         out.flush();
         out.close();
+
     }
-    
+
    private void findOneAdmin(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        Integer adminID = Integer.valueOf(req.getParameter("adminID"));
 

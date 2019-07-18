@@ -37,7 +37,7 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public List findSome(int noteTypeSearch, String deptSelect, String empSearch, Date dateSearch) {
+    public List findSome(int noteTypeSearch, int deptSelect, String empSearch, Date dateSearch) {
         empSearch = "%" + empSearch + "%";
         return noteDao.selectSome(noteTypeSearch, deptSelect, empSearch, dateSearch);
     }

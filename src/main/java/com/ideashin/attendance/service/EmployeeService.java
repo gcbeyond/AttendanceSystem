@@ -9,7 +9,7 @@ import java.util.List;
  * @Date: 2019/7/15 0:56
  * @Blog: ideashin.com
  */
-public interface EmployeeServie {
+public interface EmployeeService {
 
     /**
      * 增加
@@ -26,7 +26,7 @@ public interface EmployeeServie {
     /**
      * 查询所有
      */
-    List<Employee> findAll(int page, int rows);
+    List findAll(int page, int rows);
 
     /**
      * 条件查询
@@ -35,6 +35,13 @@ public interface EmployeeServie {
      * @return
      */
     List findSome(String empSearch, String deptSelect);
+
+    /**
+     * 员工下拉列表
+     * @param departmentID
+     * @return
+     */
+    List findEmpFromDept(int departmentID);
 
     /**
      * 删除单条

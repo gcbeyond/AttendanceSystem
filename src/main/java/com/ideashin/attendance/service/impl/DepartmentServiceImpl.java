@@ -5,6 +5,7 @@ import com.ideashin.attendance.dao.DepartmentDao;
 import com.ideashin.attendance.dao.impl.DepartmentDaoImpl;
 import com.ideashin.attendance.entity.Department;
 import com.ideashin.attendance.service.DepartmentService;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -58,7 +59,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         List<Department> list = departmentDao.selectAll();
 
         List< HashMap<String, Object>> mapL = new ArrayList();
-        HashMap<String, Object> map =null;
+        HashMap<String, Object> map = null;
 
 
         for (Department d1 : list) {
@@ -74,11 +75,6 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
 
         return JSON.toJSONString(mapL);
-    }
-
-    @Override
-    public int getCount() {
-        return departmentDao.getCount();
     }
 
     @Override
@@ -115,8 +111,13 @@ public class DepartmentServiceImpl implements DepartmentService {
                 map1L.add(map1);
             }
         }
-
+        
        return JSON.toJSONString(map1L);
+    }
+
+    @Override
+    public int getCount() {
+        return departmentDao.getCount();
     }
 
 }

@@ -68,11 +68,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public List selectEmpTree(int departmentID) {
+    public List selectEmpFromDept(int departmentID) {
         String sql = "SELECT\n" +
                 "\tAtt_Employee.EmployeeID,\n" +
-                "\tAtt_Employee.EmployeeName\n" +
-                "\tFrom Att_Employee\n" +
+                "\tAtt_Employee.EmployeeName,\n" +
+                "\tAtt_Employee.EmployeeGender,\n" +
+                "\t(SELECT PositionName FROM Att_Position WHERE Att_Position.PositionID = Att_Employee.PositionID) PositionName,\n" +
+                "\t(SELECT DepartmentName FROM Att_Department WHERE Att_Department.DepartmentID = Att_Employee.DepartmentID) DepartmentName,\n" +
+                "\tAtt_Employee.CardNumber,\n" +
+                "\tAtt_Employee.EmployeeState,\n" +
+                "\tAtt_Employee.EmployeeMemo\n" +
+                "\tFrom Att_Employee " +
                 "\tWHERE DepartmentID = ?";
         return DBHelper.execQuery(sql, Employee.class, departmentID);
     }

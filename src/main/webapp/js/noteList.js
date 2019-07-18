@@ -1,11 +1,12 @@
 $(
-    //自动获取列表
+
     function () {
+        //自动获取列表
         initNoteList('/controller/note/findAllNotes');
+
         // 加载部门下拉框
         $("#deptSelect").combotree({
-            url:'json/deptTree.json',
-            // url:'/controller/department/departmentTree',
+            url:'/controller/department/departmentTree',
             height:26,
             width:'16%',
             onBeforeSelect:function(node) {
@@ -133,10 +134,9 @@ function initNoteList(isUrl) {
                     var fillInTime = formatDate(row.fillInTime);
                     var startDate = formatDate(row.startDate);
                     var endDate = formatDate(row.endDate);
-                    var rowEdit = [row.cardNumber, row.employeeName, row.operatorCardNum, row.operatorName, row.noteTypeID,
+                    var rowEdit = [row.noteID, row.employeeID, row.employeeName, row.secondDID, row.operatorID, row.operatorName, row.noteTypeID,
                         fillInTime, row.cause, row.startTimeAM, row.endTimeAM, row.startTimePM, row.endTimePM,
-                        startDate, row.startTime, endDate, row.endTime, row.directorSign, row.administrationSign, row.presidentSign,
-                        row.firstDName, row.secondDName];
+                        startDate, row.startTime, endDate, row.endTime, row.directorSign, row.administrationSign, row.presidentSign];
 
                     e = '<a  id="add" data-id="98" class=" operA"  onclick="editOne(\'' + rowEdit + '\')">编辑</a> ';
                     d = '<a  id="add" data-id="98" class=" operA01"  onclick="removeOne(\'' + row.noteID+ '\')">删除</a> ';
@@ -196,22 +196,22 @@ function editOne(rowEdit) {
         }
     );
     $('#editForm').form('load',{
-        employeeID: rows[0],
-        employeeName: rows[1],
-        operatorID: rows[2],
-        operatorName: rows[3],
-        noteTypeID: rows[4],
-        fillInTime: rows[5],
-        cause: rows[6],
-        startDate: rows[11],
-        startTime: '9:00',
-        endDate: rows[13],
-        endTime: '11:30',
-        directorSign: rows[15],
-        administrationSign: rows[16],
-        presidentSign: rows[17],
-        firstDName: rows[18],
-        secondDName: rows[19]
+        noteID: rows[0],
+        employeeID: rows[1],
+        employeeName: rows[2],
+        departmentID: rows[3],
+        operatorID: rows[4],
+        operatorName: rows[5],
+        noteTypeID: rows[6],
+        fillInTime: rows[7],
+        cause: rows[8],
+        startDate: rows[13],
+        startTime: rows[14],
+        endDate: rows[15],
+        endTime: rows[16],
+        directorSign: rows[17],
+        administrationSign: rows[18],
+        presidentSign: rows[19]
     });
 
     $("#editForm input[name='employeeName']").attr("readonly", "readonly");
@@ -396,8 +396,8 @@ function departmentAddSee(isEmp) {
 
     $("#addEmpSeeBox").dialog({
         title:"请假人信息查看",
-        width: 400,
-        height: 250,
+        width: 550,
+        height: 350,
         closed: false,
         modal:true,
         shadow:true
@@ -408,27 +408,103 @@ function departmentAddSee(isEmp) {
 
 //添加页面：查看请假人信息，员工姓名下拉框
 function addEmpSeeEmpSelect(departmentID) {
-    // 加载部门下拉框
-    $("#addEmpSeeEmpSelect").combotree({
-        url:'/controller/employee/employeeTree?departmentID=' + departmentID,
-        height:26,
-        width:'167',
-        onSelect:function (record) {
-            $("#addEmpSeeForm input[name='employeeID']").val(record.id);
-        }
+    // 加载表格
+    $("#tableEmpSee").datagrid({
+        title: "员工列表",
+        iconCls: "icon-left02",
+        url: '/controller/employee/findEmpFromDept?departmentID=' + departmentID,
+        fitColumns: true,
+        striped: true,
+        pagination: true,
+        pageSize: 10,
+        width: '100%',
+        rownumbers: true,
+        pageList: [10, 20],
+        pageNumber: 1,
+        nowrap: true,
+        height: 'auto',
+        sortName: 'employeeID',
+        checkOnSelect: false,
+        sortOrder: 'asc',
+        columns:[[
+            {
+                checkbox:true,
+                field:'no',
+                width:100,
+                align:'center'
+            },
+            {
+                field:'employeeID',
+                title:'编号',
+                width:100,
+                align:'center'
+            },
+            {
+                field:'employeeName',
+                title:'姓名',
+                width:100,
+                align:'center'
+            },
+            {
+                field:'employeeGender',
+                title:'性别',
+                width:100,
+                align:'center',
+                formatter:function (val) {
+                    if(val=='1'){
+                        return '<div style="color: green">'+'男'+'</div>';
+                    }
+                    else{
+                        return '<div style="color: red">'+'女'+'</div>';
+                    }
+                }
+            },
+            {
+                field:'positionName',
+                title:'职位',
+                width:100,
+                align:'center'
+
+            }, {
+                field:'departmentName',
+                title:'部门',
+                width:100,
+                align:'center'
+            },
+            {
+                field:'cardNumber',
+                title:'卡号',
+                width:100,
+                align:'center'
+            },
+            {
+                field:"opr",
+                title:'操作',
+                width:100,
+                align:'center',
+                formatter:function (val,row) {
+                    e = '<a  id="add" data-id="98" class=" operA"  onclick="submitEmployeeName(\'' + row.employeeID + '\', \'' + row.employeeName + '\',  \'' + departmentID + '\')">选择</a> ';
+                    return e;
+                }
+
+            }
+        ]]
     })
 }
 
-function submitEmployeeName() {
-    var employeeName = $("#addEmpSeeEmpSelect").combotree("getText")
+function submitEmployeeName(employeeID, employeeName, departmentID) {
     var isEmp =  $("#addEmpSeeBox input[name='isEmp']").val();
     if (isEmp == "addEmp") {
         $("#addForm input[name='employeeName']").val(employeeName);
+        $("#addForm input[name='employeeID']").val(employeeID);
+        $("#addForm input[name='departmentID']").val(departmentID);
     }
     if (isEmp == "addOperator") {
         $("#addForm input[name='operatorName']").val(employeeName);
+        $("#addForm input[name='operatorID']").val(employeeID);
     } else {
         $("#editForm input[name='operatorName']").val(employeeName);
+        $("#editForm input[name='operatorID']").val(employeeID);
     }
 
     $("#addEmpSeeBox").dialog({
