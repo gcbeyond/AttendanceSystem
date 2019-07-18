@@ -135,8 +135,7 @@ function initNoteList(isUrl) {
                     var startDate = formatDate(row.startDate);
                     var endDate = formatDate(row.endDate);
                     var rowEdit = [row.noteID, row.employeeID, row.employeeName, row.secondDID, row.operatorID, row.operatorName, row.noteTypeID,
-                        fillInTime, row.cause, row.startTimeAM, row.endTimeAM, row.startTimePM, row.endTimePM,
-                        startDate, row.startTime, endDate, row.endTime, row.directorSign, row.administrationSign, row.presidentSign];
+                        fillInTime, row.case, startDate, row.startTime, endDate, row.endTime, row.directorSign, row.administrationSign, row.presidentSign];
 
                     e = '<a  id="add" data-id="98" class=" operA"  onclick="editOne(\'' + rowEdit + '\')">编辑</a> ';
                     d = '<a  id="add" data-id="98" class=" operA01"  onclick="removeOne(\'' + row.noteID+ '\')">删除</a> ';
@@ -171,30 +170,6 @@ function editOne(rowEdit) {
         shadow:true
     })
     var rows = rowEdit.split(",");
-    $("#startTime").combobox(
-        {
-            data:[
-                {id :  rows[7],
-                    text: '上午'},
-                {id :  rows[9],
-                    text: '下午'}
-            ],
-            valueField:'id',
-            textField:'text'
-        });
-
-    $("#endTime").combobox(
-        {
-            valueField:'id',
-            textField:'text',
-            data:[
-                {id :  rows[8] ,
-                    text: '上午'},
-                {id :  rows[10] ,
-                    text: '下午'}
-            ]
-        }
-    );
     $('#editForm').form('load',{
         noteID: rows[0],
         employeeID: rows[1],
@@ -205,13 +180,13 @@ function editOne(rowEdit) {
         noteTypeID: rows[6],
         fillInTime: rows[7],
         cause: rows[8],
-        startDate: rows[13],
-        startTime: rows[14],
-        endDate: rows[15],
-        endTime: rows[16],
-        directorSign: rows[17],
-        administrationSign: rows[18],
-        presidentSign: rows[19]
+        startDate: rows[9],
+        startTime: rows[10],
+        endDate: rows[11],
+        endTime: rows[12],
+        directorSign: rows[13],
+        administrationSign: rows[14],
+        presidentSign: rows[15]
     });
 
     $("#editForm input[name='employeeName']").attr("readonly", "readonly");

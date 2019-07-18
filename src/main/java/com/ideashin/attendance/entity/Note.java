@@ -47,14 +47,6 @@ public class Note {
     private String operatorCardNum;
     /** 代理人姓名 */
     private String operatorName;
-    /** 部门上午上班时间*/
-    private String startTimeAM;
-    /** 部门上午下班时间*/
-    private String endTimeAM;
-    /** 部门下午上班时间*/
-    private String startTimePM;
-    /** 部门下午下班时间*/
-    private String endTimePM;
 
     public Integer getNoteID() {
         return noteID;
@@ -264,35 +256,4 @@ public class Note {
         this.operatorName = operatorName;
     }
 
-    public String getStartTimeAM() {
-        return startTimeAM;
-    }
-
-    public void setStartTimeAM(String startTimeAM) {
-        this.startTimeAM = startTimeAM;
-    }
-
-    public String getEndTimeAM() {
-        return endTimeAM;
-    }
-
-    public void setEndTimeAM(String endTimeAM) {
-        this.endTimeAM = endTimeAM;
-    }
-
-    public String getStartTimePM() {
-        return startTimePM;
-    }
-
-    public void setStartTimePM(String startTimePM) {
-        this.startTimePM = startTimePM;
-    }
-
-    public String getEndTimePM() {
-        return endTimePM;
-    }
-
-    public void setEndTimePM(String endTimePM) {
-        this.endTimePM = endTimePM;
-    }
 }
