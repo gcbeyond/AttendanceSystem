@@ -38,7 +38,7 @@ public interface AttendanceRecordService {
      * @param attendanceTime
      * @return
      */
-    List findSome(Integer deptSelect, Date attendanceDate, String attendanceTime);
+    List findSome(Integer deptSelect, Date attendanceDate, String attendanceTime, int page, int rows);
 
     /**
      * 查询条数

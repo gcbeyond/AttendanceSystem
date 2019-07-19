@@ -7,13 +7,14 @@ $(
 
 // 加载部门下拉框
 $("#deptSelect").combotree({
-    url:'/controller/department/departmentTree',
-    height:26,
-    width:'16%',
-})
+    url: '/controller/department/departmentTree',
+    height: 26,
+    width: '16%'
+});
 
 //出勤列表加载
 function initAttendanceToday(isUrl, toDay) {
+
     // 加载表格
     $("#table").datagrid({
         title: "出勤列表",
@@ -64,7 +65,6 @@ function initAttendanceToday(isUrl, toDay) {
                 width:100,
                 align:'center',
                 formatter:function (val, row) {
-
                     if(row.attendanceDate != undefined){
                         return '<div>'+ row.attendanceDate +'</div>';
                     }else{
@@ -76,7 +76,32 @@ function initAttendanceToday(isUrl, toDay) {
                 field:'attendanceType',
                 title:'出勤状态',
                 width:100,
-                align:'center'
+                align:'center',
+                formatter : function(val, row) {
+                    var arr = new Array(13);
+                    for (var i = 0; i < 13; i++) {
+                        if ((i + 1) == row.attendanceType) {
+                            arr[i] = "<option value=\"" + (i + 1) + "\" selected>";
+                        } else {
+                            arr[i] = "<option value=\"" + (i + 1) + "\" >";
+                        }
+                    }
+                    return " <select id=\"attendanceType" + (i+1) +"\">\n" +
+                                    arr[0] + "出勤</option>\n" +
+                                    arr[1] + "公休</option>\n" +
+                                    arr[2] + "迟到</option>\n" +
+                                    arr[3] + "旷工</option>\n" +
+                                    arr[4] + "外出</option>\n" +
+                                    arr[5] + "出差</option>\n" +
+                                    arr[6] + "加班</option>\n" +
+                                    arr[7] + "倒休</option>\n" +
+                                    arr[8] + "事假</option>\n" +
+                                    arr[9] + "病假</option>\n" +
+                                    arr[10] + "婚假</option>\n" +
+                                    arr[11] + "丧假</option>\n" +
+                                    arr[12] + "产假</option>\n" +
+                            "</select>";
+                }
             },
             {
                 field:"opr",

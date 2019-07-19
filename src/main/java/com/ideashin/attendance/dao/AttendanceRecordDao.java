@@ -36,7 +36,7 @@ public interface AttendanceRecordDao {
      * @param attendanceTime
      * @return
      */
-    List selectSome(Integer deptSelect, Date attendanceDate, String attendanceTime);
+    List selectSome(Integer deptSelect, Date attendanceDate, String attendanceTime, int offset, int rows);
 
     /**
      * 查询条数

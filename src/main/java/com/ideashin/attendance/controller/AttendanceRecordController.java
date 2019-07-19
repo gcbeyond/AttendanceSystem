@@ -3,7 +3,9 @@ package com.ideashin.attendance.controller;
 import com.alibaba.fastjson.JSON;
 import com.ideashin.attendance.entity.AttendanceRecord;
 import com.ideashin.attendance.service.AttendanceRecordService;
+import com.ideashin.attendance.service.EmployeeService;
 import com.ideashin.attendance.service.impl.AttendanceRecordServiceImpl;
+import com.ideashin.attendance.service.impl.EmployeeServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -50,7 +52,8 @@ public class AttendanceRecordController extends HttpServlet {
     public void findAllAttendanceRecords(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int page = Integer.valueOf(req.getParameter("page"));
         int rows = Integer.valueOf(req.getParameter("rows"));
-        int total = attendanceRecordService.getCount();
+        EmployeeService employeeService = new EmployeeServiceImpl();
+        int total = employeeService.getCount();
 
         List<AttendanceRecord> list = attendanceRecordService.findAll(page, rows);
         HashMap<String, Object> map = new HashMap<>(2);
@@ -87,10 +90,15 @@ public class AttendanceRecordController extends HttpServlet {
             }
         }
         String attendanceTime = req.getParameter("attendanceTime");
-        List<AttendanceRecord> list = attendanceRecordService.findSome(deptSelect, attendanceDate, attendanceTime);
+        int page = Integer.valueOf(req.getParameter("page"));
+        int rows = Integer.valueOf(req.getParameter("rows"));
+        EmployeeService employeeService = new EmployeeServiceImpl();
+        int total = employeeService.getCount();
+
+        List<AttendanceRecord> list = attendanceRecordService.findSome(deptSelect, attendanceDate, attendanceTime, page, rows);
         HashMap<String, Object> map = new HashMap<>(2);
 
-        map.put("total", list.size());
+        map.put("total", total);
         map.put("rows", list);
 
         String jsonString = JSON.toJSONString(map);

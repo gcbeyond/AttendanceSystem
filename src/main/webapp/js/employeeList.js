@@ -154,7 +154,7 @@ function initEmployeeList(isUrl) {
                 align:'center',
                 formatter:function (val,row) {
                     var rowEdit = [row.employeeID, row.employeeName, row.employeeGender, row.positionName,
-                        row.departmentName, row.cardNumber, row.employeeState, row.employeeMemo]
+                        row.departmentName, row.cardNumber, row.employeeState, row.employeeMemo];
                     e = '<a  id="add" data-id="98" class=" operA"  onclick="editOne(\'' + rowEdit + '\')">编辑</a> ';
                     d = '<a  id="add" data-id="98" class=" operA01"  onclick="delOne(\'' + row.employeeID + '\')">删除</a> ';
                     return e+d;

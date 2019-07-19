@@ -45,7 +45,7 @@ public class AttendanceRecordDaoImpl implements AttendanceRecordDao {
     }
 
     @Override
-    public List selectSome(Integer deptSelect, Date attendanceDate, String attendanceTime) {
+    public List selectSome(Integer deptSelect, Date attendanceDate, String attendanceTime, int offset, int rows) {
         String sql = "SELECT\n" +
                 "    ee.CardNumber,\n" +
                 "    ee.EmployeeID,\n" +
@@ -66,16 +66,17 @@ public class AttendanceRecordDaoImpl implements AttendanceRecordDao {
                 " LEFT OUTER JOIN Att_Department dt  " +
                 "       ON ee.DepartmentID = dt.DepartmentID  "+
                 "WHERE\n" +
-                "    (ee.DepartmentID = ? OR ? IS NULL OR ? = '') \n";
-//                "    AND ar.AttendanceDate = ? \n" +
-//                "    AND ar.AttendanceTime = ? ";
+                "    (ee.DepartmentID = ? OR ? IS NULL OR ? = '') \n" +
+                "LIMIT ?, ?\n";
             return DBHelper.execQuery(sql, AttendanceRecord.class,
 
                     new java.sql.Date(attendanceDate.getTime()),
                     attendanceTime,
                     deptSelect,
                     deptSelect,
-                    deptSelect);
+                    deptSelect,
+                    offset,
+                    rows);
 
     }
 
@@ -85,5 +86,4 @@ public class AttendanceRecordDaoImpl implements AttendanceRecordDao {
         String sql = "SELECT COUNT(*) FROM Att_AttendanceRecord";
         return DBHelper.getCount(sql);
     }
-
 }

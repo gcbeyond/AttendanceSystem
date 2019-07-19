@@ -37,8 +37,8 @@ public class AttendanceRecordServiceImpl implements AttendanceRecordService {
     }
 
     @Override
-    public List findSome(Integer deptSelect, Date attendanceDate, String attendanceTime) {
-        return attendanceRecordDao.selectSome(deptSelect, attendanceDate, attendanceTime);
+    public List findSome(Integer deptSelect, Date attendanceDate, String attendanceTime, int page, int rows) {
+        return attendanceRecordDao.selectSome(deptSelect, attendanceDate, attendanceTime, page, rows);
     }
 
     @Override
