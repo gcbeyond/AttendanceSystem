@@ -135,7 +135,8 @@ function initNoteList(isUrl) {
                     var startDate = formatDate(row.startDate);
                     var endDate = formatDate(row.endDate);
                     var rowEdit = [row.noteID, row.employeeID, row.employeeName, row.secondDID, row.operatorID, row.operatorName, row.noteTypeID,
-                        fillInTime, row.case, startDate, row.startTime, endDate, row.endTime, row.directorSign, row.administrationSign, row.presidentSign];
+                        fillInTime, row.cause, startDate, row.startTime, endDate, row.endTime, row.directorSign, row.administrationSign, row.presidentSign,
+                        row.firstDName,row.secondDName];
 
                     e = '<a  id="add" data-id="98" class=" operA"  onclick="editOne(\'' + rowEdit + '\')">编辑</a> ';
                     d = '<a  id="add" data-id="98" class=" operA01"  onclick="removeOne(\'' + row.noteID+ '\')">删除</a> ';
@@ -186,7 +187,9 @@ function editOne(rowEdit) {
         endTime: rows[12],
         directorSign: rows[13],
         administrationSign: rows[14],
-        presidentSign: rows[15]
+        presidentSign: rows[15],
+        firstDName: rows[16],
+        secondDName: rows[17]
     });
 
     $("#editForm input[name='employeeName']").attr("readonly", "readonly");
@@ -251,7 +254,8 @@ function submitAdd() {
                 $("#addBox").dialog({
                     closed: true
                 });
-
+                $("#addForm").form('clear');
+                $("#table").datagrid('reload');
                 $.messager.show({
                     title: '提示',
                     msg: '信息保存成功'
@@ -279,7 +283,7 @@ function submitEdit() {
                 $("#editBox").dialog({
                     closed: true
                 });
-
+                $("#table").datagrid('reload');
                 $.messager.show({
                     title: '提示',
                     msg: '信息修改成功'

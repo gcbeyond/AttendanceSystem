@@ -47,6 +47,15 @@ public interface NoteService {
     Boolean removeOne(Integer noteID);
 
     /**
+     * 查询用户对应的表单到今日考勤
+     * @param employeeID
+     * @param attendanceDate
+     * @return
+     */
+    List findNoteToAttendance(Integer employeeID, Date attendanceDate);
+
+
+    /**
      * 查询条数
      * @return
      */

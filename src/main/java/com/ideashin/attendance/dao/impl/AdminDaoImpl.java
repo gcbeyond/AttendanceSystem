@@ -82,7 +82,7 @@ public class AdminDaoImpl implements AdminDao {
                 "\tap.PopedomID,\n" +
                 "\tan.AdminRight\n" +
                 "FROM \n" +
-                "\tAtt_Admin an LEFT JOIN Att_Adminpopedom ap\n" +
+                "\tAtt_Admin an INNER JOIN Att_Adminpopedom ap\n" +
                 "\t\tON an.AdminID = ap.AdminID\n" +
                 "\tLEFT JOIN att_Department dt\n" +
                 "\t\tON ap.DepartmentID = dt.DepartmentID\n" +

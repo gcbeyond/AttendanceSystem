@@ -67,9 +67,9 @@
     </servlet-mapping>
 
     <servlet>
-    <servlet-name>adminController</servlet-name>
-    <servlet-class>com.ideashin.attendance.controller.AdminController</servlet-class>
-</servlet>
+        <servlet-name>adminController</servlet-name>
+        <servlet-class>com.ideashin.attendance.controller.AdminController</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>adminController</servlet-name>
@@ -84,5 +84,15 @@
     <servlet-mapping>
         <servlet-name>attendanceRecordController</servlet-name>
         <url-pattern>/controller/attendanceRecord/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>adminPopedomController</servlet-name>
+        <servlet-class>com.ideashin.attendance.controller.AdminPopedomController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>adminPopedomController</servlet-name>
+        <url-pattern>/controller/adminPopedom/*</url-pattern>
     </servlet-mapping>
 </web-app>

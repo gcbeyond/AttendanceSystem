@@ -39,9 +39,18 @@ public interface AttendanceRecordDao {
     List selectSome(Integer deptSelect, Date attendanceDate, String attendanceTime, int offset, int rows);
 
     /**
+     * 今日报表统计查询
+     * @param attendanceDate
+     * @param attendanceTime
+     * @return
+     */
+    List selectStatsToday(Date attendanceDate, String attendanceTime);
+
+    /**
      * 查询条数
      * @return
      */
     int getCount();
 
+    Boolean delete(Integer attendanceID);
 }

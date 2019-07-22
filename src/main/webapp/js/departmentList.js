@@ -6,17 +6,14 @@ $(
 );
 
 // 加载部门下拉框
-$("#deptSelect").combotree({
-    url:'/controller/department/departmentFirstTree',
-    height:26,
-    width:'167',
-    onSelect:function () {
-        var t=$("#deptSelect").combotree('tree');
-        var n=t.tree('getSelected');
-        var text=n.text;
-        $("#deptSelect").combotree('setValue',text);
-    }
-})
+function deptSelect() {
+    $("#deptSelect").combotree({
+        url:'/controller/department/departmentFirstTree',
+        height:26,
+        width:'167',
+    })
+
+}
 
 //一级部门列表加载
 function initOneDepartmentList() {
@@ -101,6 +98,7 @@ function initOneDepartmentList() {
 
 //二级部门列表加载
 function initTowDepartmentList(parentID) {
+    deptSelect();
     $("#tableSecond").datagrid({
         title:"二级部门列表",
         iconCls:"icon-left02",

@@ -64,7 +64,7 @@ public class NoteDaoImpl implements NoteDao {
                 note.getDepartmentID(),
                 note.getEmployeeID(),
                 note.getNoteTypeID(),
-                note .getCause(),
+                note.getCause(),
                 new java.sql.Date(note.getFillInTime().getTime()),
                 note.getDirectorSign(),
                 note.getAdministrationSign(),
@@ -186,6 +186,38 @@ public class NoteDaoImpl implements NoteDao {
                 empSearch,
                 new java.sql.Date(dateSearch.getTime()),
                 new java.sql.Date(dateSearch.getTime()));
+    }
+
+    @Override
+    public List selectNoteToAttendance(Integer employeeID, Date attendanceDate) {
+        String sql = "SELECT\n" +
+                "    Att_Note.NoteID,\n" +
+                "    Att_Note.FillInTime,\n" +
+                "    Att_Employee.CardNumber,\n" +
+                "    Att_Note.EmployeeID,\n" +
+                "    Att_Employee.EmployeeName,\n" +
+                "    Att_Note.NoteTypeID,\n" +
+                "    t.TypeName,\n" +
+                "    Att_Note.StartDate,\n" +
+                "    Att_Note.StartTime,\n" +
+                "    Att_Note.EndDate,\n" +
+                "    Att_Note.EndTime\n" +
+                "FROM Att_Note inner join Att_Employee\n" +
+                "                         ON Att_Note.EmployeeID = Att_Employee.EmployeeID\n" +
+                "              LEFT OUTER JOIN Att_AttendanceType t\n" +
+                "                              ON Att_Note.NoteTypeID = t.TypeID\n"+
+                "WHERE\n" +
+                "   Att_Employee.employeeID = ? \n" +
+                "   AND (Att_Note.EndDate > ? AND Att_Note.StartDate < ?)";
+
+        System.out.println(DBHelper.execQuery(sql, Note.class,
+                employeeID,
+                new java.sql.Date(attendanceDate.getTime()),
+                new java.sql.Date(attendanceDate.getTime())));
+        return DBHelper.execQuery(sql, Note.class,
+                employeeID,
+                new java.sql.Date(attendanceDate.getTime()),
+                new java.sql.Date(attendanceDate.getTime()));
     }
 
     @Override

@@ -88,7 +88,6 @@ public class EmployeeController extends HttpServlet {
         }
 
         List<Employee> list = employeeService.findSome(empSearch, deptSelect);
-        System.out.println("=======" + list);
         HashMap<String, Object> map = new HashMap<>(2);
 
         map.put("total", list.size());
@@ -111,8 +110,8 @@ public class EmployeeController extends HttpServlet {
 
         String employeeName = req.getParameter("employeeName");
         String employeeGender = req.getParameter("employeeGender");
-        Integer departmentID = Integer.valueOf(req.getParameter("departmentName"));
-        Integer positionID = Integer.valueOf(req.getParameter("positionName"));
+        Integer departmentID = Integer.valueOf(req.getParameter("departmentID"));
+        Integer positionID = Integer.valueOf(req.getParameter("positionID"));
         String cardNumber = req.getParameter("cardNumber");
         String employeeState = req.getParameter("employeeState");
         String employeeMemo = req.getParameter("employeeMemo");
@@ -145,8 +144,8 @@ public class EmployeeController extends HttpServlet {
         Integer employeeID = Integer.valueOf(req.getParameter("employeeID"));
         String employeeName = req.getParameter("employeeName");
         String employeeGender = req.getParameter("employeeGender");
-        Integer departmentID = Integer.valueOf(req.getParameter("departmentName"));
-        Integer positionID = Integer.valueOf(req.getParameter("positionName"));
+        Integer departmentID = Integer.valueOf(req.getParameter("departmentID"));
+        Integer positionID = Integer.valueOf(req.getParameter("positionID"));
         String cardNumber = req.getParameter("cardNumber");
         String employeeState = req.getParameter("employeeState");
         String employeeMemo = req.getParameter("employeeMemo");

@@ -53,6 +53,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 "\tAtt_Employee.EmployeeID,\n" +
                 "\tAtt_Employee.EmployeeName,\n" +
                 "\tAtt_Employee.EmployeeGender,\n" +
+                "\tAtt_Employee.PositionID,\n" +
+                "\tAtt_Employee.DepartmentID,\n" +
                 "\t(SELECT PositionName FROM Att_Position WHERE Att_Position.PositionID = Att_Employee.PositionID) PositionName,\n" +
                 "\t(SELECT DepartmentName FROM Att_Department WHERE Att_Department.DepartmentID = Att_Employee.DepartmentID) DepartmentName,\n" +
                 "\tAtt_Employee.CardNumber,\n" +
@@ -95,7 +97,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 "\tAtt_Employee.EmployeeMemo\n" +
                 "\tFrom Att_Employee\n" +
                 "\tWHERE EmployeeName like ?\n" +
-                "\tAND DepartmentID = ? OR ? = '' OR ? IS NULL)";
+                "\tAND (DepartmentID = ? OR ? = '' OR ? IS NULL)";
 
         return DBHelper.execQuery(sql, Employee.class, empSearch, deptSelect, deptSelect, deptSelect);
     }

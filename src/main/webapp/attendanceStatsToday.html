@@ -11,35 +11,37 @@
 </head>
 <body>
 
-
 <!--页面：加载表格-->
 <div class="easyui-layout" data-options="fit:true" id="useBox">‘
     <div data-options="region:'center',split:true">
         <!--表格查询-->
         <div class="tableFind">
             <p>
-                <label>出勤日期：</label><input type="text" id="dd" class="easyui-datebox"style="width: 16%;height:26px;"/>
+                <label>出勤日期：</label><input type="text" id="attendanceDate" name="attendanceDate" class="easyui-datebox"style="width: 16%;height:26px;"/>
                 <label>出勤时段：</label>
-                <select class="easyui-combobox"style="width:160px;height:30px;">
-                    <option value="1">上午</option>
-                    <option value="2">下午</option>
+                <select class="easyui-combobox"style="width:160px;height:30px;" id="attendanceTime" name="attendanceTime">
+                    <option value="上午">上午</option>
+                    <option value="下午">下午</option>
                 </select>
-                <a id="btn" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-print'" onclick="generate()">生成公告</a>
+                <a id="btn" href="javascript:void(0)" class="easyui-linkbutton tableFindBut"  data-options="iconCls:'icon-print'" onclick="initAttendanceStatsToday()">生成公告</a>
             </p>
         </div>
 
         <!--表格列表-->
-        <div class="tableCon">
-            <table id="table" class="tableStyle"></table>
+        <div class="tableCon" style="border-top: 2px solid black;padding-left: 40px;">
+            <div id="statsToday">
+
+            </div>
         </div>
     </div>
 </div>
 
 
+
 <script src="js/jquery-easyui/jquery.min.js"></script>
 <script src="js/jquery-easyui/jquery.easyui.min.js"></script>
 <script src="js/jquery-easyui/local/easyui-lang-zh_CN.js"></script>
-<script src="js/.js"></script>
+<script src="js/attendanceStatsToday.js"></script>
 
 </body>
 </html>

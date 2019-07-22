@@ -11,26 +11,6 @@
 </head>
 <body>
 
-<!--出勤状态下拉列表-->
-<div id="div1" style="display: none;">
-    <select id="attendanceType">
-        <option value="1">出勤</option>
-        <option value="2">公休</option>
-        <option value="3">迟到</option>
-        <option value="4">旷工</option>
-        <option value="5">外出</option>
-        <option value="6">出差</option>
-        <option value="7">加班</option>
-        <option value="8">倒休</option>
-        <option value="9">事假</option>
-        <option value="10">病假</option>
-        <option value="11">婚假</option>
-        <option value="12">丧假</option>
-        <option value="13">产假</option>
-    </select>
-</div>
-
-
 <!--页面：加载表格-->
 <div class="easyui-layout" data-options="fit:true" id="useBox">‘
     <div data-options="region:'center',split:true">
@@ -53,7 +33,7 @@
             <table id="table" class="tableStyle"></table>
             <div id="tabelBut">
                 <div>
-                    <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add" onclick="obj.addBox()">保存</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" plain="true" iconCls="icon-add" onclick="saveAttendanceToday()">保存</a>
                 </div>
             </div>
         </div>
@@ -74,6 +54,14 @@
         </div>
     </form>
 </div>
+
+<!--//表单弹出框-->
+<div id="selectNoteBox">
+    <div class="tableCon">
+         <table id="noteTable" class="tableStyle"></table>
+    </div>
+</div>
+
 
 <script src="js/jquery-easyui/jquery.min.js"></script>
 <script src="js/jquery-easyui/jquery.easyui.min.js"></script>

@@ -16,12 +16,14 @@ public class AttendanceRecord {
     private int attendanceType;
     private String attendanceMemo;
     private int adminID;
-    private int tempDepartmentId;
-    private int noteId;
+    private int tempDepartmentID;
+    private int noteID;
 
     private String employeeName;
     private String departmentName;
-
+    private String secondDName;
+    private String firstDName;
+    private String TypeName;
 
     public int getAttendanceID() {
         return attendanceID;
@@ -87,20 +89,20 @@ public class AttendanceRecord {
         this.adminID = adminID;
     }
 
-    public int getTempDepartmentId() {
-        return tempDepartmentId;
+    public int getTempDepartmentID() {
+        return tempDepartmentID;
     }
 
-    public void setTempDepartmentId(int tempDepartmentId) {
-        this.tempDepartmentId = tempDepartmentId;
+    public void setTempDepartmentID(int tempDepartmentID) {
+        this.tempDepartmentID = tempDepartmentID;
     }
 
-    public int getNoteId() {
-        return noteId;
+    public int getNoteID() {
+        return noteID;
     }
 
-    public void setNoteId(int noteId) {
-        this.noteId = noteId;
+    public void setNoteID(int noteID) {
+        this.noteID = noteID;
     }
 
     public String getEmployeeName() {
@@ -117,5 +119,31 @@ public class AttendanceRecord {
 
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
+    }
+
+
+    public String getSecondDName() {
+        return secondDName;
+    }
+
+    public void setSecondDName(String secondDName) {
+        this.secondDName = secondDName;
+    }
+
+
+    public String getFirstDName() {
+        return firstDName;
+    }
+
+    public void setFirstDName(String firstDName) {
+        this.firstDName = firstDName;
+    }
+
+    public String getTypeName() {
+        return TypeName;
+    }
+
+    public void setTypeName(String typeName) {
+        TypeName = typeName;
     }
 }

@@ -48,6 +48,11 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
+    public List findNoteToAttendance(Integer employeeID, Date attendanceDate) {
+        return noteDao.selectNoteToAttendance(employeeID, attendanceDate);
+    }
+
+    @Override
     public int getCount() {
         return noteDao.getCount();
     }

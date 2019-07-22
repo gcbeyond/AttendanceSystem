@@ -38,6 +38,12 @@ public class AttendanceRecordController extends HttpServlet {
             case "findSomeAttendanceRecords":
                 findSomeAttendanceRecords(req, resp);
                 break;
+            case "addAttendanceRecord":
+                addAttendanceRecord(req, resp);
+                break;
+            case "findStatsToday":
+                findStatsToday(req, resp);
+                break;
             default:
         }
     }
@@ -108,6 +114,83 @@ public class AttendanceRecordController extends HttpServlet {
         out.close();
     }
 
+    /**
+     * 添加数据
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void addAttendanceRecord(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String attendanceIDS = req.getParameter("attendanceID");
+        if (attendanceIDS != null && !"".equals(attendanceIDS)) {
+            Integer attendanceID = Integer.valueOf(attendanceIDS);
+            attendanceRecordService.removeOne(attendanceID);
+        }
+
+        Integer employeeID = Integer.valueOf(req.getParameter("employeeID"));
+        String cardNumber = req.getParameter("cardNumber");
+        Integer attendanceType = Integer.valueOf(req.getParameter("attendanceType"));
+        Integer noteID = Integer.valueOf(req.getParameter("noteID"));
+        String attendanceDateS =  req.getParameter("attendanceDate");
+        Date attendanceDate = null;
+        if (attendanceDateS != null && !attendanceDateS.equals("")) {
+            try {
+                attendanceDate = new SimpleDateFormat("yyyy-MM-dd").parse(attendanceDateS);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        String attendanceTime = req.getParameter("attendanceTime");
+        Integer tempDepartmentID = Integer.valueOf(req.getParameter("tempDepartmentID"));
+
+        AttendanceRecord attendanceRecord = new AttendanceRecord();
+        attendanceRecord.setEmployeeID(employeeID);
+        attendanceRecord.setCardNumber(cardNumber);
+        attendanceRecord.setNoteID(noteID);
+        attendanceRecord.setAttendanceType(attendanceType);
+        attendanceRecord.setAttendanceDate(attendanceDate);
+        attendanceRecord.setAttendanceTime(attendanceTime);
+        attendanceRecord.setTempDepartmentID(tempDepartmentID);
+
+        Boolean data = attendanceRecordService.addOne(attendanceRecord);
+
+        PrintWriter out = resp.getWriter();
+        out.print(data);
+        out.flush();
+        out.close();
+    }
+
+    /**
+     * 今日报表统计
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void findStatsToday(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        Date attendanceDate = null;
+        try {
+            attendanceDate = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("attendanceDate"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        String attendanceTime = req.getParameter("attendanceTime");
+
+        List<AttendanceRecord> list = attendanceRecordService.selectStatsToday(attendanceDate, attendanceTime);
+        HashMap<String, Object> map = new HashMap<>(2);
+
+        map.put("total", list.size());
+        map.put("rows", list);
+
+        String jsonString = JSON.toJSONString(map);
+        PrintWriter out = resp.getWriter();
+        out.print(jsonString);
+        out.flush();
+        out.close();
+    }
     @Override
     public void destroy() {
         super.destroy();

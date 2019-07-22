@@ -5,6 +5,21 @@ $(
     }
 );
 
+// 加载部门下拉框
+$("#deptSelect").combotree({
+    url:'/controller/department/departmentTree',
+    height:26,
+    width:'167',
+    onBeforeSelect:function(node) {
+        var tree = $(this).tree;
+        var isLeaf = tree("isLeaf", node.target);
+        if (!isLeaf) {
+            $("#deptSelect").treegrid(unselect)
+        }
+    }
+})
+
+
 //权限列表加载
 function initAdminPopedomList(isUrl) {
     // 加载表格
@@ -34,6 +49,13 @@ function initAdminPopedomList(isUrl) {
                 align:'center'
             },
             {
+                field:'adminID',
+                title:'账号',
+                width:100,
+                align: 'center',
+                hidden:true
+            },
+            {
                 field:'adminAccount',
                 title:'账号',
                 width:100,
@@ -57,7 +79,7 @@ function initAdminPopedomList(isUrl) {
                 width:100,
                 align:'center',
                 formatter:function (val, row) {
-                    if (row.secondDName != undefined) {
+                    if (row.firstDName != undefined) {
                         return '<div>' + row.firstDName + '(' + row.firstDID + ')' + '</div>';
                     }
                 }
@@ -136,18 +158,27 @@ function initEditAdminPopedomList(isUrl) {
                 title:'用户名',
                 width:100,
                 align:'center'
-            },
-            {
-                field:'departmentOne',
+            }, {
+                field:'firstDName',
                 title:'一级部门（编号）',
                 width:100,
-                align:'center'
+                align:'center',
+                formatter:function (val, row) {
+                    if (row.firstDName != undefined) {
+                        return '<div>' + row.firstDName + '(' + row.firstDID + ')' + '</div>';
+                    }
+                }
             },
             {
-                field:'departmentTow',
+                field:'secondDName',
                 title:'二级部门（编号）',
                 width:100,
-                align:'center'
+                align:'center',
+                formatter:function (val, row) {
+                    if (row.secondDName != undefined) {
+                        return '<div>'+ row.secondDName + '(' + row.secondDID + ')' +'</div>';
+                    }
+                }
             },
             {
                 field:"opr",
@@ -178,26 +209,48 @@ function editSelect() {
 
     var rows =$("#table").datagrid("getSelected");
     $('#addForm').form('load',{
-        adminAccount: rows.adminAccount,
+        adminID: rows.adminID,
         adminName: rows.adminName
     });
     initEditAdminPopedomList('/controller/admin/findOneAdmin?adminID=' + rows.adminID);
 }
 
 //删除权限
-function delOne(index) {
+function delOne(popedomID) {
+    $.messager.confirm('提示信息', '是否删除所选择员工',
+        function (flg) {
+            if (flg) {
+                $.ajax({
+                    type: 'post',
+                    url: '/controller/adminPopedom/removeAdminPopedom',
+                    data: {
+                        popedomID: popedomID
+                    },
+                    beforeSend: function () {
+                        $("#tableTow").datagrid('loading');
 
-    $.messager.confirm("提示", "是否要删除该权限",
-        function (flag) {
-            if (flag == false) {
-                return;
+                    },
+                    success: function (data) {
+
+                        if (data == "true") {
+                            $("#tableTow").datagrid("loaded");
+                            $("#tableTow").datagrid("load");
+                            $("#tableTow").datagrid("unselectRow");
+                            $.messager.show({
+                                title: '提示信息',
+                                msg: "权限删除成功"
+                            })
+                        } else {
+                            $.messager.show({
+                                title: '警示信息',
+                                msg: "权限删除失败"
+                            })
+                        }
+                    }
+                })
             }
-        })
-    $("#table").datagrid("deleteRow", index);
-    $.messager.show({
-        title: "提示",
-        msg: "删除权限成功"
-    });
+        }
+    );
 
 }
 
@@ -208,4 +261,30 @@ function findSomeAdmins() {
     initAdminPopedomList('/controller/admin/findSomeAdmins?' +
         'adminName=' + adminName
     );
+}
+
+//提交权限分配
+function submitAdd() {
+    $("#addForm").form('submit',{
+        url:"/controller/adminPopedom/addAdminPopedom",
+        onSubmit:function () {
+            return $(this).form('validate')
+        },
+        success:function (data) {
+            if (data == "true") {
+                $("#tableTow").datagrid('reload');
+                $("#table").datagrid('reload');
+                $.messager.show({
+                    title: '提示',
+                    msg: '权限分配成功'
+                });
+            } else {
+                $.messager.show({
+                    title: '提示',
+                    msg: '权限分配失败'
+                });
+            }
+        }
+    })
+
 }

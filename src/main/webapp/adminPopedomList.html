@@ -37,38 +37,23 @@
 <div id="addBox" >
     <form id="addForm" method="post">
         <div id="tabs" class="easyui-tabs">
-            <div title="权限分配" >
+            <div title="基本信息" >
                 <div class="tableFind" style="text-align: center;width: 100%">
                     <p>
                         <label style="width: 100px">用户编号：</label>
-                        <input type="text" class="easyui-validatebox TailInput" name="adminAccount"  style="width: 160px"  readonly>
+                        <input type="text" class="easyui-validatebox TailInput" name="adminID"  style="width: 160px"  readonly>
                     </p>
                     <p>
                         <label style="width: 100px">用户名&nbsp;：</label>
                         <input type="text" class="easyui-validatebox TailInput" name="adminName" style="width: 160px"  readonly>
                     </p>
                     <p>
-                        <label style="width: 100px">一级部门：</label>
-                        <select name="departmentID" class="easyui-combobox"style="width:160px;height:30px;">
-                            <option value="">请选择</option>
-                            <option value="1">财务部</option>
-                            <option value="2">人事部</option>
-                            <option value="3">花钱不</option>
-                            <option value="4">吃饭不</option>
-                        </select>
+                        <label style="width: 100px">部门&nbsp;&nbsp;：</label>
+                        <input type="text" id="deptSelect" name="departmentID" class="TailInput" style="width: 160px"  value="请选择"/>
                     </p>
-                    <p>
-                        <label style="width: 100px">二级部门：</label>
-                        <select name="departmentID" class="easyui-combobox"style="width:160px;height:30px;">
-                            <option value="">请选择</option>
-                            <option value="1">财务部</option>
-                            <option value="2">人事部</option>
-                            <option value="3">花钱不</option>
-                            <option value="4">吃饭不</option>
-                        </select>
-                    </p>
-                    <div class="forSubmint">
-                        <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >分配</a>
+                    <div class="forSubmint" >
+                        <a href="javascript:void(0)" class="easyui-linkbutton"
+                           iconCls="icon-ok" onclick="submitAdd()" >提交</a>
                     </div>
                 </div>
             </div>

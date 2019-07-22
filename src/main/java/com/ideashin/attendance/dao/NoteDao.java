@@ -40,6 +40,14 @@ public interface NoteDao {
     List selectSome(Integer noteTypeSearch, Integer deptSelect, String empSearch, Date dateSearch);
 
     /**
+     * 查询用户对应的表单到今日考勤
+     * @param employeeID
+     * @param attendanceDate
+     * @return
+     */
+    List selectNoteToAttendance(Integer employeeID, Date attendanceDate);
+
+    /**
      * 删除单条
      * @param noteID
      * @return

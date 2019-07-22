@@ -22,7 +22,7 @@ public class AttendanceRecordServiceImpl implements AttendanceRecordService {
 
     @Override
     public Boolean addOne(AttendanceRecord attendanceRecord) {
-        return null;
+        return attendanceRecordDao.insert(attendanceRecord);
     }
 
     @Override
@@ -42,8 +42,18 @@ public class AttendanceRecordServiceImpl implements AttendanceRecordService {
     }
 
     @Override
+    public List selectStatsToday(Date attendanceDate, String attendanceTime) {
+        return attendanceRecordDao.selectStatsToday(attendanceDate, attendanceTime);
+    }
+
+    @Override
     public int getCount() {
         return attendanceRecordDao.getCount();
+    }
+
+    @Override
+    public Boolean removeOne(Integer attendanceID) {
+        return attendanceRecordDao.delete(attendanceID);
     }
 
 }

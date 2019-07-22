@@ -153,8 +153,8 @@ function initEmployeeList(isUrl) {
                 width:100,
                 align:'center',
                 formatter:function (val,row) {
-                    var rowEdit = [row.employeeID, row.employeeName, row.employeeGender, row.positionName,
-                        row.departmentName, row.cardNumber, row.employeeState, row.employeeMemo];
+                    var rowEdit = [row.employeeID, row.employeeName, row.employeeGender, row.positionID,
+                        row.departmentID, row.cardNumber, row.employeeState, row.employeeMemo];
                     e = '<a  id="add" data-id="98" class=" operA"  onclick="editOne(\'' + rowEdit + '\')">编辑</a> ';
                     d = '<a  id="add" data-id="98" class=" operA01"  onclick="delOne(\'' + row.employeeID + '\')">删除</a> ';
                     return e+d;
@@ -169,7 +169,7 @@ function initEmployeeList(isUrl) {
 //添加员工
 function addOne() {
     $("#addBox").dialog({
-        title: "员工编辑",
+        title: "员工添加",
         width: 650,
         height: 300,
         closed: false,
@@ -195,8 +195,8 @@ function editOne(rowEdit) {
         employeeID: rows[0],
         employeeName: rows[1],
         employeeGender: rows[2],
-        positionName: rows[3],
-        departmentName: rows[4],
+        positionID: rows[3],
+        departmentID: rows[4],
         cardNumber: rows[5],
         employeeState: rows[6],
         employeeMemo: rows[7]

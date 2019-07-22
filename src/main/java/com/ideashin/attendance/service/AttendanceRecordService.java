@@ -41,9 +41,18 @@ public interface AttendanceRecordService {
     List findSome(Integer deptSelect, Date attendanceDate, String attendanceTime, int page, int rows);
 
     /**
+     * 今日报表统计查询
+     * @param attendanceDate
+     * @param attendanceTime
+     * @return
+     */
+    List selectStatsToday(Date attendanceDate, String attendanceTime);
+
+    /**
      * 查询条数
      * @return
      */
     int getCount();
 
+    Boolean removeOne(Integer attendanceID);
 }

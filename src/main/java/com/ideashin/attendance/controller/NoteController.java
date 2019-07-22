@@ -46,6 +46,9 @@ public class NoteController extends HttpServlet {
             case "findSomeNotes":
                 findSomeNotes(req, resp);
                 break;
+            case "findNoteToAttendance":
+                findNoteToAttendance(req, resp);
+                break;
             default:
         }
     }
@@ -107,6 +110,32 @@ public class NoteController extends HttpServlet {
 
         String jsonString = JSON.toJSONString(map);
         PrintWriter out = resp.getWriter();
+        out.print(jsonString);
+        out.flush();
+        out.close();
+    }
+
+    public void findNoteToAttendance(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Integer employeeID = Integer.valueOf(req.getParameter("employeeID"));
+        Date attendanceDate = null;
+        try {
+            attendanceDate = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("attendanceDate"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println("--------------------");
+        System.out.println(employeeID);
+        System.out.println(attendanceDate);
+        System.out.println("--------------------");
+        List<Note> list = noteService.findNoteToAttendance(employeeID, attendanceDate);
+        HashMap<String, Object> map = new HashMap<>(2);
+
+        map.put("total", list.size());
+        map.put("rows", list);
+
+        String jsonString = JSON.toJSONString(map);
+        PrintWriter out = resp.getWriter();
+        System.out.println("json===================="+ jsonString);
         out.print(jsonString);
         out.flush();
         out.close();
@@ -206,7 +235,6 @@ public class NoteController extends HttpServlet {
     public void editOneNote(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer noteID = Integer.valueOf(req.getParameter("noteID"));
         Integer employeeID = Integer.valueOf(req.getParameter("employeeID"));
-        System.out.println(employeeID);
         Integer departmentID = Integer.valueOf(req.getParameter("departmentID"));
         Integer operatorID = null;
         if (!"".equals(req.getParameter("operatorID")) && req.getParameter("operatorID") != null) {
@@ -246,7 +274,7 @@ public class NoteController extends HttpServlet {
         note.setOperatorID(operatorID);
         note.setNoteTypeID(noteTypeID);
         note.setFillInTime(fillInTime);
-        note .setCause(cause);
+        note.setCause(cause);
         note.setStartDate(startDate);
         note.setStartTime(startTime);
         note.setEndDate(endDate);
