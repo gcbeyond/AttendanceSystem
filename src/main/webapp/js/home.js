@@ -2,13 +2,15 @@
  * Created by Administrator on 2017/11/8.
  */
 $("#calder").calendar({
-        height:200
+        height: 200
 
-})
+});
+
 $("#rightTab").tabs({
-       height:250,
-        border:false
-})
+        height: 250,
+        border: false
+});
+
 $(function(){
         var myChart = echarts.init($("#chart01")[0]);
 //app.title = '堆叠柱状图';
@@ -49,6 +51,7 @@ $(function(){
         };
         myChart.setOption(option);
 });
+
 $(function(){
         var myChart = echarts.init($("#chart02")[0]);
 //app.title = '堆叠柱状图';
@@ -124,6 +127,7 @@ $(function(){
         };
         myChart.setOption(option);
 });
+
 $(function(){
         var myChart = echarts.init($("#chart03")[0]);
 //app.title = '堆叠柱状图';
@@ -223,9 +227,11 @@ $(function(){
         };
         myChart.setOption(option);
 });
+
 function init() {
 
 }
+
 function notic() {
         $.ajax({
                 url:'',

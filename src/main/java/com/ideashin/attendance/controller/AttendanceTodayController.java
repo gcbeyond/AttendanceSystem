@@ -24,7 +24,7 @@ import java.util.List;
  * @Date: 2019/7/18 16:29
  * @Blog: ideashin.com
  */
-public class AttendanceRecordController extends HttpServlet {
+public class AttendanceTodayController extends HttpServlet {
     private AttendanceRecordService attendanceRecordService;
 
     @Override
@@ -40,9 +40,6 @@ public class AttendanceRecordController extends HttpServlet {
                 break;
             case "addAttendanceRecord":
                 addAttendanceRecord(req, resp);
-                break;
-            case "findStatsToday":
-                findStatsToday(req, resp);
                 break;
             default:
         }
@@ -61,7 +58,7 @@ public class AttendanceRecordController extends HttpServlet {
         EmployeeService employeeService = new EmployeeServiceImpl();
         int total = employeeService.getCount();
 
-        List<AttendanceRecord> list = attendanceRecordService.findAll(page, rows);
+        List<AttendanceRecord> list = attendanceRecordService.findAllAttendanceRecords(page, rows);
         HashMap<String, Object> map = new HashMap<>(2);
 
         map.put("total", total);
@@ -101,7 +98,7 @@ public class AttendanceRecordController extends HttpServlet {
         EmployeeService employeeService = new EmployeeServiceImpl();
         int total = employeeService.getCount();
 
-        List<AttendanceRecord> list = attendanceRecordService.findSome(deptSelect, attendanceDate, attendanceTime, page, rows);
+        List<AttendanceRecord> list = attendanceRecordService.findSomeAttendanceRecords(deptSelect, attendanceDate, attendanceTime, page, rows);
         HashMap<String, Object> map = new HashMap<>(2);
 
         map.put("total", total);
@@ -153,7 +150,7 @@ public class AttendanceRecordController extends HttpServlet {
         attendanceRecord.setAttendanceTime(attendanceTime);
         attendanceRecord.setTempDepartmentID(tempDepartmentID);
 
-        Boolean data = attendanceRecordService.addOne(attendanceRecord);
+        Boolean data = attendanceRecordService.addAttendanceRecord(attendanceRecord);
 
         PrintWriter out = resp.getWriter();
         out.print(data);
@@ -161,36 +158,6 @@ public class AttendanceRecordController extends HttpServlet {
         out.close();
     }
 
-    /**
-     * 今日报表统计
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
-     */
-    protected void findStatsToday(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        Date attendanceDate = null;
-        try {
-            attendanceDate = new SimpleDateFormat("yyyy-MM-dd").parse(req.getParameter("attendanceDate"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        String attendanceTime = req.getParameter("attendanceTime");
-
-        List<AttendanceRecord> list = attendanceRecordService.selectStatsToday(attendanceDate, attendanceTime);
-        HashMap<String, Object> map = new HashMap<>(2);
-
-        map.put("total", list.size());
-        map.put("rows", list);
-
-        String jsonString = JSON.toJSONString(map);
-        PrintWriter out = resp.getWriter();
-        out.print(jsonString);
-        out.flush();
-        out.close();
-    }
     @Override
     public void destroy() {
         super.destroy();

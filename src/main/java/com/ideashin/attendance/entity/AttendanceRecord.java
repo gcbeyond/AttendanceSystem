@@ -25,6 +25,20 @@ public class AttendanceRecord {
     private String firstDName;
     private String TypeName;
 
+    /** 部门综合查询需要额外添加的字段 */
+    private String status1;
+    private String status3;
+    private String status4;
+    private String status9;
+    private String status10;
+    private String status11;
+    private String status12;
+    private String status13;
+
+    /** 综合查询需要额外添加的字段 */
+    private String attendanceAM;
+    private String attendancePM;
+
     public int getAttendanceID() {
         return attendanceID;
     }
@@ -145,5 +159,85 @@ public class AttendanceRecord {
 
     public void setTypeName(String typeName) {
         TypeName = typeName;
+    }
+
+    public String getStatus1() {
+        return status1;
+    }
+
+    public void setStatus1(String status1) {
+        this.status1 = status1;
+    }
+
+    public String getStatus3() {
+        return status3;
+    }
+
+    public void setStatus3(String status3) {
+        this.status3 = status3;
+    }
+
+    public String getStatus4() {
+        return status4;
+    }
+
+    public void setStatus4(String status4) {
+        this.status4 = status4;
+    }
+
+    public String getStatus9() {
+        return status9;
+    }
+
+    public void setStatus9(String status9) {
+        this.status9 = status9;
+    }
+
+    public String getStatus10() {
+        return status10;
+    }
+
+    public void setStatus10(String status10) {
+        this.status10 = status10;
+    }
+
+    public String getStatus11() {
+        return status11;
+    }
+
+    public void setStatus11(String status11) {
+        this.status11 = status11;
+    }
+
+    public String getStatus12() {
+        return status12;
+    }
+
+    public void setStatus12(String status12) {
+        this.status12 = status12;
+    }
+
+    public String getStatus13() {
+        return status13;
+    }
+
+    public void setStatus13(String status13) {
+        this.status13 = status13;
+    }
+
+    public String getAttendanceAM() {
+        return attendanceAM;
+    }
+
+    public void setAttendanceAM(String attendanceAM) {
+        this.attendanceAM = attendanceAM;
+    }
+
+    public String getAttendancePM() {
+        return attendancePM;
+    }
+
+    public void setAttendancePM(String attendancePM) {
+        this.attendancePM = attendancePM;
     }
 }

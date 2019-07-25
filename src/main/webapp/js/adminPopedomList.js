@@ -1,7 +1,7 @@
 $(
     //自动获取列表
     function () {
-        initAdminPopedomList('/controller/admin/findAllAdmins');
+        initAdminPopedomList('/controller/adminPopedom/findAllAdmins');
     }
 );
 
@@ -18,7 +18,6 @@ $("#deptSelect").combotree({
         }
     }
 })
-
 
 //权限列表加载
 function initAdminPopedomList(isUrl) {
@@ -212,7 +211,7 @@ function editSelect() {
         adminID: rows.adminID,
         adminName: rows.adminName
     });
-    initEditAdminPopedomList('/controller/admin/findOneAdmin?adminID=' + rows.adminID);
+    initEditAdminPopedomList('/controller/adminPopedom/findOneAdmin?adminID=' + rows.adminID);
 }
 
 //删除权限
@@ -258,7 +257,7 @@ function delOne(popedomID) {
 function findSomeAdmins() {
     var adminName = $("#adminName").val();
 
-    initAdminPopedomList('/controller/admin/findSomeAdmins?' +
+    initAdminPopedomList('/controller/adminPopedom/findSomeAdmins?' +
         'adminName=' + adminName
     );
 }

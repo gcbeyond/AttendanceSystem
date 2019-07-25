@@ -194,21 +194,37 @@ WHERE (Att_Note.AdminID = ? OR ? IS NULL OR ? = '')
 
 
 
-SELECT
-    ee.CardNumber,
-    ee.EmployeeID,
-    ee.EmployeeName,
-    ee.DepartmentId,
-    (SELECT DepartmentName FROM att_department dt WHERE dt.DepartmentId = ee.DepartmentID) DepartmentName,
-    ar.AttendanceDate,
-    ar.AttendanceTime,
-    ar.AttendanceType,
-    ar.AttendanceMemo,
-    ar.AdminID,
-    ar.NoteId
+SELECT ee.CardNumber,
+       ee.EmployeeID,
+       ee.EmployeeName,
+       ee.DepartmentId,
+       (SELECT DepartmentName FROM att_department dt WHERE dt.DepartmentId = ee.DepartmentID) DepartmentName,
+       ar.AttendanceDate,
+       ar.AttendanceTime,
+       ar.AttendanceType,
+       ar.AttendanceMemo,
+       ar.AdminID,
+       ar.NoteId
 
-FROM
-    att_employee ee LEFT JOIN att_attendancerecord ar ON ee.EmployeeID = ar.EmployeeID
-
+FROM att_employee ee
+         LEFT JOIN att_attendancerecord ar ON ee.EmployeeID = ar.EmployeeID;
 
 
+SELECT emp.CardNumber,
+       emp.EmployeeName,
+       (SELECT DepartmentName FROM Att_Department dt WHERE dt.DepartmentID = emp.DepartmentID) secondDName,
+       (SELECT DepartmentName FROM Att_Department WHERE DepartmentID = dep.ParentID)           FirstDName,
+       min(CASE WHEN att.AttendanceTime = '上午' THEN type.TypeName END)                  morning,
+       min(CASE WHEN att.AttendanceTime = '下午' THEN type.TypeName END)                  afternoon
+FROM Att_Employee emp
+         LEFT OUTER JOIN Att_Department dep
+                         ON emp.DepartmentID = dep.DepartmentID
+         LEFT OUTER JOIN Att_Department depOne
+                         ON emp.DepartmentID = depOne.DepartmentID
+         INNER JOIN Att_AttendanceRecord att
+                    ON att.EmployeeID = emp.EmployeeID
+         INNER JOIN Att_AttendanceType type
+                    ON ATT.AttendanceType = type.TypeID
+WHERE
+        att.AttendanceDate="2019-07-22"
+GROUP BY emp.CardNumber, emp.EmployeeID;

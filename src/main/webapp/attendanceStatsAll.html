@@ -17,46 +17,43 @@
         <!--表格查询-->
         <div class="tableFind" style="text-align: left;width: 100%">
             <p>
-                <input type="radio" name="searchStatsAll" checked/>
+                <input type="radio" name="searchRadio" value="1" checked/>
                 <label style="width: 100px"> 汇总按年月天：</label>
-                <select class="easyui-combobox" style="width:160px;height:30px;" id="selectY"></select>年
-                <select class="easyui-combobox" style="width:160px;height:30px;" id="selectM"></select>月
-                <select class="easyui-combobox" style="width:160px;height:30px;" id="selectD"></select>天
+                <select class="easyui-combobox" data-options="editable:false,valueField:'id', textField:'text'" style="width:160px;height:30px;" id="year"></select>年
+                <select class="easyui-combobox" data-options="editable:false,valueField:'id', textField:'text'" style="width:160px;height:30px;" id="month"></select>月
+                <select class="easyui-combobox" data-options="editable:false,valueField:'id', textField:'text'" style="width:160px;height:30px;" id="day"></select>天
             </p>
             <p>
-                <input type="radio" name="searchStatsAll" />
+                <input type="radio" name="searchRadio" value="2" />
                 <label style="width: 100px">汇总按时间段：</label>
-                <input type="text" id="d1" class="easyui-datebox"style="width: 16%;height:26px;"/>
+                <input type="text" id="date1" class="easyui-datebox"style="width: 16%;height:26px;"/>
                 到
-                <input type="text" id="d2" class="easyui-datebox"style="width: 16%;height:26px;"/>
+                <input type="text" id="date2" class="easyui-datebox"style="width: 16%;height:26px;"/>
             </p>
             <p>
-                <input type="radio" name="searchStatsAll" />
                 <label style="width: 100px">出勤状态：</label>
-                <input type="checkbox">出勤
-                <input type="checkbox">公休
-                <input type="checkbox">迟到
-                <input type="checkbox">旷工
-                <input type="checkbox">外出
-                <input type="checkbox">出差
-                <input type="checkbox">加班
-                <input type="checkbox">倒休
-                <input type="checkbox">事假
-                <input type="checkbox">病假
-                <input type="checkbox">婚假
-                <input type="checkbox">丧假
-                <input type="checkbox">产假
+                <input type="checkbox" value="1">出勤
+                <input type="checkbox" value="2">公休
+                <input type="checkbox" value="3">迟到
+                <input type="checkbox" value="4">旷工
+                <input type="checkbox" value="5">外出
+                <input type="checkbox" value="6">出差
+                <input type="checkbox" value="7">加班
+                <input type="checkbox" value="8">倒休
+                <input type="checkbox" value="9">事假
+                <input type="checkbox" value="10">病假
+                <input type="checkbox" value="11">婚假
+                <input type="checkbox" value="12">丧假
+                <input type="checkbox" value="13">产假
             </p>
             <p>
-                <input type="radio">
                 <label style="width: 100px">部门：</label>
-                <input type="text" id="deptSelect" value="全部"/>
+                <input type="text" id="departmentID" value="全部"/>
 
                 <label style="width: 100px">用户名：</label>
-                <input type="text" id="empSearch"/>
+                <input type="text" id="employeeName"/>
 
-                <a id="btnFind" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="find()">查询</a>
-                <a id="btnExport" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-print'"  onclick="find()">导出Excel</a>
+                <a id="btnFind" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="findAttendanceStatsAll()">检索</a>
             </p>
         </div>
 

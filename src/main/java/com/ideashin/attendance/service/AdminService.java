@@ -12,9 +12,9 @@ import java.util.List;
 public interface AdminService {
     /**
      * 增加
-     * @param admin
+     * @param adminAccount
      */
-    Boolean addOne(Admin admin);
+    Admin loginUser(String adminAccount);
 
     /**
      * 更新

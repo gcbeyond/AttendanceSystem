@@ -2,7 +2,7 @@ $(
     //自动获取列表
     function () {
 
-        initAttendanceToday('/controller/attendanceRecord/findAllAttendanceRecords', formatDate(new Date()));
+        initAttendanceToday('/controller/attendanceToday/findAllAttendanceRecords', formatDate(new Date()));
     }
 );
 
@@ -143,7 +143,7 @@ function findSome() {
     var deptSelect = $("#deptSelect").val();
     var attendanceTime = $("#attendanceTime").val();
     var attendanceDate = $("#attendanceDate").val();
-    var isUrl = '/controller/attendanceRecord/findSomeAttendanceRecords?' +
+    var isUrl = '/controller/attendanceToday/findSomeAttendanceRecords?' +
         'deptSelect=' + deptSelect +
         '&attendanceDate=' + attendanceDate +
         '&attendanceTime=' + attendanceTime;
@@ -236,12 +236,12 @@ function searchSomeNotes(isUrl, index) {
 }
 
 //时间格式化
-//时间格式化
 function formatDate(val) {
     return val.getFullYear() + "-" +
         (val.getMonth() + 1) + "-" +
         val.getDate();
 }
+
 //将查询到的noteID添加回表格中
 function addNote(noteID, index) {
     $("#selectNoteBox").dialog({
@@ -293,7 +293,7 @@ function saveAttendanceToday() {
         $.ajax(
             {
                 type : "POST",
-                url : "/controller/attendanceRecord/addAttendanceRecord",
+                url : "/controller/attendanceToday/addAttendanceRecord",
                 data : params,
                 success:function( data ) {
                     alertF(data);

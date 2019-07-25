@@ -15,40 +15,27 @@
 <div class="easyui-layout" data-options="fit:true" id="useBox">
     <div data-options="region:'center',split:true">
         <div class="tableFind" style="text-align: left;width: 100%">
-
             <p>
-                <input type="radio" name="searchStatsDept" checked/>
+                <input type="radio" name="searchRadio" value="1" checked/>
                 <label style="width: 100px">汇总按年月：</label>
-                <select class="easyui-combobox"style="width:160px;height:30px;" id="selectY">
+                <select class="easyui-combobox"  data-options="editable:false,valueField:'id', textField:'text'" style="width:160px;height:30px;" id="year" name="year">
                 </select>年
-                <select class="easyui-combobox"style="width:160px;height:30px;" id="selectM">
+                <select class="easyui-combobox"  data-options="editable:false,valueField:'id', textField:'text'" style="width:160px;height:30px;" id="month" name="month">
                 </select>月
             </p>
             <p>
-                <input type="radio" name="searchStatsDept" />
+                <input type="radio" name="searchRadio" value="2" />
                 <label style="width: 100px">汇总按时间段：</label>
-                <input type="text" id="d1" class="easyui-datebox"style="width: 16%;height:26px;"/>
+                <input type="text" id="date1" class="easyui-datebox" style="width: 16%;height:26px;"/>
                 到
-                <input type="text" id="d2" class="easyui-datebox"style="width: 16%;height:26px;"/>
+                <input type="text" id="date2" class="easyui-datebox" style="width: 16%;height:26px;"/>
             </p>
             <p>
-                <input type="radio" name="searchStatsDept" />
+                <input type="radio" name="searchRadio" value="3"/>
                 <label style="width: 100px">部门：</label>
-                <select class="easyui-combobox"style="width:160px;height:30px;">
-                    <option value="">全部</option>
-                    <option value="1">技术部</option>
-                    <option value="2">吃饭不</option>
-                    <option value="3">花钱不</option>
-                </select>
-                -
-                <select class="easyui-combobox"style="width:160px;height:30px;">
-                    <option value="">全部</option>
-                    <option value="1">技术部</option>
-                    <option value="2">吃饭不</option>
-                    <option value="3">花钱不</option>
-                </select>
-            <a id="btnFind" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="find()">检索</a>
-            <a id="btnExport" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-print'"  onclick="find()">导出Excel</a>
+                <input type="text" id="departmentID" name="departmentID" value="全部"/>
+            <a id="btnFind" href="javascript:" class="easyui-linkbutton tableFindBut" data-options="iconCls:'icon-search'" onclick="findAttendanceStatsDept()">检索</a>
+            </p>
         </div>
         <!--表格列表-->
         <div class="tableCon">

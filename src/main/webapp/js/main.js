@@ -1,6 +1,11 @@
 /**
  * Created by Administrator on 2017/11/8.
  */
+
+$(function () {
+        getCookie();
+
+});
 $("#mainBox").layout({
         fit:true,
         border:false
@@ -36,16 +41,13 @@ function openMes() {
 }
 function saveExit() {
         $.messager.confirm('退出确认','你是否退出系统？',function () {
-
+                document.cookie = "adminAccount=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                document.cookie = "adminRight=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                window.location.href ="login.html";
         })
 
 }
-function saveCanle() {
-        $.messager.confirm('注销确认','你是否注销用户？',function () {
 
-        })
-
-}
 $(".topText a").click(function () {
         $(this).addClass('textActive').siblings().removeClass('textActive');
 
@@ -72,3 +74,31 @@ $("#con").tabs({
 
         }
 })
+
+
+function getCookie(){
+
+        if (document.cookie == null || document.cookie == "") {
+                window.location.href ="login.html";
+        }
+
+        var name = "adminAccount=";
+        var right = "adminRight=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++)
+        {
+                var c = ca[i].trim();
+                if (c.indexOf(name) == 0) {
+                        var n =  c.substring(name.length,c.length);
+                        $("#adminName").html(n);
+                }
+                if (c.indexOf(right) == 0) {
+                        var r =  c.substring(right.length,c.length);
+                        if (r == 1) {
+                                $("#attendance").panel('close');
+                        } else {
+                                $("#infoList").panel('close');
+                        }
+                }
+        }
+}

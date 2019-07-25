@@ -47,17 +47,21 @@ public class PositionController extends HttpServlet {
     }
 
     /**
-     * 查找所有
+     * 查找所有职位
      * @param req
      * @param resp
      * @throws ServletException
      * @throws IOException
      */
     public void findAllPositions(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        List<Position> list = positionService.findAll();
+        int page = Integer.valueOf(req.getParameter("page"));
+        int rows = Integer.valueOf(req.getParameter("rows"));
+        int total = positionService.getCount();
+
+        List<Position> list = positionService.findAll(page, rows);
         HashMap<String, Object> map = new HashMap<>(2);
 
-        map.put("total", list.size());
+        map.put("total", total);
         map.put("rows", list);
 
         String jsonString = JSON.toJSONString(map);
@@ -68,7 +72,7 @@ public class PositionController extends HttpServlet {
     }
 
     /**
-     * 删除单条
+     * 删除单条职位
      * @param req
      * @param resp
      * @throws ServletException
@@ -85,7 +89,7 @@ public class PositionController extends HttpServlet {
     }
 
     /**
-     * 添加单条
+     * 添加单条职位
      * @param req
      * @param resp
      * @throws IOException
@@ -105,7 +109,7 @@ public class PositionController extends HttpServlet {
     }
 
     /**
-     * 修改单条
+     * 修改单条职位
      * @param req
      * @param resp
      * @throws IOException

@@ -21,23 +21,18 @@ public class AttendanceRecordServiceImpl implements AttendanceRecordService {
     }
 
     @Override
-    public Boolean addOne(AttendanceRecord attendanceRecord) {
-        return attendanceRecordDao.insert(attendanceRecord);
+    public Boolean addAttendanceRecord(AttendanceRecord attendanceRecord) {
+        return attendanceRecordDao.addAttendanceRecord(attendanceRecord);
     }
 
     @Override
-    public Boolean editOne(AttendanceRecord attendanceRecord) {
-        return null;
-    }
-
-    @Override
-    public List findAll(int page, int rows) {
+    public List findAllAttendanceRecords(int page, int rows) {
         int offset = (page - 1) * rows;
         return attendanceRecordDao.selectAll(offset, rows);
     }
 
     @Override
-    public List findSome(Integer deptSelect, Date attendanceDate, String attendanceTime, int page, int rows) {
+    public List findSomeAttendanceRecords(Integer deptSelect, Date attendanceDate, String attendanceTime, int page, int rows) {
         return attendanceRecordDao.selectSome(deptSelect, attendanceDate, attendanceTime, page, rows);
     }
 
@@ -54,6 +49,32 @@ public class AttendanceRecordServiceImpl implements AttendanceRecordService {
     @Override
     public Boolean removeOne(Integer attendanceID) {
         return attendanceRecordDao.delete(attendanceID);
+    }
+
+    @Override
+    public List findAttendanceStatsDept(String year, String month) {
+        return attendanceRecordDao.findAttendanceStatsDept(year, month);
+    }
+
+    @Override
+    public List findAttendanceStatsDept(Date date1, Date date2) {
+        return attendanceRecordDao.findAttendanceStatsDept(date1, date2);
+    }
+
+    @Override
+    public List findAttendanceStatsDept(Integer departmentID) {
+        return attendanceRecordDao.findAttendanceStatsDept(departmentID);
+    }
+
+    @Override
+    public List findAttendanceStatsAll(String year, String month, String day) {
+        return attendanceRecordDao.findAttendanceStatsAll(year, month, day);
+    }
+
+    @Override
+    public List findAttendanceStatsAll(Date date1, Date date2, String checkType, Integer departmentID, String employeeName) {
+        employeeName = "%" + employeeName + "%";
+        return attendanceRecordDao.findAttendanceStatsAll(date1, date2, checkType, departmentID, employeeName);
     }
 
 }

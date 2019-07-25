@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Form - jQuery EasyUI Demo</title>
+    <link type="text/css" rel="stylesheet" href="js/jquery-easyui/themes/default/easyui.css"/>
+    <link type="text/css" rel="stylesheet" href="js/jquery-easyui/themes/icon.css"/>
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="js/jquery-easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-easyui/jquery.easyui.min.js"></script>
+    <script src="js/login.js"></script>
+</head>
+<body>
+<div style="position: absolute;top: 50%; left: 50%;margin-left: -200px;margin-top: -200px;">
+    <h1>考勤管理系统</h1>
+    <p>欢迎来到XXXX公司考勤管理</p>
+    <div style="margin:20px 0;"></div>
+    <div class="easyui-panel" title="登录" style="width:400px">
+        <div style="padding:10px 60px 20px 60px">
+            <form id="ff" method="post">
+                <table cellpadding="5">
+                    <tr>
+                        <td>用户名:</td>
+                        <td><input class="easyui-textbox" type="text" name="adminAccount" id="adminAccount" data-options="required:true"></input></td>
+                    </tr>
+                    <tr>
+                        <td>密&nbsp;码:</td>
+                        <td><input class="easyui-textbox" type="password" name="adminPwd" id="adminPwd" data-options="required:true"></input></td>
+                    </tr>
+                </table>
+            </form>
+            <div style="text-align:center;padding:5px">
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">登录</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重置</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

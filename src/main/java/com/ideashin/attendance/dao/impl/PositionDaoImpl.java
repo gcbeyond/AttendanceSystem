@@ -27,14 +27,20 @@ public class PositionDaoImpl implements PositionDao {
     }
 
     @Override
-    public List selectAll() {
-        String sql = "SELECT * FROM Att_Position";
-        return DBHelper.execQuery(sql, Position.class);
+    public List selectAll(int offset, int rows){
+        String sql = "SELECT * FROM Att_Position LIMIT ?, ? ";
+        return DBHelper.execQuery(sql, Position.class, offset, rows);
     }
 
     @Override
     public Boolean deleteOne(int positionID) {
         String sql = "DELETE FROM Att_Position WHERE PositionID = ?";
         return DBHelper.execUpdate(sql, positionID);
+    }
+
+    @Override
+    public int getCount() {
+        String sql = "SELECT COUNT(*) FROM Att_Position";
+        return DBHelper.getCount(sql);
     }
 }

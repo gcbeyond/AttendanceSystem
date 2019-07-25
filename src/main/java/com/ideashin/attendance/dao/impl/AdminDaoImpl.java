@@ -15,8 +15,9 @@ import java.util.List;
 public class AdminDaoImpl implements AdminDao {
 
     @Override
-    public Boolean insert(Admin admin) {
-        return null;
+    public Admin loginUser(String adminAccount) {
+        String sql = "SELECT * FROM Att_Admin WHERE AdminAccount = ?";
+        return (Admin)DBHelper.execQueryOne(sql, Admin.class, adminAccount);
     }
 
     @Override

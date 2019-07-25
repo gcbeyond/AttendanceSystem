@@ -26,7 +26,7 @@ public interface PositionService {
     /**
      * 查询所有
      */
-    List<Position> findAll();
+    List findAll(int page, int rows);
 
     /**
      * 返回json下拉列表
@@ -39,4 +39,11 @@ public interface PositionService {
      * @return
      */
     Boolean removeOne(int positionID);
+
+
+    /**
+     * 查询条数
+     * @return
+     */
+    int getCount();
 }

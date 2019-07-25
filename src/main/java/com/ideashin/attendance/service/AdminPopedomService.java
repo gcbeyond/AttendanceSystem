@@ -8,7 +8,7 @@ import com.ideashin.attendance.entity.AdminPopedom;
  * @Blog: ideashin.com
  */
 public interface AdminPopedomService {
-    Boolean addOne(AdminPopedom adminPopedom);
+    Boolean addOnePopedom(AdminPopedom adminPopedom);
 
-    Boolean removeOne(Integer popedomID);
+    Boolean removeOnePopedom(Integer popedomID);
 }

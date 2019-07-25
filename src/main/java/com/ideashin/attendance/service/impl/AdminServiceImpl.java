@@ -20,8 +20,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Boolean addOne(Admin admin) {
-        return null;
+    public Admin loginUser(String adminAccount) {
+        return adminDao.loginUser(adminAccount);
     }
 
     @Override

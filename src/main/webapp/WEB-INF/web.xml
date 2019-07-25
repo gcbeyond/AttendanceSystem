@@ -67,23 +67,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>adminController</servlet-name>
-        <servlet-class>com.ideashin.attendance.controller.AdminController</servlet-class>
+        <servlet-name>attendanceTodayController</servlet-name>
+        <servlet-class>com.ideashin.attendance.controller.AttendanceTodayController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>adminController</servlet-name>
-        <url-pattern>/controller/admin/*</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>attendanceRecordController</servlet-name>
-        <servlet-class>com.ideashin.attendance.controller.AttendanceRecordController</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>attendanceRecordController</servlet-name>
-        <url-pattern>/controller/attendanceRecord/*</url-pattern>
+        <servlet-name>attendanceTodayController</servlet-name>
+        <url-pattern>/controller/attendanceToday/*</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -94,5 +84,45 @@
     <servlet-mapping>
         <servlet-name>adminPopedomController</servlet-name>
         <url-pattern>/controller/adminPopedom/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>attendanceStatsTodayController</servlet-name>
+        <servlet-class>com.ideashin.attendance.controller.AttendanceStatsTodayController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>attendanceStatsTodayController</servlet-name>
+        <url-pattern>/controller/attendanceStatsToday/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>attendanceStatsDeptController</servlet-name>
+        <servlet-class>com.ideashin.attendance.controller.AttendanceStatsDeptController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>attendanceStatsDeptController</servlet-name>
+        <url-pattern>/controller/attendanceStatsDept/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>attendanceStatsAllController</servlet-name>
+        <servlet-class>com.ideashin.attendance.controller.AttendanceStatsAllController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>attendanceStatsAllController</servlet-name>
+        <url-pattern>/controller/attendanceStatsAll/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>loginController</servlet-name>
+        <servlet-class>com.ideashin.attendance.controller.LoginController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>loginController</servlet-name>
+        <url-pattern>/controller/login/*</url-pattern>
     </servlet-mapping>
 </web-app>

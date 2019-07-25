@@ -12,7 +12,7 @@ function initAttendanceStatsToday() {
     $.ajax(
         {
             type:"POST",
-            url:"/controller/attendanceRecord/findStatsToday",
+            url:"/controller/attendanceStatsToday/findStatsToday",
             dataType:"json",
             data : params,
             success:function( data )
@@ -22,8 +22,6 @@ function initAttendanceStatsToday() {
         }
     );
 }
-
-
 
 //生成html
 function setHtml(datas) {

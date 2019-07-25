@@ -10,11 +10,13 @@ import java.util.List;
  * @Blog: ideashin.com
  */
 public interface AdminDao {
+
     /**
      * 增加
-     * @param admin
+     * @param adminAccount
+     * @return
      */
-    Boolean insert(Admin admin);
+    Admin loginUser(String adminAccount);
 
     /**
      * 更新
@@ -53,5 +55,4 @@ public interface AdminDao {
      * @return
      */
     int getCount();
-
 }

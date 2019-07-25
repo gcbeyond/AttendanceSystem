@@ -18,12 +18,12 @@ public class AdminPopedomServiceImpl implements AdminPopedomService {
     }
 
     @Override
-    public Boolean addOne(AdminPopedom adminPopedom) {
+    public Boolean addOnePopedom(AdminPopedom adminPopedom) {
         return adminPopedomDao.insert(adminPopedom);
     }
 
     @Override
-    public Boolean removeOne(Integer popedomID) {
+    public Boolean removeOnePopedom(Integer popedomID) {
         return adminPopedomDao.delete(popedomID);
     }
 

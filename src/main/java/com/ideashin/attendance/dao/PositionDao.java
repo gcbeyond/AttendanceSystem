@@ -12,21 +12,21 @@ import java.util.List;
 public interface PositionDao {
 
     /**
-     * 增加
+     * 增加职位
      * @param position
      */
     Boolean insert(Position position);
 
     /**
-     * 更新
+     * 更新职位
      * @param position
      */
     Boolean update(Position position);
 
     /**
-     * 查询所有
+     * 分页查询所有职位列表
      */
-    List selectAll();
+    List selectAll(int offset, int rows);
 
     /**
      * 删除单条
@@ -35,4 +35,10 @@ public interface PositionDao {
      */
     Boolean deleteOne(int positionID);
 
+
+    /**
+     * 查询职位条数
+     * @return
+     */
+    int getCount();
 }

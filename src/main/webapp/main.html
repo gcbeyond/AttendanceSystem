@@ -14,9 +14,8 @@
     <div data-options="region:'north',split:true" style="height: 80px" class="mainTop">
         <div class="topLogin"><img src="img/logoImg.png"/> <div class="topLongRight">公司内部考勤系统</div></div>
         <div href="javascript:void(0)" id="mb" class="easyui-menubutton topMean"
-             data-options="menu:'#mm',iconCls:'icon-admin'">管理员帐号</div>
+             data-options="menu:'#mm',iconCls:'icon-admin'"><span id="adminName"></span></div>
         <div id="mm" >
-            <div data-options="iconCls:'icon-man'"><a href="javascript:void(0)" onclick="openMes()">个人信息</a> </div>
             <div data-options="iconCls:'icon-redo'"><a href="javascript:void(0) "onclick="saveExit()">安全退出</a> </div>
         </div>
     </div>
@@ -27,13 +26,13 @@
 
     <div  data-options="region:'west',title:'功能菜单',split:true,iconCls:'icon-left01'" style="width:200px;">
         <div id="left01"  class="easyui-accordion" >
-            <div title="基本信息管理" data-options="iconCls:'icon-left05',selected:true" class="mainPanle">
+            <div title="基本信息管理" data-options="iconCls:'icon-left05',selected:true" class="mainPanle" id="infoList">
                 <p><i class="i_a i_dept"></i>&nbsp; <a href="departmentList.html" target="frameName">部门管理</a> </p>
                 <p><i class="i_a i_low02"></i> <a href="positionList.html" target="frameName">职位管理</a> </p>
                 <p><i class="i_a i_user"></i>&nbsp; <a href="employeeList.html" target="frameName">员工管理</a> </p>
                 <p><i class="i_a i_pass"></i> <a href="adminPopedomList.html" target="frameName">权限分配</a> </p>
             </div>
-            <div title="考勤管理" data-options="iconCls:'icon-remove'" class="mainPanle">
+            <div title="考勤管理" data-options="iconCls:'icon-remove'" class="mainPanle" id="attendance">
                 <p><i class="i_a i_sport02"></i><a href=" attendanceToday.html" target="frameName">今日考勤</a> </p>
             </div>
             <div title="请假管理" data-options="iconCls:'icon-left04'" class="mainPanle">
@@ -57,16 +56,7 @@
 
     </div>
 </div>
-<div id="myMes">
 
-    <p><label class="diaLable">用户名：</label><input  class="easyui-validatebox TailInput" disabled="disabled" data-options="required:true,novalidate:true" value="张林海"></p>
-    <p><label class="diaLable">登录名称：</label><input  class="easyui-validatebox TailInput" data-options="required:true" value="zhanglinghai"></p>
-    <p><label class="diaLable">用户密码：</label><input  type="password" value="123456" class="easyui-validatebox TailInput" data-options="required:true,"></p>
-    <p><label class="diaLable">用户角色：</label><input  class="easyui-validatebox TailInput" disabled="disabled" data-options="required:true,novalidate:true" value="管理员"></p>
-    <p><label class="diaLable">所属部门：</label><input  class="easyui-validatebox TailInput" disabled="disabled" data-options="required:true,novalidate:true" value="行政部门"></p>
-    <p><label class="diaLable areaLabel">描述：</label><textarea class="TailArea01" ></textarea></p>
-    <div class="forSubmint"> <a href="#" class="easyui-linkbutton"  iconCls="icon-save" >保存</a><a href="#" class="easyui-linkbutton"  iconCls="icon-redo" >重置</a> </div>
-</div>
 
 <script src="js/jquery-easyui/jquery.min.js"></script>
 <script src="js/jquery-easyui/jquery.easyui.min.js"></script>
